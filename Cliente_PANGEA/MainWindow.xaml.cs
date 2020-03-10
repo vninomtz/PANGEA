@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cliente_PANGEA.Views;
 
 namespace Cliente_PANGEA
 {
@@ -36,5 +37,28 @@ namespace Cliente_PANGEA
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
         }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "ItemCommittee":
+                    FrameCentral.Navigate(new CrearComite());
+                    break;
+                case "ItemCreate":
+
+                    break;
+                case "ItemVehicles":
+
+                    break;
+                case "ItemSales":
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 }

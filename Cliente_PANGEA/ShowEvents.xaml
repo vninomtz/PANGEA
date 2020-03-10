@@ -1,0 +1,31 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cliente_PANGEA"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Cliente_PANGEA.ShowEvents"
+      mc:Ignorable="d" 
+      d:DesignHeight="390" d:DesignWidth="730"
+      Title="ShowEvents">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Mis Eventos" FontSize="30" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"></TextBlock>
+        <ListView Grid.Row="1" ItemsSource="{Binding Items1}" VerticalAlignment="Top"
+                  HorizontalAlignment="Center">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding codigo}"  Header="Código" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}"  Header="Nombre de Evento" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Fecha" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+
+    </Grid>
+</Page>

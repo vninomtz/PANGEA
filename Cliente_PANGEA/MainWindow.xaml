@@ -31,7 +31,8 @@
     </Window.Triggers>
 
     <Grid>
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF2D3945" >
+        
+            <Grid Height="60" VerticalAlignment="Top" Background="#FF2D3945" >
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>

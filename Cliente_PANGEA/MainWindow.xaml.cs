@@ -23,6 +23,7 @@ namespace Cliente_PANGEA
         public MainWindow()
         {
             InitializeComponent();
+            CentralFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -35,6 +36,28 @@ namespace Cliente_PANGEA
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "ItemAssistants":
+                    CentralFrame.Navigate(new AssistantRegistration());
+                    break;
+                case "ItemCreate":
+
+                    break;
+                case "ItemVehicles":
+
+                    break;
+                case "ItemSales":
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -63,6 +63,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AssistantConsult.xaml.cs">
+      <DependentUpon>AssistantConsult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistantRegistration.xaml.cs">
+      <DependentUpon>AssistantRegistration.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AssistantConsult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssistantRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

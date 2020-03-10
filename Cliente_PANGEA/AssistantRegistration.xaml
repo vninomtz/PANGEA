@@ -1,0 +1,85 @@
+﻿<Page x:Class="Cliente_PANGEA.AssistantRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Cliente_PANGEA"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="990"
+      Title="AssistantRegistration">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="-200,-10,-10,10">
+            <TextBlock Grid.Row="0"
+             FontWeight="Bold"
+             Margin="37,25,33,5"
+             Style="{StaticResource MaterialDesignHeadline4TextBlock}" Grid.ColumnSpan="2">
+             Registro de asistente
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" >
+            <TextBox x:Name="txt_AssistantName"
+            Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+             Margin="40,70,40,40"
+                materialDesign:HintAssist.Hint="Nombre del asistente"
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" 
+                Height="62"  />
+            <TextBox x:Name="txt_fatherLastName"
+            Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            Margin="40,15,40,40"
+            materialDesign:HintAssist.Hint="Apellido paterno"
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62"  />
+            <TextBox x:Name="txt_motherLastName"
+            Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            Margin="40,15,40,40"
+            materialDesign:HintAssist.Hint="Apellido materno"
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62"  />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBox x:Name="txt_email"
+            Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            Margin="40,70,40,40"
+            materialDesign:HintAssist.Hint="Correo electrónico"
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"  />
+            <TextBox x:Name="txt_emailConfirmation"
+            Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+            VerticalAlignment="Top"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            Margin="40,20,40,40"
+            materialDesign:HintAssist.Hint="Confirmación de correo"
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"  />
+            <Button x:Name="btn_AssistantRegister"
+                Margin="40,35,304,0"
+                Width="150"
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Content="Registrar asistente" Click="btn_AssistantRegister_Click" />
+            <Button x:Name="btn_assignActivity"
+                Width="150"
+                Margin="300,-42,40,-12"
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Content="Asignar actividad" Click="Button_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

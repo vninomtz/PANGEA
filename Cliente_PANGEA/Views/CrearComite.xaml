@@ -20,20 +20,21 @@
                 <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
+                    x:Name="btn_regresar"
                     Foreground="Black" BorderBrush="Black"
                     ToolTip="MaterialDesignFloatingActionAccentButton" Width="50" Height="50">
                 <materialDesign:PackIcon Kind="ArrowLeft"  Width="50" Height="50"/>   
                 
             </Button>
-            <Button Grid.Column="0" HorizontalAlignment="Center" Background="{x:Null}" Padding="0"
+            <Button x:Name="btn_guardar" Grid.Column="0" HorizontalAlignment="Center" Background="{x:Null}" Padding="0"
                     Foreground="Black" BorderBrush="Black"
-                    ToolTip="MaterialDesignFloatingActionAccentButton" Width="50" Height="50">
+                    ToolTip="MaterialDesignFloatingActionAccentButton" Width="50" Height="50" Click="btn_guardar_Click">
                 <materialDesign:PackIcon Kind="ContentSave"  Width="50" Height="50"/>
 
             </Button>
-            <TextBlock Grid.Column="1" Text="Nuevo Comité" FontSize="50" 
+            <TextBlock Grid.Column="1" Text="Nuevo Comité" FontSize="35" 
                        HorizontalAlignment="Left" VerticalAlignment="Center" 
-                       FontWeight="DemiBold" Margin="120,0,0,0"/>
+                       FontWeight="DemiBold" Margin="130,0,0,0"/>
 
         </Grid>
 
@@ -47,12 +48,15 @@
                 <materialDesign:Card Margin="30"  Padding="30">
 
                     <StackPanel Orientation="Vertical">
-                        <TextBox 
+                        <TextBox
+                            MaxLength="100"                     
                             Margin="0,30,0,0"
-                          x:Name="txt_name"
+                          x:Name="txt_nombreComite"
                           materialDesign:HintAssist.Hint="Nombre"
                             FontWeight="Bold"/>
                         <TextBox
+                            MaxLength="200"
+                            x:Name="txt_descripcionComite"
                             Margin="0,30,0,0"
                             TextWrapping="Wrap"
                             VerticalAlignment="Stretch"
@@ -80,7 +84,7 @@
                         <ColumnDefinition Width="1.4*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
-                        <Button Grid.Column="0" Background="{x:Null}" Padding="0"
+                        <Button x:Name="btn_gestionarMiembros" Grid.Column="0" Background="{x:Null}" Padding="0"
                             Foreground="Black" BorderBrush="Black"
                             ToolTip="MaterialDesignFloatingActionAccentButton" Width="40" Height="40">
                             <materialDesign:PackIcon Kind="AccountsGroup"  Width="40" Height="40"/>
@@ -99,9 +103,9 @@
                                VerticalAlignment="Center"  FontSize="20" FontWeight="DemiBold"/>
                     <materialDesign:Card Grid.Row="1" Margin="10"  >
                         <StackPanel Orientation="Vertical" >
-                            <TextBlock Text="Victor niño" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
+                            <TextBlock x:Name="txt_nombreLiderComite" Text="Victor niño" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
 
-                            <TextBlock Text="ninomtz@gmail.com" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
+                            <TextBlock x:Name="txt_correoLiderComite" Text="ninomtz@gmail.com" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
                         </StackPanel>
 
                     </materialDesign:Card>

@@ -62,7 +62,6 @@
     <Compile Include="AsistentesEvento.cs">
       <DependentUpon>EntityModelPangea.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Comites.cs">
       <DependentUpon>EntityModelPangea.tt</DependentUpon>
     </Compile>

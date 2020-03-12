@@ -44,30 +44,16 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0" >
-                <materialDesign:Card Margin="30"  Padding="20">
+                <materialDesign:Card Margin="30"  Padding="30">
 
                     <StackPanel Orientation="Vertical">
                         <TextBox 
-                            Margin="20"
+                            Margin="0,30,0,0"
                           x:Name="txt_name"
                           materialDesign:HintAssist.Hint="Nombre"
                             FontWeight="Bold"/>
-                        <ComboBox materialDesign:HintAssist.Hint="Tipo" Margin="20" FontWeight="Bold">
-                            <ComboBoxItem>
-                                Publicidad
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                Artículos
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                Actividades
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                Presupuesto
-                            </ComboBoxItem> 
-                        </ComboBox>
                         <TextBox
-                            Margin="20"
+                            Margin="0,30,0,0"
                             TextWrapping="Wrap"
                             VerticalAlignment="Stretch"
                             MinWidth="280"
@@ -128,7 +114,7 @@
                     <TextBlock  Grid.Row="0" Text="Miembros de comité" HorizontalAlignment="Left" Margin="20,0,0,0"
                                VerticalAlignment="Center"  FontSize="20" FontWeight="DemiBold"/>
                     <ListView  Grid.Row="1">
-                        <ListViewItem Padding="0" Margin="3" >
+                        <ListViewItem Padding="0" Margin="3" BorderBrush="Black" BorderThickness="1">
                             <StackPanel Orientation="Vertical" >
                             <TextBlock Text="Irving Gumesindo" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
 
@@ -137,14 +123,14 @@
                             </StackPanel>
                             
                         </ListViewItem>
-                        <ListViewItem  Padding="0" Margin="3">
+                        <ListViewItem  Padding="0" Margin="3"  BorderBrush="Black"  BorderThickness="1">
                             <StackPanel Orientation="Vertical" >
                                 <TextBlock Text="Alan González" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
 
                                 <TextBlock Text="alan@gmail.com" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem  Padding="0" Margin="3"> 
+                        <ListViewItem  Padding="0" Margin="3" BorderBrush="Black"  BorderThickness="1"> 
                             <StackPanel Orientation="Vertical" >
                                 <TextBlock Text="Rodrigo Santana" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
 

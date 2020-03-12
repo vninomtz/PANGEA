@@ -24,5 +24,65 @@ namespace Cliente_PANGEA
         {
             InitializeComponent();
         }
+
+
+        public bool ValidateEmptyFields()
+        {
+            bool validation = true;
+            if (String.IsNullOrEmpty(TextBox_nombreEvento.Text))
+            {
+                validation = false;
+            }
+
+            if (String.IsNullOrEmpty(TextBox_Lugar.Text))
+            {
+                validation = false;
+            }
+
+            if (String.IsNullOrEmpty(TextBox_description.Text))
+            {
+                validation = false;
+            }
+
+            if (String.IsNullOrEmpty(DatePicker_initDate.Text))
+            {
+                validation = false;
+            }
+            if (String.IsNullOrEmpty(DatePicker_endDate.Text))
+            {
+                validation = false;
+            }
+
+            if (MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
+            {
+                if (String.IsNullOrEmpty(TextBox_cantidad.Text))
+                {
+                    validation = false;
+                }
+            }
+           
+
+            return validation;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ValidateEmptyFields())
+            {
+                MessageBox.Show("Campos vacios");
+            }
+            
+        }
+
+        
+        private void MaterialDesignFilledTextFieldTextBoxEnabledComboBox_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked == false )
+            {
+                TextBox_cantidad.Text = "";
+            }
+
+        }
     }
 }

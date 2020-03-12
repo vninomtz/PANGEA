@@ -63,10 +63,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MainEvent.xaml.cs">
+      <DependentUpon>MainEvent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowEvents.xaml.cs">
       <DependentUpon>ShowEvents.xaml</DependentUpon>
     </Compile>
     <Page Include="Events.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

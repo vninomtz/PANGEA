@@ -23,6 +23,8 @@ namespace Cliente_PANGEA
         public MainWindow()
         {
             InitializeComponent();
+            centralFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            centralFrame.Navigate(new MainEvent());
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)

@@ -25,20 +25,24 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="1">                                  
-              <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
-                     VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"   materialDesign:HintAssist.Hint="Nombre Evento"
-                     Margin="20" />
-                <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+              <TextBox x:Name="TextBox_nombreEvento" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                     VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Nombre Evento"
+                     Margin="20"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                      />
+                <TextBox x:Name="TextBox_Lugar" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                      VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"   materialDesign:HintAssist.Hint="Lugar"
-                     Margin="20,0" />
+                     Margin="20,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                     />
                 <StackPanel>
-                    <CheckBox x:Name="MaterialDesignFilledTextFieldTextBoxEnabledComboBox" IsChecked="True" Margin="20,10,0,0"  >
+                    <CheckBox x:Name="MaterialDesignFilledTextFieldTextBoxEnabledComboBox" IsChecked="True" Margin="20,10,0,0"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                              Background="#FF5C99D6" Click="MaterialDesignFilledTextFieldTextBoxEnabledComboBox_Click">
                         Costo
                     </CheckBox>
-                    <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" VerticalAlignment="Top"
+                    <TextBox x:Name="TextBox_cantidad" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" VerticalAlignment="Top"
                                 AcceptsReturn="True" Margin="20,10,10,20"
-                                TextWrapping="Wrap"                              
-                                materialDesign:HintAssist.Hint="Cantidad" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" />
+                                TextWrapping="Wrap"  materialDesign:HintAssist.Foreground="#FF5C99D6"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"                           
+                                materialDesign:HintAssist.Hint="Cantidad" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" 
+                                Background="#FF5C99D6" />
                 </StackPanel>
             </StackPanel>
 
@@ -50,35 +54,50 @@
 
                 <StackPanel Grid.Row="0">
                     <TextBox
-                    Margin="20"
-                    
+                    x:Name="TextBox_description"    
+                    Margin="20"                    
                     Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                    materialDesign:HintAssist.Foreground="#FF5C99D6"
                     VerticalAlignment="Top"                   
                     AcceptsReturn="True"
-                    TextWrapping="Wrap"                    
-                    materialDesign:HintAssist.Hint="Descripción"/>                    
+                    TextWrapping="Wrap"                  
+                    materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"  
+                    
+                    materialDesign:HintAssist.Hint="Descripción"
+                    Background="#FF5C99D6"    />                    
                 </StackPanel>
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <DatePicker      
+                    <DatePicker
+                      x:Name="DatePicker_initDate"
                       Margin="20"
                       VerticalAlignment="Top"
                       HorizontalAlignment="Left"
                       materialDesign:HintAssist.Hint="Día de inicio"
+                      Background="#FF5C99D6"
+                      materialDesign:HintAssist.Foreground="#FF5C99D6"  
+                     
+                        
+                        
                       Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                    <DatePicker      
+                      
+                    <DatePicker     
+                        x:Name="DatePicker_endDate"
                       Margin="20,20"
                       VerticalAlignment="Top"
                       HorizontalAlignment="Right"
                       materialDesign:HintAssist.Hint="Día de fin"
+                      materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                      materialDesign:HintAssist.Foreground="#FF5C99D6" 
                       Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 </StackPanel>
                 <Button
+                        Background="#FF5C99D6"
                         Grid.Row="1"
                         HorizontalAlignment="Right"
-                         VerticalAlignment="Bottom"
+                        VerticalAlignment="Bottom"
                         Margin="20"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"                        
-                        ToolTip="Resource name: MaterialDesignRaisedLightButton">       
+                        ToolTip="Resource name: MaterialDesignRaisedLightButton" Click="Button_Click">       
                     Guardar
                 </Button>
             </Grid>

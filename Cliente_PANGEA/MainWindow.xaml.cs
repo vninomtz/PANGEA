@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cliente_PANGEA.Views;
 
 namespace Cliente_PANGEA
 {
@@ -23,7 +25,6 @@ namespace Cliente_PANGEA
         public MainWindow()
         {
             InitializeComponent();
-            CentralFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -43,8 +44,8 @@ namespace Cliente_PANGEA
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
-                case "ItemAssistants":
-                    CentralFrame.Navigate(new AssistantRegistration());
+                case "ItemCommittee":
+                    FrameCentral.Navigate(new CrearComite());
                     break;
                 case "ItemCreate":
 
@@ -59,5 +60,6 @@ namespace Cliente_PANGEA
                     break;
             }
         }
+
     }
 }

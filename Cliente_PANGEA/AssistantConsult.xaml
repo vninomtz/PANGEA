@@ -9,6 +9,7 @@
       Title="AssistantConsult">
 
     <Grid Background="Wheat">
-        
+        <Button Content="Regresar" HorizontalAlignment="Left" Margin="369,231,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 </Page>

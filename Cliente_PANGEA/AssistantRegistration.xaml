@@ -34,6 +34,7 @@
             TextWrapping="Wrap"
              Margin="40,70,40,40"
                 materialDesign:HintAssist.Hint="Nombre del asistente"
+                     LostFocus="ValidateText"
             IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" 
                 Height="62"  />
             <TextBox x:Name="txt_fatherLastName"
@@ -43,6 +44,7 @@
             TextWrapping="Wrap"
             Margin="40,15,40,40"
             materialDesign:HintAssist.Hint="Apellido paterno"
+                     LostFocus="ValidateText"
             IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62"  />
             <TextBox x:Name="txt_motherLastName"
             Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
@@ -51,6 +53,7 @@
             TextWrapping="Wrap"
             Margin="40,15,40,40"
             materialDesign:HintAssist.Hint="Apellido materno"
+            LostFocus="ValidateText"
             IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62"  />
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
@@ -61,6 +64,7 @@
             TextWrapping="Wrap"
             Margin="40,70,40,40"
             materialDesign:HintAssist.Hint="Correo electrónico"
+                     LostFocus="ValidateText"
             IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"  />
             <TextBox x:Name="txt_emailConfirmation"
             Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
@@ -69,6 +73,7 @@
             TextWrapping="Wrap"
             Margin="40,20,40,40"
             materialDesign:HintAssist.Hint="Confirmación de correo"
+                     LostFocus="ValidateText"
             IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"  />
             <Button x:Name="btn_AssistantRegister"
                 Margin="40,35,304,0"
@@ -79,7 +84,7 @@
                 Width="150"
                 Margin="300,-42,40,-12"
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Content="Asignar actividad" Click="Button_Click" />
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Content="Asignar actividad" Click="Button_AssignActovity" />
         </StackPanel>
     </Grid>
 </Page>

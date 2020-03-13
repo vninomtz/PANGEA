@@ -24,5 +24,10 @@ namespace Cliente_PANGEA
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AssistantRegistration());
+        }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PangeaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PangeaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actividades">
           <Key>
             <PropertyRef Name="Id" />
@@ -66,6 +66,7 @@ warning 6002: The table/view 'Pangea.dbo.AsistentesEvento' does not have a prima
           <Property Name="Descripcion" Type="text" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
           <Property Name="UltimaModificacion" Type="datetime" />
+          <Property Name="IdEvento" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ConceptosFinancieros">
           <Key>
@@ -245,6 +246,18 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AsistentesEvento">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comites_Eventos">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
+          <End Role="Comites" Type="Self.Comites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comites">
               <PropertyRef Name="IdEvento" />
             </Dependent>
           </ReferentialConstraint>
@@ -455,6 +468,10 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
             <End Role="Eventos" EntitySet="Eventos" />
             <End Role="AsistentesEvento" EntitySet="AsistentesEvento" />
           </AssociationSet>
+          <AssociationSet Name="FK_Comites_Eventos" Association="Self.FK_Comites_Eventos">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Comites" EntitySet="Comites" />
+          </AssociationSet>
           <AssociationSet Name="FK_ConceptosFinancieros_Actividades" Association="Self.FK_ConceptosFinancieros_Actividades">
             <End Role="Actividades" EntitySet="Actividades" />
             <End Role="ConceptosFinancieros" EntitySet="ConceptosFinancieros" />
@@ -508,8 +525,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
             <End Role="Tracks" EntitySet="Tracks" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PangeaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -569,6 +585,8 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UltimaModificacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_Comites" FromRole="Comites" ToRole="Personal" />
+          <Property Name="IdEvento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Eventos" Relationship="PangeaModel.FK_Comites_Eventos" FromRole="Comites" ToRole="Eventos" />
         </EntityType>
         <EntityType Name="ConceptosFinancieros">
           <Key>
@@ -617,6 +635,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_Eventos" FromRole="Eventos" ToRole="Personal" />
           <NavigationProperty Name="Presupuestos" Relationship="Self.FK_Presupuestos_Eventos" FromRole="Eventos" ToRole="Presupuestos" />
           <NavigationProperty Name="Tracks" Relationship="Self.FK_Tracks_Eventos1" FromRole="Eventos" ToRole="Tracks" />
+          <NavigationProperty Name="Comites" Relationship="PangeaModel.FK_Comites_Eventos" FromRole="Eventos" ToRole="Comites" />
         </EntityType>
         <EntityType Name="Horarios">
           <Key>
@@ -1028,7 +1047,23 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
             <End Role="Eventos" EntitySet="Eventos" />
             <End Role="Tracks" EntitySet="Tracks" />
           </AssociationSet>
+          <AssociationSet Name="FK_Comites_Eventos" Association="PangeaModel.FK_Comites_Eventos">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Comites" EntitySet="Comites" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Comites_Eventos">
+          <End Type="PangeaModel.Eventos" Role="Eventos" Multiplicity="1" />
+          <End Type="PangeaModel.Comites" Role="Comites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comites">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1077,6 +1112,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <EntitySetMapping Name="Comites">
             <EntityTypeMapping TypeName="PangeaModel.Comites">
               <MappingFragment StoreEntitySet="Comites">
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

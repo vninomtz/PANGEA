@@ -31,7 +31,7 @@
     </Window.Triggers>
 
     <Grid>
-        <Frame x:Name="FrameCentral" Margin="70,60,0,0" />
+        <Frame x:Name="FrameCentral" Margin="70,60,0,0" NavigationUIVisibility="Hidden"/>
         <Grid Height="60" VerticalAlignment="Top" Background="#FF2D3945" >
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>

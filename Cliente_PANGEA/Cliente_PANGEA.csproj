@@ -72,8 +72,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\ComiteController.cs" />
+    <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Views\CrearComite.xaml.cs">
       <DependentUpon>CrearComite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionarMiembros.xaml.cs">
+      <DependentUpon>GestionarMiembros.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +92,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CrearComite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GestionarMiembros.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -23,9 +23,39 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class CrearComite : Page
     {
+        Comites comiteUpdate;
+        List<Cuentas> listMembers = new List<Cuentas>();
+        List<Cuentas> listLeader = new List<Cuentas>();
+        bool isNew = true;
+        public CrearComite(Comites comite)
+        {
+            InitializeComponent();
+
+            isNew = false;
+            comiteUpdate = ComiteController.GetCommitteeById(6);
+            LoadMembersCommittee(1, comiteUpdate.Id);
+
+            LoadFields();
+            
+        }
         public CrearComite()
         {
             InitializeComponent();
+        }
+
+        public void LoadMembersCommittee(int idEvent, int idCommittee)
+        {
+            this.listMembers = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Miembro");
+            this.listLeader = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Líder");
+            list_leader.ItemsSource = this.listLeader;
+            list_members.ItemsSource = this.listMembers;
+
+
+        }
+        public void LoadFields()
+        {
+            txt_nombreComite.Text = comiteUpdate.Nombre;
+            txt_descripcionComite.Text = comiteUpdate.Descripcion;
         }
 
         public void ShowMessageError(string type, string message)
@@ -69,36 +99,122 @@ namespace Cliente_PANGEA.Views
             return result;
         }
 
-       
+       public int UpdateCommittee(string name, string description)
+       {
+            int result = -1;
+            comiteUpdate.Nombre = name;
+            comiteUpdate.Descripcion = description;
+            result = ComiteController.UpdateCommitee(comiteUpdate);
+            return result;
 
+       }
 
+        public int SaveCommittee(string name, string description, int idEvent)
+        {
+            int result = -1;
+            if (!ComiteController.ExistingCommittee(name))
+            {
+                DataAccess.Comites comite = new Comites
+                {
+                    Nombre = name,
+                    Descripcion = description,
+                    FechaCreacion = DateTime.Now,
+                    IdEvento = idEvent
+                };
+                result = ComiteController.SaveCommittee(comite);
+                
+            }
+            else
+            {
+                result = -2;
+            }
+
+            return result;
+        }
         private void btn_guardar_Click(object sender, RoutedEventArgs e)
         {
+            int result;
             if (!EmptyFields())
             {
                 if (CorrectFields())
                 {
-                    if (!ComiteController.ExistingCommittee(txt_nombreComite.Text))
+                    if (isNew)
                     {
-                        DataAccess.Comites comite = new Comites
+                        result = SaveCommittee(txt_nombreComite.Text, txt_descripcionComite.Text, 1);
+                        if (result > 0)
                         {
-                            Nombre = txt_nombreComite.Text,
-                            Descripcion = txt_descripcionComite.Text,
-                            FechaCreacion = DateTime.Now
-                        };
-                        int result = ComiteController.SaveCommittee(comite);
-                        if(result > 0)
+                            isNew = false;
+                            MessageBox.Show("Se guardo con éxito el comité");
+                        }
+                        else if (result == -2)
                         {
-                            MessageBox.Show("Se guardo con éxito el Comité");
-
+                            MessageBox.Show("Hay un comité registrado con el mismo nombre");
                         }
                         else
                         {
-                            MessageBox.Show("Error al guardar el comité");
+                            MessageBox.Show("Error en la conexión a la BD");
+                        }
+                        
+                    }
+                    else
+                    {
+                        result = UpdateCommittee(txt_nombreComite.Text, txt_descripcionComite.Text);
+                        if (result > 0)
+                        {
+                            isNew = false;
+                            MessageBox.Show("Se actualizo con éxito el comité");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en la conexión a la BD");
                         }
                     }
                 }
             }
+        }
+
+        public int SaveCommitteeAsyn()
+        {
+            int result = -1;
+            if (!EmptyFields())
+            {
+                if (CorrectFields())
+                {
+                    if (isNew)
+                    {
+                        result =SaveCommittee(txt_nombreComite.Text, txt_descripcionComite.Text, 1);
+                        if(result > 0)
+                        {
+                            isNew = false;
+                        }
+                        
+                    }
+                    else
+                    {
+                        result = UpdateCommittee(txt_nombreComite.Text, txt_descripcionComite.Text);
+                        
+                    }
+                }
+            }
+            return result;
+        }
+        private void btn_gestionarMiembros_Click(object sender, RoutedEventArgs e)
+        {
+            int result = SaveCommitteeAsyn();
+            if (result > 0)
+            {
+                this.comiteUpdate = ComiteController.GetLastCommittee();
+                this.NavigationService.Navigate(new GestionarMiembros(this, this.comiteUpdate.Id,this.listLeader,this.listMembers));
+            }
+            else if (result == -2)
+            {
+                MessageBox.Show("Hay un comité registrado con el mismo nombre");
+            }
+            else
+            {
+                MessageBox.Show("Error en la conexión a la BD");
+            }
+
         }
     }
 }

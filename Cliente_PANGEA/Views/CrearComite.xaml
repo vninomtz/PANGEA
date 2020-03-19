@@ -19,19 +19,30 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Button Background="{x:Null}" Padding="0" Margin="30,0,0,0"
                     x:Name="btn_regresar"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
-                    ToolTip="Regresar" Width="40" Height="40">
-                <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>   
-                
-            </Button>
-            <Button x:Name="btn_guardar" Grid.Column="0" HorizontalAlignment="Center" Background="{x:Null}" Padding="0"
+                    ToolTip="Regresar" Width="40" Height="40" Click="btn_regresar_Click">
+                    <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+
+                </Button>
+                <Button Background="{x:Null}" Padding="0" Margin="30,0,0,0"
+                    x:Name="btn_eliminar"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="btn_eliminar_Click" >
+                    <materialDesign:PackIcon Kind="Delete"  Width="40" Height="40"/>
+
+                </Button>
+                <Button x:Name="btn_guardar" Background="{x:Null}" Padding="0" Margin="30,0,0,0"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
                     ToolTip="Guardar comité" Width="40" Height="40" Click="btn_guardar_Click">
-                <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
+                    <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
 
-            </Button>
+                </Button>
+            </StackPanel>
+            
             <TextBlock x:Name="txt_titulo" Grid.Column="1" Text="C O M I T É" FontSize="35" 
                        HorizontalAlignment="Left" VerticalAlignment="Center" 
                        FontWeight="DemiBold" Margin="130,0,0,0"/>

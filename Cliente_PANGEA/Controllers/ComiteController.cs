@@ -86,5 +86,22 @@ namespace Cliente_PANGEA.Controllers
             }
             return result;
         }
+        public static List<Comites> GetAllCommitte(int idEvent)
+        {
+            using (var dataBase = new PangeaConnection())
+            {
+                try
+                {
+                    List<Comites> comitesList = dataBase.Comites.Where(u => u.IdEvento == idEvent).ToList();
+                    return comitesList;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error en la conexión a la BD:" + e);
+                    return null;
+                }
+            }
+
+        }
     }
 }

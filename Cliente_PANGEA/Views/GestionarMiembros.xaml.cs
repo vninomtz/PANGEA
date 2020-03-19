@@ -22,27 +22,29 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class GestionarMiembros : Page
     {
-        CrearComite pageCrearComite;
         List<Cuentas> listMembers = new List<Cuentas>();
         List<Cuentas> listleaderCommittee = new List<Cuentas>();
         List<Cuentas> listStaff;
-        int IdCommittee;
-        public GestionarMiembros(CrearComite crearComite, int Id, List<Cuentas> listleader, List<Cuentas> listMembers)
+        Comites committeeUpdated;
+        int IDEVENT = 1;
+        public GestionarMiembros(Comites committee)
         {
             InitializeComponent();
-            this.pageCrearComite = crearComite;
-            this.IdCommittee = Id;
-            this.listleaderCommittee = listleader;
-            this.listMembers = listMembers;
+            this.committeeUpdated = committee;
             GetStaffAvailable();
+            GetMembersCommittee(IDEVENT, committee.Id);
             LoadStaffAvailable();
             LoadStaffCommittee();
             LoadLeaderCommittee();
         }
-
+        public void GetMembersCommittee(int idEvent, int idCommittee)
+        {
+            this.listMembers = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Miembro");
+            this.listleaderCommittee = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Líder");
+        }
         public void GetStaffAvailable()
         {
-            listStaff = PersonalController.GetAvailableStaff(1);
+            listStaff = PersonalController.GetAvailableStaff(IDEVENT);
             
         }
         public void LoadStaffAvailable()
@@ -65,8 +67,7 @@ namespace Cliente_PANGEA.Views
 
         private void btn_regresar_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(this.pageCrearComite);
-            //UpdatePageCrearComite();
+            this.NavigationService.Navigate(new CrearComite(this.committeeUpdated));
         }
 
         private void btn_agregarMiembro_Click(object sender, RoutedEventArgs e)
@@ -149,10 +150,10 @@ namespace Cliente_PANGEA.Views
         public bool UpdateListMembersCommittee()
         {
 
-            int result = PersonalController.UpdateAssignmentsStaff(this.listleaderCommittee, true, "Líder", this.IdCommittee);
+            int result = PersonalController.UpdateAssignmentsStaff(this.listleaderCommittee, true, "Líder", this.committeeUpdated.Id);
             if(result > -1)
             {
-                result = PersonalController.UpdateAssignmentsStaff(this.listMembers, true, "Miembro", this.IdCommittee);
+                result = PersonalController.UpdateAssignmentsStaff(this.listMembers, true, "Miembro", this.committeeUpdated.Id);
                 if(result > -1)
                 {
                     return true;
@@ -180,20 +181,13 @@ namespace Cliente_PANGEA.Views
             }
         }
 
-        public void UpdatePageCrearComite()
-        {
-            this.pageCrearComite.list_leader.ItemsSource = null;
-            this.pageCrearComite.list_leader.ItemsSource = this.listleaderCommittee;
-            this.pageCrearComite.list_members.ItemsSource = null;
-            this.pageCrearComite.list_members.ItemsSource = this.listMembers;
-        }
         private void btn_guardar_Click(object sender, RoutedEventArgs e)
         {
             if(UpdateListMembersCommittee() && UpdateListStaff())
             {
                 MessageBox.Show("Se guardaron con éxito las asignaciones");
-                UpdatePageCrearComite();
-                this.NavigationService.Navigate(this.pageCrearComite);
+                this.NavigationService.Navigate(new CrearComite(this.committeeUpdated));
+                
             }
             else
             {

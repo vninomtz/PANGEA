@@ -27,20 +27,23 @@ namespace Cliente_PANGEA.Views
         List<Cuentas> listMembers = new List<Cuentas>();
         List<Cuentas> listLeader = new List<Cuentas>();
         bool isNew = true;
+        int IDEVENT = 1;
+        
         public CrearComite(Comites comite)
         {
             InitializeComponent();
 
             isNew = false;
-            comiteUpdate = ComiteController.GetCommitteeById(6);
+            comiteUpdate = comite;
             LoadMembersCommittee(1, comiteUpdate.Id);
-
+            btn_eliminar.Visibility = Visibility.Visible;
             LoadFields();
             
         }
         public CrearComite()
         {
             InitializeComponent();
+            btn_eliminar.Visibility = Visibility.Hidden;
         }
 
         public void LoadMembersCommittee(int idEvent, int idCommittee)
@@ -49,7 +52,6 @@ namespace Cliente_PANGEA.Views
             this.listLeader = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Líder");
             list_leader.ItemsSource = this.listLeader;
             list_members.ItemsSource = this.listMembers;
-
 
         }
         public void LoadFields()
@@ -122,6 +124,12 @@ namespace Cliente_PANGEA.Views
                     IdEvento = idEvent
                 };
                 result = ComiteController.SaveCommittee(comite);
+                if(result > 0)
+                {
+                    this.comiteUpdate = this.comiteUpdate = ComiteController.GetLastCommittee();
+                    isNew = false;
+                    btn_eliminar.Visibility = Visibility.Visible;
+                }
                 
             }
             else
@@ -140,7 +148,7 @@ namespace Cliente_PANGEA.Views
                 {
                     if (isNew)
                     {
-                        result = SaveCommittee(txt_nombreComite.Text, txt_descripcionComite.Text, 1);
+                        result = SaveCommittee(txt_nombreComite.Text, txt_descripcionComite.Text, IDEVENT);
                         if (result > 0)
                         {
                             isNew = false;
@@ -150,7 +158,7 @@ namespace Cliente_PANGEA.Views
                         {
                             MessageBox.Show("Hay un comité registrado con el mismo nombre");
                         }
-                        else
+                        else if(result == -1)
                         {
                             MessageBox.Show("Error en la conexión a la BD");
                         }
@@ -173,47 +181,45 @@ namespace Cliente_PANGEA.Views
             }
         }
 
-        public int SaveCommitteeAsyn()
-        {
-            int result = -1;
-            if (!EmptyFields())
-            {
-                if (CorrectFields())
-                {
-                    if (isNew)
-                    {
-                        result =SaveCommittee(txt_nombreComite.Text, txt_descripcionComite.Text, 1);
-                        if(result > 0)
-                        {
-                            isNew = false;
-                        }
-                        
-                    }
-                    else
-                    {
-                        result = UpdateCommittee(txt_nombreComite.Text, txt_descripcionComite.Text);
-                        
-                    }
-                }
-            }
-            return result;
-        }
+
         private void btn_gestionarMiembros_Click(object sender, RoutedEventArgs e)
         {
-            int result = SaveCommitteeAsyn();
-            if (result > 0)
+            if(!EmptyFields() && CorrectFields())
             {
-                this.comiteUpdate = ComiteController.GetLastCommittee();
-                this.NavigationService.Navigate(new GestionarMiembros(this, this.comiteUpdate.Id,this.listLeader,this.listMembers));
+                int result;
+                if (isNew)
+                {
+                    result = SaveCommittee(txt_nombreComite.Text, txt_descripcionComite.Text, IDEVENT);
+                }
+                else
+                {
+                    result = UpdateCommittee(txt_nombreComite.Text, txt_descripcionComite.Text);
+                }
+                if(result > -1)
+                {
+                    this.NavigationService.Navigate(new GestionarMiembros(this.comiteUpdate));
+                }
+                else if (result == -2)
+                {
+                    MessageBox.Show("Hay un comité registrado con el mismo nombre");
+                }
+                else if(result == -1)
+                {
+                    MessageBox.Show("Error en la conexión a la BD");
+                }
+
             }
-            else if (result == -2)
-            {
-                MessageBox.Show("Hay un comité registrado con el mismo nombre");
-            }
-            else
-            {
-                MessageBox.Show("Error en la conexión a la BD");
-            }
+            
+
+        }
+
+        private void btn_regresar_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ShowCommittee());
+        }
+
+        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

@@ -26,6 +26,7 @@ namespace Cliente_PANGEA.Views
         public CrearComite()
         {
             InitializeComponent();
+            
         }
 
         public void ShowMessageError(string type, string message)
@@ -99,6 +100,11 @@ namespace Cliente_PANGEA.Views
                     }
                 }
             }
+        }
+
+        private void btn_regresar_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ShowCommittee());
         }
     }
 }

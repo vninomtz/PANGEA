@@ -22,7 +22,7 @@
             <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
                     x:Name="btn_regresar"
                     Foreground="Black" BorderBrush="Black"
-                    ToolTip="MaterialDesignFloatingActionAccentButton" Width="50" Height="50">
+                    ToolTip="MaterialDesignFloatingActionAccentButton" Width="50" Height="50" Click="btn_regresar_Click">
                 <materialDesign:PackIcon Kind="ArrowLeft"  Width="50" Height="50"/>   
                 
             </Button>

@@ -24,6 +24,7 @@ namespace Cliente_PANGEA
         public MainWindow()
         {
             InitializeComponent();
+            FrameCentral.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -44,7 +45,7 @@ namespace Cliente_PANGEA
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemCommittee":
-                    FrameCentral.Navigate(new CrearComite());
+                    FrameCentral.Navigate(new ShowCommittee());
                     break;
                 case "ItemCreate":
 

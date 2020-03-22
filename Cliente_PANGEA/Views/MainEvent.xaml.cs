@@ -1,17 +1,11 @@
-﻿using System;
+﻿using Cliente_PANGEA.Controllers;
+using DataAccess;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Cliente_PANGEA
 {
@@ -19,11 +13,43 @@ namespace Cliente_PANGEA
     /// Interaction logic for MainEvent.xaml
     /// </summary>
     public partial class MainEvent : Page
+
     {
+      
+        public MainEvent(DataAccess.Eventos evento)
+        {
+            InitializeComponent();
+            DisableFields();            
+            SingletonEvent.SetSingletonEvent(evento);
+            LoadEventInformation();
+            
+        }
+
         public MainEvent()
         {
             InitializeComponent();
             DisableFields();
+            
+        }
+
+        private void LoadEventInformation()
+        {
+            TextBox_eventName.Text = SingletonEvent.GetEvent().Nombre;
+            TextBox_place.Text = SingletonEvent.GetEvent().Lugar;
+            if (!SingletonEvent.GetEvent().Gratuito)
+            {
+                MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked = true;
+                TextBox_cantidad.Text = SingletonEvent.GetEvent().Costo.ToString();
+            }
+            else
+            {
+                MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked = false;
+            }
+
+            TextBox_description.Text = SingletonEvent.GetEvent().Descripcion;
+            DatePicker_initialDate.Text = SingletonEvent.GetEvent().FechaInicio.ToString();
+            DatePicker_endDate.Text = SingletonEvent.GetEvent().FechaFin.ToString();
+            Button_edit.Visibility = Visibility.Visible;
         }
 
         private void Button_edit_Click(object sender, RoutedEventArgs e)
@@ -80,7 +106,8 @@ namespace Cliente_PANGEA
                 validation = false;
             }
 
-            if (String.IsNullOrEmpty(DatePicker_initialDate.Text))
+            if ((String.IsNullOrEmpty(DatePicker_initialDate.Text) && !String.IsNullOrEmpty(DatePicker_endDate.Text)) || 
+                !String.IsNullOrEmpty(DatePicker_initialDate.Text) && String.IsNullOrEmpty(DatePicker_endDate.Text))
             {
                 validation = false;
             }
@@ -89,7 +116,7 @@ namespace Cliente_PANGEA
                 validation = false;
             }
 
-            if (MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
+            if ((bool)MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
             {
                 if (String.IsNullOrEmpty(TextBox_cantidad.Text))
                 {
@@ -102,6 +129,8 @@ namespace Cliente_PANGEA
         {
             DisableFields();
             Button_editOff.Visibility = Visibility.Hidden;
+            LoadEventInformation();
+
 
         }
 
@@ -123,12 +152,60 @@ namespace Cliente_PANGEA
         {
             if (!ValidateEmptyFields())
             {
-                MessageBox.Show("Campos vacios");
+                MessageBox.Show("Por favor ingrese información en todos los campos", "Campos vacios");
             }
             else if (!ValidateCost())
             {
                 MessageBox.Show("Ingresa una cantidad correcta por favor");
+            } else
+            {
+                UpdateEvent();
+               
+            }      
+        }
+
+        private void UpdateEvent()
+        {
+            
+            Eventos updatedEvento = new Eventos();
+            updatedEvento.Id = SingletonEvent.GetEvent().Id;
+            updatedEvento.Nombre = TextBox_eventName.Text;
+            updatedEvento.Lugar = TextBox_place.Text;           
+          
+            
+            if (MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
+            {
+                updatedEvento.Gratuito = false;                   
+                updatedEvento.Costo = Double.Parse(TextBox_cantidad.Text);
             }
+            else
+            {
+                updatedEvento.Gratuito = true;
+            }
+            
+
+            updatedEvento.Descripcion = TextBox_description.Text;
+            updatedEvento.FechaFin = DateTime.Parse(DatePicker_endDate.Text).Date;
+            updatedEvento.FechaInicio = DateTime.Parse(DatePicker_initialDate.Text).Date;
+
+            if (EventController.UpdateEvent(updatedEvento) < 0)
+            {
+                MessageBox.Show("Error de conexión con la base de datos");
+            } else
+            {
+                MessageBox.Show("Campos actualizados correctamente");
+                SingletonEvent.SetSingletonEvent(EventController.GetEventById(SingletonEvent.GetEvent().Id));
+                LoadEventInformation();
+                DisableFields();
+
+            }   
+
+
+
+
+
+
+
         }
 
         private bool ValidateCost()
@@ -144,6 +221,11 @@ namespace Cliente_PANGEA
 
         }
 
-      
+        private void Button_back_Click(object sender, RoutedEventArgs e)
+        {
+            Events eventsWindow = new Events();
+            eventsWindow.Show();
+            Window.GetWindow(this).Close();
+        }
     }
 }

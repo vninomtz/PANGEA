@@ -17,6 +17,17 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Button
+                        x:Name="Button_back"
+                        Background="#0000"
+                        Grid.Row="1"
+                        BorderBrush="Transparent"
+                        HorizontalAlignment="Left"                   
+                        VerticalAlignment="Top" 
+                        ToolTip="Regresar"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_back_Click">
+                <materialDesign:PackIcon  Kind="KeyboardBackspace" Width="30" Height="30" />
+            </Button>
             <TextBlock Text="Conisoft" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button
                 x:Name="Button_edit"
@@ -75,7 +86,9 @@
                                 AcceptsReturn="True" Margin="20,10,10,20"
                                 TextWrapping="Wrap" materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"                              
                                 materialDesign:HintAssist.Hint="Cantidad" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" />
+                    
                 </StackPanel>
+                
             </StackPanel>
 
             <Grid Grid.Column="1" Grid.Row="1"   >
@@ -95,7 +108,7 @@
                     VerticalAlignment="Top"                   
                     AcceptsReturn="True"
                     TextWrapping="Wrap"                    
-                    materialDesign:HintAssist.Hint="Descripción" />
+                    materialDesign:HintAssist.Hint="Descripción"   />
                 </StackPanel>
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <DatePicker                        

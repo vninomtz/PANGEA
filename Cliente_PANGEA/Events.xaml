@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Cliente_PANGEA"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Events" Height="700" Width="1090">
+        Title="Events" Height="700" Width="1090" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">

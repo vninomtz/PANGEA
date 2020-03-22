@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente_PANGEA.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,9 @@ namespace Cliente_PANGEA
             centralFrame.Navigate(new NewEvent());
             Button_back.Visibility = Visibility.Visible;
             Button_add.Visibility = Visibility.Hidden;
+            List<DataAccess.Eventos> eventList =  EventController.GetEvents();
+           Console.WriteLine( eventList.Count());
+            
         }
 
         private void Button_back_Click(object sender, RoutedEventArgs e)
@@ -41,7 +45,13 @@ namespace Cliente_PANGEA
             Button_back.Visibility = Visibility.Hidden;
 
             centralFrame.Navigate(new ShowEvents());
+           
+            
 
         }
+
+      
+
+        
     }
 }

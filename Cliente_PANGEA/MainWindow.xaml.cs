@@ -1,5 +1,6 @@
-﻿<<<<<<< HEAD
-﻿using System;
+﻿
+using Cliente_PANGEA.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,11 @@ namespace Cliente_PANGEA
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(DataAccess.Eventos evento)
         {
             InitializeComponent();
             centralFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            centralFrame.Navigate(new MainEvent());
+            centralFrame.Navigate(new MainEvent(evento));
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -39,6 +40,30 @@ namespace Cliente_PANGEA
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
         }
+
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "ItemCommittee":
+                    centralFrame.Navigate(new CrearComite());
+                    break;
+                case "ItemHome":                    
+                    break;
+                case "ItemVehicles":
+
+                    break;
+                case "ItemSales":
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
     }
 }
 

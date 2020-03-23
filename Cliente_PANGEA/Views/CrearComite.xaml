@@ -31,7 +31,7 @@
                 <Button Background="{x:Null}" Padding="0" Margin="30,0,0,0"
                     x:Name="btn_eliminar"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
-                    ToolTip="Regresar" Width="40" Height="40" Click="btn_eliminar_Click" >
+                    ToolTip="Eliminar Comité" Width="40" Height="40" Click="btn_eliminar_Click_1">
                     <materialDesign:PackIcon Kind="Delete"  Width="40" Height="40"/>
 
                 </Button>

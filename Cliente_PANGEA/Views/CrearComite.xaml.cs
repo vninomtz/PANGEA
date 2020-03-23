@@ -222,5 +222,35 @@ namespace Cliente_PANGEA.Views
         {
 
         }
+
+        private void btn_eliminar_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+            var dialogResult = MessageBox.Show("¿Estás seguro de que quieres eliminar el comité, " +
+                "también se eliminaran las asignaciones del personal asociadas?", 
+                "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if(dialogResult == MessageBoxResult.Yes)
+            {
+                if (PersonalController.DeleteAssignmetsByCommittee(this.comiteUpdate.Id))
+                {
+                    if (ComiteController.DeleteCommittee(this.comiteUpdate.Id))
+                    {
+                        MessageBox.Show("Se elimino el registro");
+                        this.NavigationService.Navigate(new ShowCommittee());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en la conexión a la BD");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error en la conexión a la BD");
+                }
+            }
+
+        }
+
+
     }
 }

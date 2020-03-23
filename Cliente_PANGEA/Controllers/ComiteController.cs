@@ -103,5 +103,25 @@ namespace Cliente_PANGEA.Controllers
             }
 
         }
+
+        public static bool DeleteCommittee(int idCommittee)
+        {
+            bool result = false;
+            using (var database = new PangeaConnection())
+            {
+                Comites committee = database.Comites.Where(c => c.Id == idCommittee).FirstOrDefault();
+                database.Comites.Attach(committee);
+                database.Comites.Remove(committee);
+                if(database.SaveChanges() > 0)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
     }
 }

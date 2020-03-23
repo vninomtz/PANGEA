@@ -9,6 +9,38 @@ namespace Cliente_PANGEA.Controllers
 {
     public class PersonalController
     {
+        public static bool DeleteAssignmetsByCommittee(int IdCommittee )
+        {
+            bool result = false;
+            using (var database = new PangeaConnection())
+            {
+                var listPersonal = database.Personal.Where(p => p.IdComite == IdCommittee).ToList();
+                if(listPersonal.Count > 0)
+                {
+                    foreach (var member in listPersonal)
+                    {
+                        member.Asignado = false;
+                        member.Cargo = null;
+                        member.IdComite = null;
+                    }
+                    if(database.SaveChanges() > 0)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+
+                }
+                else
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
         public static List<Cuentas> GetMembersCommittee(int idEvent, int idCommitte, string position)
         {
             using (var dataBase = new PangeaConnection())

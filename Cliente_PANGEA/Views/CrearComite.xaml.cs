@@ -106,7 +106,7 @@ namespace Cliente_PANGEA.Views
             int result = -1;
             comiteUpdate.Nombre = name;
             comiteUpdate.Descripcion = description;
-            result = ComiteController.UpdateCommitee(comiteUpdate);
+            result = ComiteController.UpdateCommittee(comiteUpdate);
             return result;
 
        }

@@ -32,7 +32,7 @@ namespace Cliente_PANGEA.Controllers
                 }
             }
         }
-        public static int UpdateCommitee(Comites committe)
+        public static int UpdateCommittee(Comites committe)
         {
             int result = -1;
             using(var dataBase = new PangeaConnection())

@@ -34,9 +34,8 @@
             TextWrapping="Wrap"
              Margin="40,70,40,40"
                 materialDesign:HintAssist.Hint="Nombre del asistente"
-                     LostFocus="ValidateText"
-            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" 
-                Height="62"  />
+                     LostFocus="ValidateText" 
+                Height="62" MaxLines="50" MaxLength="50" IsUndoEnabled="True"  />
             <TextBox x:Name="txt_fatherLastName"
             Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
             VerticalAlignment="Top"
@@ -45,7 +44,7 @@
             Margin="40,15,40,40"
             materialDesign:HintAssist.Hint="Apellido paterno"
                      LostFocus="ValidateText"
-            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62"  />
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62" MaxLength="50"  />
             <TextBox x:Name="txt_motherLastName"
             Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
             VerticalAlignment="Top"
@@ -54,7 +53,7 @@
             Margin="40,15,40,40"
             materialDesign:HintAssist.Hint="Apellido materno"
             LostFocus="ValidateText"
-            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62"  />
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="62" MaxLength="50"  />
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <TextBox x:Name="txt_email"
@@ -64,8 +63,8 @@
             TextWrapping="Wrap"
             Margin="40,70,40,40"
             materialDesign:HintAssist.Hint="Correo electrónico"
-                     LostFocus="ValidateText"
-            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"  />
+                     LostFocus="CorrectEmail"
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" MaxLines="50" MaxLength="50"  />
             <TextBox x:Name="txt_emailConfirmation"
             Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
             VerticalAlignment="Top"
@@ -74,17 +73,17 @@
             Margin="40,20,40,40"
             materialDesign:HintAssist.Hint="Confirmación de correo"
                      LostFocus="ValidateText"
-            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"  />
+            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" MaxLength="50"  />
             <Button x:Name="btn_AssistantRegister"
                 Margin="-150,35,34,0"
                 Width="150"
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Content="Registrar asistente" Click="btn_AssistantRegister_Click" />
+            ToolTip="Registrar asistente" Content="Registrar asistente" Click="btn_AssistantRegister_Click" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />
             <Button x:Name="btn_assignActivity"
                 Width="150"
                 Margin="220,-40,0,-12"
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
-            ToolTip="Resource name: MaterialDesignRaisedAccentButton" Content="Asignar actividad" Click="Button_AssignActovity" />
+            ToolTip="Asignar actividad" Content="Asignar actividad" Click="Button_AssignActovity" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />
         </StackPanel>
     </Grid>
 </Page>

@@ -47,14 +47,14 @@ namespace Cliente_PANGEA
                 case "ItemCommittee":
                     FrameCentral.Navigate(new ShowCommittee());
                     break;
-                case "ItemCreate":
+                case "ItemPersonal":
 
                     break;
                 case "ItemVehicles":
 
                     break;
-                case "ItemSales":
-
+                case "ItemAssistants":
+                    FrameCentral.Navigate(new AssistantRegister());
                     break;
                 default:
                     break;

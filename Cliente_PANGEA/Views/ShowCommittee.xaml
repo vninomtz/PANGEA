@@ -24,9 +24,9 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Button x:Name="btn_newCommittee" Grid.Column="0" Background="{x:Null}" Padding="0" Foreground="Black" BorderBrush="Black" 
-                    Margin="100,30,0,0" Width="40" Height="40" Click="btn_newCommittee_Click">
-                    <materialDesign:PackIcon Kind="Add"  Width="40" Height="40"/>
+                <Button x:Name="btn_newCommittee" Grid.Column="0" Background="{x:Null}" Padding="0" Foreground="Black" BorderBrush="#FF5C99D6" 
+                    Margin="100,30,0,0" Width="40" Height="40" Click="btn_newCommittee_Click" RenderTransformOrigin="0.375,0.55">
+                    <materialDesign:PackIcon Kind="Add"  Width="40" Height="40" BorderBrush="#FF5C99D6" Foreground="#FF5C99D6" OpacityMask="#FF5C99D6"/>
                 </Button>
                 <TextBlock Text="Crear comité" Margin="20,30,0,0" FontSize="20" VerticalAlignment="Center" FontWeight="DemiBold"/>
             </StackPanel>

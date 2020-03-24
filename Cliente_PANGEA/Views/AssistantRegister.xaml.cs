@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using Cliente_PANGEA.Controllers;
 
 namespace Cliente_PANGEA.Views
 {
@@ -29,11 +30,60 @@ namespace Cliente_PANGEA.Views
         private void btn_AssistantRegister_Click(object sender, RoutedEventArgs e)
         {
 
+            if (!EmptyFields())
+            {
+                if (EqualEmails())
+                {
+                    DataAccess.Asistentes asistente = new DataAccess.Asistentes
+                    {
+                        Nombre = txt_AssistantName.Text,
+                        Apellido = txt_fatherLastName.Text + txt_motherLastName.Text,
+                        Correo = txt_email.Text,
+                    };
+                    if (!AsistenteController.ExistingAssistant(asistente))
+                    {
+                        int result = AsistenteController.SaveAssistant(asistente);
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Asistente registrado con éxito");
+                            CleanFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en la conexión con la base de datos");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El asistente "+ asistente.Nombre + " "+asistente.Apellido +" ya se encuentra registrado");
+                    }
+                }
+            }
         }
 
         private void Button_AssignActovity(object sender, RoutedEventArgs e)
         {
 
+        }
+        
+        private bool EmptyFields()
+        {
+            if (txt_AssistantName.Text == "" || txt_fatherLastName.Text=="" || txt_motherLastName.Text =="" || txt_email.Text =="" ||
+                txt_emailConfirmation.Text =="" )
+            {
+                MessageBox.Show("Por favor ingresa información en todos los campos");
+                return true; 
+            }
+            return false;
+        }
+        private bool EqualEmails()
+        {
+            if (txt_email.Text == txt_emailConfirmation.Text)
+            {
+                return true;
+            }
+            MessageBox.Show("Los correos electrónicos no coinciden, por favor inténtelo de nuevo");
+            return false;
         }
         private void ValidateText(object sender, RoutedEventArgs e)
         {
@@ -47,6 +97,31 @@ namespace Cliente_PANGEA.Views
                 MessageBox.Show("Por favor ingresa información válida en los campos.");
                 textbox.Clear();
             }
+        }
+        private void CorrectEmail(object sender, RoutedEventArgs e)
+        {
+            String expresion;
+            String email = txt_email.Text;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("El formato del correo no es válido, porfavor vuelva a intentarlo");
+            }
+        }
+        private void CleanFields()
+        {
+            txt_AssistantName.Text = "";
+            txt_fatherLastName.Text = "";
+            txt_motherLastName.Text = "";
+            txt_email.Text = "";
+            txt_emailConfirmation.Text = "";
         }
     }
 }

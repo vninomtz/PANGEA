@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\AsistenteController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
     <Compile Include="Views\AssistantRegister.xaml.cs">
       <DependentUpon>AssistantRegister.xaml</DependentUpon>

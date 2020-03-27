@@ -12,7 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdEvento" Type="int" Nullable="false" />
           <Property Name="Titulo" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="Gratuito" Type="bit" Nullable="false" />
           <Property Name="Costo" Type="float" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
@@ -27,10 +27,10 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fecha_creacion" Type="date" Nullable="false" />
-          <Property Name="ultima_actualizacion" Type="date" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="ultima_actualizacion" Type="datetime" Nullable="false" />
           <Property Name="autor" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="archivo" Type="text" Nullable="false" />
+          <Property Name="archivo" Type="varchar(max)" Nullable="false" />
           <Property Name="idTrack" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Asistentes">
@@ -42,8 +42,6 @@
           <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Pangea.dbo.AsistentesEvento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AsistentesEvento">
           <Key>
             <PropertyRef Name="Asistencia" />
@@ -64,9 +62,10 @@ warning 6002: The table/view 'Pangea.dbo.AsistentesEvento' does not have a prima
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
           <Property Name="UltimaModificacion" Type="datetime" />
+          <Property Name="IdEvento" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ConceptosFinancieros">
           <Key>
@@ -76,7 +75,7 @@ warning 6002: The table/view 'Pangea.dbo.AsistentesEvento' does not have a prima
           <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Monto" Type="float" Nullable="false" />
           <Property Name="Concepto" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Fecha_creacion" Type="date" Nullable="false" />
+          <Property Name="Fecha_creacion" Type="datetime" Nullable="false" />
           <Property Name="IdActividad" Type="int" Nullable="false" />
           <Property Name="IdPresupuesto" Type="int" />
         </EntityType>
@@ -100,10 +99,10 @@ warning 6002: The table/view 'Pangea.dbo.AsistentesEvento' does not have a prima
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodigoEvento" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="Eliminado" Type="bit" Nullable="false" />
-          <Property Name="FechaInicio" Type="date" Nullable="false" />
-          <Property Name="FechaFin" Type="date" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="FechaFin" Type="datetime" Nullable="false" />
           <Property Name="Lugar" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Gratuito" Type="bit" Nullable="false" />
           <Property Name="Costo" Type="float" />
@@ -119,8 +118,6 @@ warning 6002: The table/view 'Pangea.dbo.AsistentesEvento' does not have a prima
           <Property Name="Lugar" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="IdActividad" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="IncripcionActividades">
           <Key>
             <PropertyRef Name="id" />
@@ -133,7 +130,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="asistencia" Type="bit" Nullable="false" />
           <Property Name="pago" Type="bit" Nullable="false" />
-          <Property Name="fecha_inscripcion" Type="date" Nullable="false" />
+          <Property Name="fecha_inscripcion" Type="datetime" Nullable="false" />
           <Property Name="idActividad" Type="int" Nullable="false" />
           <Property Name="idAsistente" Type="int" Nullable="false" />
         </EntityType>
@@ -143,7 +140,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="IdActividad" Type="int" Nullable="false" />
           <Property Name="IdEvento" Type="int" />
@@ -168,13 +165,23 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="Gasto_real" Type="float" />
           <Property Name="IdEvento" Type="int" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Tareas">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
           <Property Name="Finalizada" Type="bit" Nullable="false" />
           <Property Name="Responsable" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -188,7 +195,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Codigo" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IdEvento" Type="int" />
         </EntityType>
@@ -337,14 +344,14 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Personal_Comites">
-          <End Role="Comites" Type="Self.Comites" Multiplicity="0..1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
           <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Comites">
+            <Principal Role="Eventos">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Personal">
-              <PropertyRef Name="IdComite" />
+              <PropertyRef Name="IdEvento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -412,35 +419,19 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <EntitySet Name="Actividades" EntityType="Self.Actividades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Asistentes" EntityType="Self.Asistentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsistentesEvento" EntityType="Self.AsistentesEvento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comites" EntityType="Self.Comites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConceptosFinancieros" EntityType="Self.ConceptosFinancieros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horarios" EntityType="Self.Horarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncripcionActividades" EntityType="Self.IncripcionActividades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materiales" EntityType="Self.Materiales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Presupuestos" EntityType="Self.Presupuestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tareas" EntityType="Self.Tareas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tracks" EntityType="Self.Tracks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AsistentesEvento" EntityType="Self.AsistentesEvento" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AsistentesEvento].[Asistencia] AS [Asistencia], 
-    [AsistentesEvento].[Pago] AS [Pago], 
-    [AsistentesEvento].[Cantidad] AS [Cantidad], 
-    [AsistentesEvento].[IdAsistente] AS [IdAsistente], 
-    [AsistentesEvento].[IdEvento] AS [IdEvento]
-    FROM [dbo].[AsistentesEvento] AS [AsistentesEvento]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="IncripcionActividades" EntityType="Self.IncripcionActividades" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [IncripcionActividades].[id] AS [id], 
-    [IncripcionActividades].[asistencia] AS [asistencia], 
-    [IncripcionActividades].[pago] AS [pago], 
-    [IncripcionActividades].[fecha_inscripcion] AS [fecha_inscripcion], 
-    [IncripcionActividades].[idActividad] AS [idActividad], 
-    [IncripcionActividades].[idAsistente] AS [idAsistente]
-    FROM [dbo].[IncripcionActividades] AS [IncripcionActividades]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Actividades_Articulos" Association="Self.FK_Actividades_Articulos">
             <End Role="Articulos" EntitySet="Articulos" />
             <End Role="Actividades" EntitySet="Actividades" />
@@ -490,7 +481,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
             <End Role="Materiales" EntitySet="Materiales" />
           </AssociationSet>
           <AssociationSet Name="FK_Personal_Comites" Association="Self.FK_Personal_Comites">
-            <End Role="Comites" EntitySet="Comites" />
+            <End Role="Eventos" EntitySet="Eventos" />
             <End Role="Personal" EntitySet="Personal" />
           </AssociationSet>
           <AssociationSet Name="FK_Personal_Cuentas" Association="Self.FK_Personal_Cuentas">
@@ -606,6 +597,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
             <End Role="Eventos" EntitySet="Eventos" />
             <End Role="Tracks" EntitySet="Tracks" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="PangeaModel.sysdiagrams" />
         </EntityContainer>
         <EntityType Name="Actividades">
           <Key>
@@ -636,8 +628,8 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ultima_actualizacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ultima_actualizacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="autor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="archivo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="idTrack" Type="Int32" Nullable="false" />
@@ -665,6 +657,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UltimaModificacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Personal" Relationship="PangeaModel.FK_Personal_Comites" FromRole="Comites" ToRole="Personal" />
+          <Property Name="IdEvento" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ConceptosFinancieros">
           <Key>
@@ -674,7 +667,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Monto" Type="Double" Nullable="false" />
           <Property Name="Concepto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IdActividad" Type="Int32" Nullable="false" />
           <Property Name="IdPresupuesto" Type="Int32" />
           <NavigationProperty Name="Actividades" Relationship="PangeaModel.FK_ConceptosFinancieros_Actividades" FromRole="ConceptosFinancieros" ToRole="Actividades" />
@@ -703,8 +696,8 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Eliminado" Type="Boolean" Nullable="false" />
-          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Lugar" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Gratuito" Type="Boolean" Nullable="false" />
           <Property Name="Costo" Type="Double" />
@@ -820,7 +813,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="asistencia" Type="Boolean" Nullable="false" />
           <Property Name="pago" Type="Boolean" Nullable="false" />
-          <Property Name="fecha_inscripcion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_inscripcion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idActividad" Type="Int32" Nullable="false" />
           <Property Name="idAsistente" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Actividades" Relationship="PangeaModel.FK_IncripcionActividades_Actividades" FromRole="IncripcionActividades" ToRole="Actividades" />
@@ -1042,6 +1035,16 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1091,6 +1094,7 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
           <EntitySetMapping Name="Comites">
             <EntityTypeMapping TypeName="PangeaModel.Comites">
               <MappingFragment StoreEntitySet="Comites">
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
                 <ScalarProperty Name="UltimaModificacion" ColumnName="UltimaModificacion" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -1234,6 +1238,17 @@ warning 6002: The table/view 'Pangea.dbo.IncripcionActividades' does not have a 
                 <ScalarProperty Name="pago" ColumnName="pago" />
                 <ScalarProperty Name="asistencia" ColumnName="asistencia" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PangeaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

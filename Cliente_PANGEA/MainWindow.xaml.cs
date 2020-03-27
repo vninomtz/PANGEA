@@ -28,6 +28,7 @@ namespace Cliente_PANGEA
             centralFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
 
             Button_account.Content = SingletonAccount.GetAccount().Correo;
+            txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
             Button_account.Visibility = Visibility.Visible;
             centralFrame.Navigate(new MainEvent(evento));
         }
@@ -51,9 +52,10 @@ namespace Cliente_PANGEA
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemCommittee":
-                   centralFrame.Navigate(new CrearComite());
+                   centralFrame.Navigate(new ShowCommittee());
                     break;
-                case "ItemHome":                    
+                case "ItemHome":
+                    centralFrame.Navigate(new MainEvent(SingletonEvent.GetEvent()));
                     break;
                 case "ItemVehicles":
 

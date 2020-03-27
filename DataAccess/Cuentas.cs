@@ -31,10 +31,5 @@ namespace DataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personal> Personal { get; set; }
-
-        public override string ToString()
-        {
-            return $"{this.Nombre} {this.Apellido}";
-        }
     }
 }

@@ -26,7 +26,7 @@ namespace Cliente_PANGEA.Views
         List<Cuentas> listleaderCommittee = new List<Cuentas>();
         List<Cuentas> listStaff;
         Comites committeeUpdated;
-        int IDEVENT = 1;
+        int IDEVENT = SingletonEvent.GetEvent().Id;
         public GestionarMiembros(Comites committee)
         {
             InitializeComponent();

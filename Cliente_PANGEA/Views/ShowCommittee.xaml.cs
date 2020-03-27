@@ -22,6 +22,7 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class ShowCommittee : Page
     {
+        int IDEVENT = SingletonEvent.GetEvent().Id;
         public ShowCommittee()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace Cliente_PANGEA.Views
         }
         private void showCommittee()
         {
-            List<Comites> listComites = ComiteController.GetAllCommitte(1);
+            List<Comites> listComites = ComiteController.GetAllCommitte(IDEVENT);
 
             listViewCommittee.ItemsSource = listComites;
 

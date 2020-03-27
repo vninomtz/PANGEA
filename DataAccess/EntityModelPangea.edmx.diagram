@@ -38,6 +38,7 @@
         <AssociationConnector Association="PangeaModel.FK_Personal_Eventos" />
         <AssociationConnector Association="PangeaModel.FK_Presupuestos_Eventos" />
         <AssociationConnector Association="PangeaModel.FK_Tracks_Eventos1" />
+        <EntityTypeShape EntityType="PangeaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -23,7 +23,6 @@ namespace DataAccess
             this.Personal = new HashSet<Personal>();
             this.Presupuestos = new HashSet<Presupuestos>();
             this.Tracks = new HashSet<Tracks>();
-            this.Comites = new HashSet<Comites>();
         }
     
         public int Id { get; set; }
@@ -49,7 +48,5 @@ namespace DataAccess
         public virtual ICollection<Presupuestos> Presupuestos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tracks> Tracks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comites> Comites { get; set; }
     }
 }

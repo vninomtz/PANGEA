@@ -27,7 +27,7 @@ namespace Cliente_PANGEA.Views
         List<Cuentas> listMembers = new List<Cuentas>();
         List<Cuentas> listLeader = new List<Cuentas>();
         bool isNew = true;
-        int IDEVENT = 1;
+        int IDEVENT = SingletonEvent.GetEvent().Id;
         
         public CrearComite(Comites comite)
         {
@@ -35,7 +35,7 @@ namespace Cliente_PANGEA.Views
 
             isNew = false;
             comiteUpdate = comite;
-            LoadMembersCommittee(1, comiteUpdate.Id);
+            LoadMembersCommittee(IDEVENT, comiteUpdate.Id);
             btn_eliminar.Visibility = Visibility.Visible;
             LoadFields();
             

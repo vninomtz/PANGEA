@@ -26,7 +26,11 @@ namespace Cliente_PANGEA
         {
             InitializeComponent();
             centralFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+
+            Button_account.Content = SingletonAccount.GetAccount().Correo;
+            Button_account.Visibility = Visibility.Visible;
             centralFrame.Navigate(new MainEvent(evento));
+
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)

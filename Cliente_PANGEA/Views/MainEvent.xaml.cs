@@ -1,4 +1,5 @@
 ﻿using Cliente_PANGEA.Controllers;
+using Cliente_PANGEA.Views;
 using DataAccess;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,13 @@ namespace Cliente_PANGEA
         {
             InitializeComponent();
             DisableFields();
+            LoadEventInformation();
             
         }
 
         private void LoadEventInformation()
         {
+            TextBlock_title.Text = SingletonEvent.GetEvent().Nombre;
             TextBox_eventName.Text = SingletonEvent.GetEvent().Nombre;
             TextBox_place.Text = SingletonEvent.GetEvent().Lugar;
             if (!SingletonEvent.GetEvent().Gratuito)
@@ -226,6 +229,11 @@ namespace Cliente_PANGEA
             Events eventsWindow = new Events();
             eventsWindow.Show();
             Window.GetWindow(this).Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EventProgram());
         }
     }
 }

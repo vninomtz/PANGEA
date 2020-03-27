@@ -26,6 +26,8 @@ namespace Cliente_PANGEA
             centralFrame.Navigate(new ShowEvents());
             centralFrame.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
             Button_back.Visibility = Visibility.Hidden;
+            Button_account.Content = SingletonAccount.GetAccount().Correo;
+            Button_account.Visibility = Visibility.Visible;
 
         }
 

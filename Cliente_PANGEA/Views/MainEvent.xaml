@@ -28,7 +28,7 @@
                         Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_back_Click">
                 <materialDesign:PackIcon  Kind="KeyboardBackspace" Width="30" Height="30" />
             </Button>
-            <TextBlock Text="Conisoft" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TextBlock_title" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button
                 x:Name="Button_edit"
                 Margin="20,0"
@@ -45,7 +45,7 @@
                 Background="#FF5C99D6"
                 HorizontalAlignment="Right" Margin="10"
                 BorderBrush="Transparent"
-                ToolTip="Consultar programa" >
+                ToolTip="Consultar programa" Click="Button_Click" >
                 <materialDesign:PackIcon  Kind="FormatListBulletedSquare" Width="25" Height="20" />
             </Button>
 

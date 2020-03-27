@@ -1,19 +1,10 @@
 ﻿using Cliente_PANGEA.Controllers;
 using DataAccess;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Cliente_PANGEA
 {
@@ -42,15 +33,28 @@ namespace Cliente_PANGEA
             }
             else
             {
-                if (SaveEvent() > 0)
+                if (SaveEvent() > 0 && SavePersonal() > 0)
                 {
                     MessageBox.Show("Se ha creado el evento con éxito");
+                    NavigationService.Navigate(new MainEvent(EventController.GetLastEvent()));
                 }
                 
             }
 
         }
+        public int SavePersonal()
+        {
+            Eventos evento = EventController.GetLastEvent();
+            DataAccess.Personal personal = new Personal
+            {
+                Asignado = true,
+                Cargo = "Líder",
+                IdCuenta = SingletonAccount.GetAccount().Id,
+                IdEvento = evento.Id
+            };
 
+            return PersonalController.SavePersonal(personal);
+        }
         public int SaveEvent()
         {
             DataAccess.Eventos evento = new Eventos

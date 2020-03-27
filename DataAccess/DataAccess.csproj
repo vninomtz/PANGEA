@@ -105,9 +105,6 @@
       <DependentUpon>EntityModelPangea.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>EntityModelPangea.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tareas.cs">
       <DependentUpon>EntityModelPangea.tt</DependentUpon>
     </Compile>

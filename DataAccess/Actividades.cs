@@ -25,6 +25,7 @@ namespace DataAccess
         }
     
         public int Id { get; set; }
+        public int IdEvento { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public bool Gratuito { get; set; }
@@ -35,6 +36,7 @@ namespace DataAccess
         public Nullable<int> IdArticulo { get; set; }
     
         public virtual Articulos Articulos { get; set; }
+        public virtual Eventos Eventos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ConceptosFinancieros> ConceptosFinancieros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

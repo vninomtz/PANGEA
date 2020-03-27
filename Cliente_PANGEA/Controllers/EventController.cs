@@ -9,6 +9,26 @@ namespace Cliente_PANGEA.Controllers
 {
     class EventController
     {
+
+        public static Eventos GetLastEvent()
+        {
+            Eventos evento = null;
+            using( var database = new PangeaConnection())
+            {
+                try
+                {
+                    evento = database.Eventos.ToList().Last();
+
+                    
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return evento;
+        }
         public static List<Personal> GetPersonalAndEvent(int idaccount)
         {
             List<Personal> personalList;

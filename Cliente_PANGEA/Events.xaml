@@ -32,7 +32,9 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Usuario" VerticalAlignment="Center" FontSize="16" Foreground="White"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10" Foreground="White">
-                    <StackPanel Width="150">
+                    <StackPanel Width="auto">
+                        <Button x:Name="Button_account"/>
+                        <Separator/>
                         <Button Content="Cuenta"/>
                         <Button Content="Ayuda"/>
                         <Separator/>

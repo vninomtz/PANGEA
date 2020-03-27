@@ -24,8 +24,8 @@
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Eventos.CodigoEvento}"  Header="Código" />
                         <GridViewColumn DisplayMemberBinding="{Binding Eventos.Nombre}"  Header="Nombre de Evento" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Eventos.FechaInicio}" Header="Fecha de inicio" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Eventos.FechaFin}" Header="Fecha de fin" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Eventos.FechaInicio,StringFormat=d}" Header="Fecha de inicio" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Eventos.FechaFin,StringFormat=d}" Header="Fecha de fin" />
                         <GridViewColumn DisplayMemberBinding="{Binding Eventos.Costo}" Header="Costo" />
                         <GridViewColumn DisplayMemberBinding="{Binding Cargo}" Header="Cargo"/>
                     </GridView>

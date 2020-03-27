@@ -19,20 +19,31 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
-                    x:Name="btn_regresar"
-                    Foreground="Black" BorderBrush="Black"
-                    ToolTip="MaterialDesignFloatingActionAccentButton" Width="50" Height="50">
-                <materialDesign:PackIcon Kind="ArrowLeft"  Width="50" Height="50"/>   
-                
-            </Button>
-            <Button x:Name="btn_guardar" Grid.Column="0" HorizontalAlignment="Center" Background="{x:Null}" Padding="0"
-                    Foreground="Black" BorderBrush="Black"
-                    ToolTip="MaterialDesignFloatingActionAccentButton" Width="50" Height="50" Click="btn_guardar_Click">
-                <materialDesign:PackIcon Kind="ContentSave"  Width="50" Height="50"/>
 
-            </Button>
-            <TextBlock Grid.Column="1" Text="Nuevo Comité" FontSize="35" 
+            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Button Background="{x:Null}" Padding="0" Margin="30,0,0,0"
+                    x:Name="btn_regresar"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="btn_regresar_Click">
+                    <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+
+                </Button>
+                <Button Background="{x:Null}" Padding="0" Margin="30,0,0,0"
+                    x:Name="btn_eliminar"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Eliminar Comité" Width="40" Height="40" Click="btn_eliminar_Click_1">
+                    <materialDesign:PackIcon Kind="Delete"  Width="40" Height="40"/>
+
+                </Button>
+                <Button x:Name="btn_guardar" Background="{x:Null}" Padding="0" Margin="30,0,0,0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Guardar comité" Width="40" Height="40" Click="btn_guardar_Click">
+                    <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
+
+                </Button>
+            </StackPanel>
+            
+            <TextBlock x:Name="txt_titulo" Grid.Column="1" Text="C O M I T É" FontSize="35" 
                        HorizontalAlignment="Left" VerticalAlignment="Center" 
                        FontWeight="DemiBold" Margin="130,0,0,0"/>
 
@@ -49,12 +60,16 @@
 
                     <StackPanel Orientation="Vertical">
                         <TextBox
+                            materialDesign:HintAssist.Foreground="#FF5C99D6"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
                             MaxLength="100"                     
                             Margin="0,30,0,0"
-                          x:Name="txt_nombreComite"
-                          materialDesign:HintAssist.Hint="Nombre"
+                            x:Name="txt_nombreComite"
+                            materialDesign:HintAssist.Hint="Nombre"
                             FontWeight="Bold"/>
                         <TextBox
+                            materialDesign:HintAssist.Foreground="#FF5C99D6"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
                             MaxLength="200"
                             x:Name="txt_descripcionComite"
                             Margin="0,30,0,0"
@@ -85,8 +100,8 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
                         <Button x:Name="btn_gestionarMiembros" Grid.Column="0" Background="{x:Null}" Padding="0"
-                            Foreground="Black" BorderBrush="Black"
-                            ToolTip="MaterialDesignFloatingActionAccentButton" Width="40" Height="40">
+                            Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                            ToolTip="Gestionar miembros" Width="40" Height="40" Click="btn_gestionarMiembros_Click">
                             <materialDesign:PackIcon Kind="AccountsGroup"  Width="40" Height="40"/>
 
                         </Button>
@@ -101,14 +116,16 @@
                     </Grid.RowDefinitions>
                     <TextBlock  Grid.Row="0" Text="Líder de comité" HorizontalAlignment="Left" Margin="20,0,0,0"
                                VerticalAlignment="Center"  FontSize="20" FontWeight="DemiBold"/>
-                    <materialDesign:Card Grid.Row="1" Margin="10"  >
-                        <StackPanel Orientation="Vertical" >
-                            <TextBlock x:Name="txt_nombreLiderComite" Text="Victor niño" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-
-                            <TextBlock x:Name="txt_correoLiderComite" Text="ninomtz@gmail.com" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-                        </StackPanel>
-
-                    </materialDesign:Card>
+                    <ListView  Grid.Row="1" x:Name="list_leader">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding}" />
+                                    <TextBlock Text="{Binding Correo}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
                 <Grid Grid.Row="2"  >
                     <Grid.RowDefinitions>
@@ -117,30 +134,15 @@
                     </Grid.RowDefinitions>
                     <TextBlock  Grid.Row="0" Text="Miembros de comité" HorizontalAlignment="Left" Margin="20,0,0,0"
                                VerticalAlignment="Center"  FontSize="20" FontWeight="DemiBold"/>
-                    <ListView  Grid.Row="1">
-                        <ListViewItem Padding="0" Margin="3" BorderBrush="Black" BorderThickness="1">
-                            <StackPanel Orientation="Vertical" >
-                            <TextBlock Text="Irving Gumesindo" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-
-                            <TextBlock Text="gumesindo@gmail.com" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-                                
-                            </StackPanel>
-                            
-                        </ListViewItem>
-                        <ListViewItem  Padding="0" Margin="3"  BorderBrush="Black"  BorderThickness="1">
-                            <StackPanel Orientation="Vertical" >
-                                <TextBlock Text="Alan González" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-
-                                <TextBlock Text="alan@gmail.com" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem  Padding="0" Margin="3" BorderBrush="Black"  BorderThickness="1"> 
-                            <StackPanel Orientation="Vertical" >
-                                <TextBlock Text="Rodrigo Santana" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-
-                                <TextBlock Text="santana@gmail.com" FontSize="20" FontWeight="Bold" Margin="40,10,0,0"/>
-                            </StackPanel>
-                        </ListViewItem>
+                    <ListView  Grid.Row="1" x:Name="list_members">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding}" />
+                                    <TextBlock Text="{Binding Correo}" />
+                                </StackPanel>
+                            </DataTemplate>
+                            </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
                 

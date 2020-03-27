@@ -77,7 +77,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
-	<Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Events.xaml.cs">
       <DependentUpon>Events.xaml</DependentUpon>
@@ -86,14 +86,23 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingletonAccount.cs" />
+    <Compile Include="Views\AssistantRegister.xaml.cs">
+      <DependentUpon>AssistantRegister.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EventProgram.xaml.cs">
       <DependentUpon>EventProgram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GestionarMiembros.xaml.cs">
+      <DependentUpon>GestionarMiembros.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainEvent.xaml.cs">
       <DependentUpon>MainEvent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewEvent.xaml.cs">
       <DependentUpon>NewEvent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowCommittee.xaml.cs">
+      <DependentUpon>ShowCommittee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowEvents.xaml.cs">
       <DependentUpon>ShowEvents.xaml</DependentUpon>
@@ -102,6 +111,14 @@
     <Compile Include="Views\CrearComite.xaml.cs">
       <DependentUpon>CrearComite.xaml</DependentUpon>
     </Compile>
+    <Page Include="Events.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,15 +131,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AssistantRegister.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CrearComite.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EventProgram.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\GestionarMiembros.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MainEvent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewEvent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ShowCommittee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ShowEvents.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

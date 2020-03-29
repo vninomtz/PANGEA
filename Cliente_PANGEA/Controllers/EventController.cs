@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cliente_PANGEA.Controllers
 {
-    class EventController
+    public class EventController
     {
 
         public static Eventos GetLastEvent()

@@ -1,0 +1,65 @@
+﻿<Page x:Class="Cliente_PANGEA.Views.ShowTasks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Cliente_PANGEA.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="990"
+      Title="ShowTasks">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="7*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="T A R E A S" HorizontalAlignment="Center" FontSize="35" FontWeight="DemiBold"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBox x:Name="txt_search" Margin="30,0,0,0" Height="35" 
+                  materialDesign:HintAssist.Hint="Buscar"  Width="300" FontSize="20" 
+                         materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
+                <Button x:Name="btn_search" Margin="10,0,0,0"
+                  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="Transparent" Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_search_Click">
+                   <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />   
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                <Button x:Name="btn_newTask" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"
+                            Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                            ToolTip="Gestionar miembros" Width="40" Height="40" >
+                    <materialDesign:PackIcon Kind="AccountsGroup"  Width="40" Height="40"/>
+                </Button>
+                <TextBlock Text="Nueva Tarea" FontSize="25" VerticalAlignment="Center" FontWeight="Medium" Margin="10,0,0,0"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2"  >
+            <ListView Width="500" x:Name="listView_tasks">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <ToggleButton Grid.Column="0"
+                              Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+                              IsChecked="{Binding Finalizada}"/>
+                            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="20,0,0,0">
+                                <TextBlock Text="{Binding Nombre}" FontSize="20"  FontWeight="DemiBold"/>
+                                <TextBlock Text="{Binding Actividades.Titulo}" FontSize="15"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

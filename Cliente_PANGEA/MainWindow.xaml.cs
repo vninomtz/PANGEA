@@ -57,8 +57,8 @@ namespace Cliente_PANGEA
                 case "ItemHome":
                     centralFrame.Navigate(new MainEvent(SingletonEvent.GetEvent()));
                     break;
-                case "ItemVehicles":
-
+                case "ItemTasks":
+                    centralFrame.Navigate(new ShowTasks());
                     break;
                 case "ItemSales":
 

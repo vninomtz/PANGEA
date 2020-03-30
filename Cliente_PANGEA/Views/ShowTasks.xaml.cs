@@ -63,5 +63,10 @@ namespace Cliente_PANGEA.Views
             
 
         }
+
+        private void btn_newTask_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new NewTask());
+        }
     }
 }

@@ -21,5 +21,14 @@ namespace Cliente_PANGEA.Controllers
 
 
         }
+        public static List<Actividades> GetAllActivities(int idEvent)
+        {
+            using (var dataBase = new PangeaConnection())
+            {
+                var activityList = dataBase.Actividades.Where(a => a.IdEvento == idEvent).ToList();
+
+                return activityList;
+            }
+        }
     }
 }

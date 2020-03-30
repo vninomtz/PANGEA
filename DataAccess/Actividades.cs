@@ -47,5 +47,10 @@ namespace DataAccess
         public virtual ICollection<Materiales> Materiales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tareas> Tareas { get; set; }
+
+        public override string ToString()
+        {
+            return Titulo;
+        }
     }
 }

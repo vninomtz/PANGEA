@@ -33,7 +33,7 @@
             <StackPanel Orientation="Horizontal" Grid.Column="1" >
                 <Button x:Name="btn_newTask" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"
                             Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
-                            ToolTip="Gestionar miembros" Width="40" Height="40" >
+                            ToolTip="Nueva tarea" Width="40" Height="40" Click="btn_newTask_Click" >
                     <materialDesign:PackIcon Kind="AccountsGroup"  Width="40" Height="40"/>
                 </Button>
                 <TextBlock Text="Nueva Tarea" FontSize="25" VerticalAlignment="Center" FontWeight="Medium" Margin="10,0,0,0"/>

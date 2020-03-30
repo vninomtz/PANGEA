@@ -79,6 +79,7 @@
     <Compile Include="Controllers\ComiteController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Events.xaml.cs">
       <DependentUpon>Events.xaml</DependentUpon>
     </Compile>
@@ -98,8 +99,14 @@
     <Compile Include="Views\MainEvent.xaml.cs">
       <DependentUpon>MainEvent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewActivity.xaml.cs">
+      <DependentUpon>NewActivity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewEvent.xaml.cs">
       <DependentUpon>NewEvent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewSchedule.xaml.cs">
+      <DependentUpon>NewSchedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowCommittee.xaml.cs">
       <DependentUpon>ShowCommittee.xaml</DependentUpon>
@@ -151,9 +158,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\NewActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NewEvent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShowCommittee.xaml">
       <Generator>MSBuild:Compile</Generator>

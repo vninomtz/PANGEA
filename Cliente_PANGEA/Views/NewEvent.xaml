@@ -27,12 +27,10 @@
             <StackPanel Grid.Column="0" Grid.Row="1">                                  
               <TextBox x:Name="TextBox_nombreEvento" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                      VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Nombre Evento"
-                     Margin="20"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
-                      />
+                     Margin="20"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
                 <TextBox x:Name="TextBox_Lugar" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                      VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"   materialDesign:HintAssist.Hint="Lugar"
-                     Margin="20,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
-                     />
+                     Margin="20,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
                 <StackPanel>
                     <CheckBox x:Name="MaterialDesignFilledTextFieldTextBoxEnabledComboBox" IsChecked="True" Margin="20,10,0,0"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
                               Background="#FF5C99D6" Click="MaterialDesignFilledTextFieldTextBoxEnabledComboBox_Click">

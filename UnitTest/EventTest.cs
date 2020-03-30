@@ -59,7 +59,7 @@ namespace UnitTest
             var result = EventController.GetEventById(evento.Id);
             int expected = 8;
 
-            Assert.AreEqual(8, result.Id);
+            Assert.AreEqual(expected, result.Id);
         }
 
         [TestMethod]

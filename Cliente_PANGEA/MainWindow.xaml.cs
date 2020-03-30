@@ -53,9 +53,11 @@ namespace Cliente_PANGEA
                 case "ItemCommittee":
                    centralFrame.Navigate(new CrearComite());
                     break;
-                case "ItemHome":                    
+                case "ItemHome":
+                    centralFrame.Navigate(new MainEvent());
                     break;
-                case "ItemVehicles":
+                case "ItemActivities":
+                    centralFrame.Navigate(new NewActivity());
 
                     break;
                 case "ItemSales":

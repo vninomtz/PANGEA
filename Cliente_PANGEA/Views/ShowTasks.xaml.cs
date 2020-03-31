@@ -51,8 +51,9 @@ namespace Cliente_PANGEA.Views
                 listAux.Clear();
                 foreach (var item in listTasks)
                 {
-                    bool contains = item.Actividades.Titulo.Contains(findWord);
-                    if (contains)
+                    bool containsActivity = item.Actividades.Titulo.Contains(findWord);
+                    bool containsTask = item.Nombre.Contains(findWord);
+                    if (containsActivity | containsTask)
                     {
                         listAux.Add(item);
                     }
@@ -67,6 +68,15 @@ namespace Cliente_PANGEA.Views
         private void btn_newTask_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new NewTask());
+        }
+
+        private void listView_tasks_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (listView_tasks.SelectedItems.Count > 0)
+            {
+                Tareas task = (Tareas)listView_tasks.SelectedItem;
+                this.NavigationService.Navigate(new NewTask(task));
+            }
         }
     }
 }

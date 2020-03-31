@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBox x:Name="txt_search" Margin="30,0,0,0" Height="35" 
-                  materialDesign:HintAssist.Hint="Buscar"  Width="300" FontSize="20" 
+                  materialDesign:HintAssist.Hint="Buscar por actividad o tarea"  Width="300" FontSize="20" 
                          materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
                 <Button x:Name="btn_search" Margin="10,0,0,0"
                   Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="Transparent" Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_search_Click">
@@ -34,13 +34,13 @@
                 <Button x:Name="btn_newTask" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"
                             Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
                             ToolTip="Nueva tarea" Width="40" Height="40" Click="btn_newTask_Click" >
-                    <materialDesign:PackIcon Kind="AccountsGroup"  Width="40" Height="40"/>
+                    <materialDesign:PackIcon Kind="Notebook"  Width="40" Height="40"/>
                 </Button>
                 <TextBlock Text="Nueva Tarea" FontSize="25" VerticalAlignment="Center" FontWeight="Medium" Margin="10,0,0,0"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2"  >
-            <ListView Width="500" x:Name="listView_tasks">
+            <ListView Width="500" x:Name="listView_tasks" MouseDoubleClick="listView_tasks_MouseDoubleClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid >

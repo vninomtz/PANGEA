@@ -218,10 +218,7 @@ namespace Cliente_PANGEA.Views
             this.NavigationService.Navigate(new ShowCommittee());
         }
 
-        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void btn_eliminar_Click_1(object sender, RoutedEventArgs e)
         {

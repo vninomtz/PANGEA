@@ -32,15 +32,17 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
-            <ListView x:Name="listViewCommittee" Margin="10" Padding="0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Background="#FF17AAFF">
+            <ListView x:Name="listViewCommittee" Margin="10" Padding="0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Background="#FF17AAFF" MouseDoubleClick="listViewCommittee_MouseDoubleClick">
                 <ListView.View >
                     <GridView >
                         <GridViewColumn 
                            DisplayMemberBinding="{Binding Nombre}" Header="Nombre del comité" Width="300" />
                         <GridViewColumn
-                            DisplayMemberBinding="{Binding Descripcion}" Header="Descripcion" Width="400"/>
+                            DisplayMemberBinding="{Binding Descripcion}" Header="Descripcion" Width="300"/>
                         <GridViewColumn
                             DisplayMemberBinding="{Binding FechaCreacion}" Header="Fecha de creación" Width="150"/>
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding UltimaModificacion}" Header="Última actualización" Width="150"/>
 
                     </GridView>
                 </ListView.View>

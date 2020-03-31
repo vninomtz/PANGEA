@@ -22,6 +22,7 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class ShowCommittee : Page
     {
+        int IDEVENT = SingletonEvent.GetEvent().Id;
         public ShowCommittee()
         {
             InitializeComponent();
@@ -35,12 +36,20 @@ namespace Cliente_PANGEA.Views
         }
         private void showCommittee()
         {
-            
-                listViewCommittee.ItemsSource = ComiteController.GetAllCommitte();
-                
-                //listViewItem = listViewCommittee.Items.Add(comite.Nombre.ToString());
+            List<Comites> listComites = ComiteController.GetAllCommitte(IDEVENT);
 
-            
+            listViewCommittee.ItemsSource = listComites;
+
+
+        }
+
+        private void listViewCommittee_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (listViewCommittee.SelectedItems.Count > 0)
+            {
+                Comites commite = (Comites)listViewCommittee.SelectedItem;
+                this.NavigationService.Navigate(new CrearComite(commite));
+            }
         }
     }
 }

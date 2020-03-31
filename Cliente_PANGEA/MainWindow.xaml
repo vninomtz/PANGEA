@@ -31,16 +31,18 @@
     </Window.Triggers>
 
     <Grid>
-        <Frame x:Name="FrameCentral" Margin="70,60,0,0" />
+        <Frame x:Name="centralFrame" Margin="70,60,0,0" />
         <Grid Height="60" VerticalAlignment="Top" Background="#FF2D3945" >
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="Usuario" VerticalAlignment="Center" FontSize="16" Foreground="White"/>
+                <TextBlock x:Name="txt_UserName" Text="Usuario" VerticalAlignment="Center" FontSize="16" Foreground="White"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10" Foreground="White">
-                    <StackPanel Width="150">
-                        <Button Content="Cuenta"/>
+                    <StackPanel Width="auto">
+                        <Button x:Name="Button_account" Content="Cuenta"/>
+                        <Separator/>
+                        <Button Content="Cuenta"/>                        
                         <Button Content="Ayuda"/>
                         <Separator/>
                         <Button Content="Cerrar Sesión"/>
@@ -73,9 +75,9 @@
                     </Button>
 
                 </Grid>
-                
+
                 <ListView x:Name="ListViewMenu" Foreground="#FF5C99D6" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged"  >
-                    <ListViewItem x:Name="ItemHome" Height="60">
+                    <ListViewItem x:Name="ItemHome" Height="60" Background="{x:Null}">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Home" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Inicio" VerticalAlignment="Center" Margin="20 10"/>

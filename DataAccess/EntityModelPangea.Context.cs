@@ -36,10 +36,10 @@ namespace DataAccess
         public virtual DbSet<Materiales> Materiales { get; set; }
         public virtual DbSet<Personal> Personal { get; set; }
         public virtual DbSet<Presupuestos> Presupuestos { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tareas> Tareas { get; set; }
         public virtual DbSet<Tracks> Tracks { get; set; }
         public virtual DbSet<AsistentesEvento> AsistentesEvento { get; set; }
         public virtual DbSet<IncripcionActividades> IncripcionActividades { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

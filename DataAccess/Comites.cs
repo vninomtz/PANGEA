@@ -25,6 +25,7 @@ namespace DataAccess
         public string Descripcion { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public Nullable<System.DateTime> UltimaModificacion { get; set; }
+        public int IdEvento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personal> Personal { get; set; }

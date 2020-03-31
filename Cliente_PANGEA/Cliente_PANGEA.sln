@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cliente_PANGEA", "Cliente_P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{B5E6139E-03B9-473F-8FD7-DA03E264E37B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{A15E5E03-0EE3-4F9A-9FFF-33703B59C1C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B5E6139E-03B9-473F-8FD7-DA03E264E37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5E6139E-03B9-473F-8FD7-DA03E264E37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5E6139E-03B9-473F-8FD7-DA03E264E37B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15E5E03-0EE3-4F9A-9FFF-33703B59C1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15E5E03-0EE3-4F9A-9FFF-33703B59C1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15E5E03-0EE3-4F9A-9FFF-33703B59C1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15E5E03-0EE3-4F9A-9FFF-33703B59C1C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

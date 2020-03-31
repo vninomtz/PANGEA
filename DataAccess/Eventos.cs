@@ -17,6 +17,7 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Eventos()
         {
+            this.Actividades = new HashSet<Actividades>();
             this.AsistentesEvento = new HashSet<AsistentesEvento>();
             this.Materiales = new HashSet<Materiales>();
             this.Personal = new HashSet<Personal>();
@@ -35,6 +36,8 @@ namespace DataAccess
         public bool Gratuito { get; set; }
         public Nullable<double> Costo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Actividades> Actividades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AsistentesEvento> AsistentesEvento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

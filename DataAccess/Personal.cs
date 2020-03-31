@@ -14,6 +14,18 @@ namespace DataAccess
     
     public partial class Personal
     {
+        public Personal()
+        {
+
+        }
+
+        public Personal(bool asignado, int idEvento, int idCuenta)
+        {
+            Asignado = asignado;
+            IdEvento = idEvento;
+            IdCuenta = idCuenta;
+        }
+
         public int Id { get; set; }
         public bool Asignado { get; set; }
         public string Cargo { get; set; }

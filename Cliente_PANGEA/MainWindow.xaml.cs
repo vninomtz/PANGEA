@@ -48,7 +48,7 @@ namespace Cliente_PANGEA
                     FrameCentral.Navigate(new ShowCommittee());
                     break;
                 case "ItemPersonal":
-
+                    FrameCentral.Navigate(new DeletePersonal());
                     break;
                 case "ItemVehicles":
 

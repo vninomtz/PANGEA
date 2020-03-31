@@ -73,11 +73,18 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\AsistenteController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
+    <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Views\AssistantRegister.xaml.cs">
       <DependentUpon>AssistantRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CrearComite.xaml.cs">
       <DependentUpon>CrearComite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeletePersonal.xaml.cs">
+      <DependentUpon>DeletePersonal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonalRegister.xaml.cs">
+      <DependentUpon>PersonalRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowCommittee.xaml.cs">
       <DependentUpon>ShowCommittee.xaml</DependentUpon>
@@ -99,6 +106,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CrearComite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeletePersonal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonalRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

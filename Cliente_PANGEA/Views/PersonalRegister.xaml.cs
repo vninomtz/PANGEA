@@ -23,11 +23,12 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class PersonalRegister : Page
     {
+        private List<Cuentas> listAccounts;
         public PersonalRegister()
         {
             InitializeComponent();
+            this.listAccounts = new List<Cuentas>();
         }
-
         private void ShowAccounts(String correo)
         {
             if (PersonalController.GetAccountsEvent(correo).Count()>0)
@@ -40,7 +41,52 @@ namespace Cliente_PANGEA.Views
             }
 
         }
+        private void btn_search_Click(object sender, RoutedEventArgs e)
+        {
+            if (!EmptyFields())
+            {
+                string correo = txt_email.Text;
+                ShowAccounts(correo);
+            }
+        }
+        private bool ValidateSelectedPersonal()
+        {
+            bool isSelected = true;
+            if (listViewAccounts.SelectedValue == null)
+            {
+                 isSelected = false;
+            }
+            return isSelected;
+        }
+        private void btn_addPersonal_Click(object sender, RoutedEventArgs e)
+        {
+            Cuentas cuentaSelected = (Cuentas)listViewAccounts.SelectedItem;
+            if (ValidateSelectedPersonal())
+            {
+                if (PersonalController.AssignPersonal(cuentaSelected) > 0)
+                {
+                    MessageBox.Show("Personal registrado con éxito");
+                    RefreshTableAccounts();
+                }
+                else if (PersonalController.AssignPersonal(cuentaSelected) == 0)
+                {
+                    MessageBox.Show("La cuenta ya está registrada en el evento como personal");
+                }
+                else
+                {
+                    MessageBox.Show("Error en la conexión con la base de datos.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una Cuenta");
+            }
+        }
 
+        private void btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DeletePersonal());
+        }
         private Boolean EmptyFields()
         {
             if (txt_email.Text == "")
@@ -68,37 +114,11 @@ namespace Cliente_PANGEA.Views
                 MessageBox.Show("El formato del correo no es válido, porfavor vuelva a intentarlo");
             }
         }
-
-        private void btn_search_Click(object sender, RoutedEventArgs e)
+        private void RefreshTableAccounts()
         {
-            if (!EmptyFields())
-            {
-                string correo = txt_email.Text;
-                ShowAccounts(correo);
-            }
-        }
-
-        private void btn_addPersonal_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (Cuentas cuentas in listViewAccounts.SelectedItems)
-            {
-                if (PersonalController.AssignPersonal(cuentas)>0)
-                {
-                    MessageBox.Show("Personal registrado con éxito");
-                }else if (PersonalController.AssignPersonal(cuentas) == 0)
-                {
-                    MessageBox.Show("La cuenta ya está registrada en el evento como personal");
-                }
-                else
-                {
-                    MessageBox.Show("Error en la conexión con la base de datos.");
-                }
-            }
-        }
-
-        private void btn_back_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new DeletePersonal());
+            listViewAccounts.ItemsSource = null;
+            listViewAccounts.ItemsSource = listAccounts;
         }
     }
+
 }

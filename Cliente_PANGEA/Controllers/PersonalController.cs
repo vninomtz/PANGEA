@@ -72,7 +72,7 @@ namespace Cliente_PANGEA.Controllers
             {
                 try
                 {
-                    var personalList = database.Personal.Include("Cuentas").Where(p=> p.Asignado == false).ToList();
+                    var personalList = database.Personal.Include("Cuentas").Where(p => p.Asignado == false).ToList();
                     return personalList;
                 }catch(Exception e)
                 {
@@ -99,6 +99,24 @@ namespace Cliente_PANGEA.Controllers
                 }
             }
             return result;
+        }
+        public static List<Personal> GetPersonalByLastName(String lastName)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listPersonalByLastName = database.Personal.Include("Cuentas").Where(personal => personal.Asignado == false &&  
+                    personal.Cuentas.Apellido.Contains(lastName)).ToList();
+                    return listPersonalByLastName;
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return null;
+                }
+            }
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Cliente_PANGEA"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="400">
+        Title="Login" Height="500" Width="400" WindowStartupLocation="CenterScreen">
     <Grid  Background="#FF2D3945">
         <materialDesign:Card  Width="300" Height="400" >
             <Grid>

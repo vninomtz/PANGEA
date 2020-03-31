@@ -16,6 +16,17 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Button Grid.Column="0" HorizontalAlignment="Left" Margin="20,0,0,0" Background="{x:Null}" Padding="0"  x:Name="btn_regresar"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="btn_regresar_Click" >
+                <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+            </Button>
+            <Button x:Name="btn_guardar" Grid.Column="0" HorizontalAlignment="Left" Background="{x:Null}" Padding="0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"  Margin="80,0,0,0"
+                    ToolTip="Guardar comité" Width="40" Height="40" Click="Button_Click">
+                <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
+
+            </Button>
             <TextBlock Text="Nuevo Evento" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
 
@@ -88,16 +99,7 @@
                       materialDesign:HintAssist.Foreground="#FF5C99D6" 
                       Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 </StackPanel>
-                <Button
-                        Background="#FF5C99D6"
-                        Grid.Row="1"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom"
-                        Margin="20"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"                        
-                        ToolTip="Resource name: MaterialDesignRaisedLightButton" Click="Button_Click">       
-                    Guardar
-                </Button>
+               
             </Grid>
 
             

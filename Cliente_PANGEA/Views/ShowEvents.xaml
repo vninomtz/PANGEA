@@ -35,7 +35,10 @@
             
 
         </Grid>
-        
+        <Button Grid.Row="1" x:Name="Button_add" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" ToolTip="Crear Nuevo Evento"
+            Background="#FF5C99D6" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,20" Click="Button_Click">
+            <materialDesign:PackIcon Kind="Add" Height="40" Width="40"/>
+        </Button>
 
     </Grid>
 </Page>

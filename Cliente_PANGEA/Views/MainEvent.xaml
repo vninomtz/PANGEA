@@ -39,6 +39,7 @@
                 ToolTip="Editar" Click="Button_edit_Click">
                 <materialDesign:PackIcon Kind="Edit" Padding="1" />
             </Button>
+            
             <Button
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="50"
@@ -62,6 +63,13 @@
                 <materialDesign:PackIcon Kind="EditOff" Padding="1" />
             </Button>
         </Grid>
+
+        <Button x:Name="Button_save" Grid.Column="0" HorizontalAlignment="Left" Background="{x:Null}" Padding="0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" Margin="90,38,0,0"
+                    ToolTip="Guardar comité" Width="40" Height="40" Click="Button_save_Click" >
+            <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
+
+        </Button>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -132,17 +140,7 @@
                       materialDesign:HintAssist.Hint="Día de fin"
                       Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 </StackPanel>
-                <Button
-                        x:Name="Button_save"
-                        Background="#FF5C99D6"
-                        Grid.Row="1"
-                        HorizontalAlignment="Right"
-                         VerticalAlignment="Bottom"
-                        Margin="20"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"                        
-                        ToolTip="Resource name: MaterialDesignRaisedLightButton" Click="Button_save_Click">
-                    Guardar
-                </Button>
+                
             </Grid>
 
 

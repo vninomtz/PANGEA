@@ -53,16 +53,8 @@
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
             </Grid.Effect>
         </Grid>
-        <Button x:Name="Button_add" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" ToolTip="Crear Nuevo Evento"
-            Background="#FFACACAC" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,20" Click="Button_Click">
-            <materialDesign:PackIcon Kind="Add" Height="40" Width="40" />
-        </Button>
 
-        <Button x:Name="Button_back" Style="{StaticResource MaterialDesignRaisedLightButton}"  Width="100" Background="#FFACACAC"
-                 ToolTip="Resource name: MaterialDesignRaisedLightButton" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                Margin="100,20,0,20" Click="Button_back_Click" BorderBrush="Transparent">
-            Regresar
-        </Button>
+
 
     </Grid>
 </Window>

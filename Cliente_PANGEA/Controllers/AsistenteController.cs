@@ -9,7 +9,7 @@ namespace Cliente_PANGEA.Controllers
 {
     class AsistenteController
     {
-        public static int SaveAssistant(Asistentes asistentes)
+        public static int SaveAssistant(Asistentes asistentes, int idEvent)
         {
             int result = -1;
             using (var database = new PangeaConnection())
@@ -18,10 +18,36 @@ namespace Cliente_PANGEA.Controllers
                 {
                     database.Asistentes.Add(asistentes);
                     result = database.SaveChanges();
+                    if (result>0)
+                    {
+                            if (SaveAssistantInEvent(asistentes.Id, idEvent) > 0)
+                            {
+                                return result;
+                            }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+            return result;
+        }
+
+        public static int SaveAssistantInEvent(int idAssistant, int IdEvent)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                AsistentesEvento assistantEvent = new AsistentesEvento(idAssistant,IdEvent);
+                try
+                {
+                    database.AsistentesEvento.Add(assistantEvent);
+                    result = database.SaveChanges();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("“Error en la conexión con la base de datos”.");
+                    Console.WriteLine(e);
                 }
             }
             return result;

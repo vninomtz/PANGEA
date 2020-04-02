@@ -14,6 +14,16 @@ namespace DataAccess
     
     public partial class AsistentesEvento
     {
+        public AsistentesEvento()
+        {
+
+        }
+        public AsistentesEvento(int idAsistente, int idEvento)
+        {
+            IdAsistente = idAsistente;
+            IdEvento = idEvento;
+        }
+
         public bool Asistencia { get; set; }
         public bool Pago { get; set; }
         public double Cantidad { get; set; }

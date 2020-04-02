@@ -22,7 +22,7 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class DeletePersonal : Page
     {
-    
+        int idEvent = SingletonEvent.GetEvent().Id;
         public DeletePersonal()
         {
             InitializeComponent();
@@ -36,9 +36,9 @@ namespace Cliente_PANGEA.Views
  
         private void ShowPersonal()
         {
-            if (PersonalController.GetPersonals() != null)
+            if (PersonalController.GetPersonals(idEvent) != null)
             {
-                listViewAccountsPersonal.ItemsSource = PersonalController.GetPersonals();
+                listViewAccountsPersonal.ItemsSource = PersonalController.GetPersonals(idEvent);
             }
             else
             {
@@ -86,9 +86,9 @@ namespace Cliente_PANGEA.Views
             if (!EmptyFields())
             {
                 string lastName = txt_lastName.Text;
-                if (PersonalController.GetPersonalByLastName(lastName) != null)
+                if (PersonalController.GetPersonalByLastName(lastName,idEvent) != null)
                 {
-                    listViewAccountsPersonal.ItemsSource = PersonalController.GetPersonalByLastName(lastName);     
+                    listViewAccountsPersonal.ItemsSource = PersonalController.GetPersonalByLastName(lastName,idEvent);     
                 }
                 else
                 {
@@ -103,6 +103,7 @@ namespace Cliente_PANGEA.Views
             if (txt_lastName.Text == "")
             {
                 MessageBox.Show("Por favor ingresa los apellidos");
+                ShowPersonal();
                 return true;
             }
             return false;

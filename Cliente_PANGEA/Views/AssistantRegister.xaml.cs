@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using Cliente_PANGEA.Controllers;
+using DataAccess;
 
 namespace Cliente_PANGEA.Views
 {
@@ -34,15 +35,16 @@ namespace Cliente_PANGEA.Views
             {
                 if (EqualEmails())
                 {
-                    DataAccess.Asistentes asistente = new DataAccess.Asistentes
+                    Asistentes asistente = new Asistentes
                     {
                         Nombre = txt_AssistantName.Text,
                         Apellido = txt_fatherLastName.Text + txt_motherLastName.Text,
                         Correo = txt_email.Text,
                     };
+                    int idEvent = SingletonEvent.GetEvent().Id;
                     if (!AsistenteController.ExistingAssistant(asistente))
                     {
-                        int result = AsistenteController.SaveAssistant(asistente);
+                        int result = AsistenteController.SaveAssistant(asistente,idEvent);
                         if (result > 0)
                         {
                             MessageBox.Show("Asistente registrado con éxito");

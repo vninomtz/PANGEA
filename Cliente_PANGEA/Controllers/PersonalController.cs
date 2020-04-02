@@ -73,9 +73,8 @@ namespace Cliente_PANGEA.Controllers
             return result;
         }
 
-        public static int AssignPersonal(Cuentas cuentas)
+        public static int AssignPersonal(Cuentas cuentas, int idEvento)
         {
-            int idEvento = 5;
             int result = -1;
             using (var database = new PangeaConnection())
             {
@@ -99,14 +98,14 @@ namespace Cliente_PANGEA.Controllers
         }
 
   
-        public static List<Personal> GetPersonals()
+        public static List<Personal> GetPersonals(int idEvent)
         {
 
             using (var database = new PangeaConnection())
             {
                 try
                 {
-                    var personalList = database.Personal.Include("Cuentas").Where(p => p.Asignado == false).ToList();
+                    var personalList = database.Personal.Include("Cuentas").Where(p => p.Asignado == false && p.IdEvento==idEvent).ToList();
                     return personalList;
                 }catch(Exception e)
                 {
@@ -182,14 +181,14 @@ namespace Cliente_PANGEA.Controllers
             return result;
         }
 
-        public static List<Personal> GetPersonalByLastName(String lastName)
+        public static List<Personal> GetPersonalByLastName(String lastName, int idEvent)
         {
             using (var database = new PangeaConnection())
             {
                 try
                 {
                     var listPersonalByLastName = database.Personal.Include("Cuentas").Where(personal => personal.Asignado == false &&  
-                    personal.Cuentas.Apellido.Contains(lastName)).ToList();
+                    personal.Cuentas.Apellido.Contains(lastName) && personal.IdEvento == idEvent).ToList();
                     return listPersonalByLastName;
 
                 }

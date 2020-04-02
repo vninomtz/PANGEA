@@ -59,10 +59,15 @@ namespace Cliente_PANGEA
                     break;
                 case "ItemActivities":
                     centralFrame.Navigate(new NewActivity());
-
                     break;
                 case "ItemSales":
 
+                    break;
+                case "ItemPersonal":
+                    centralFrame.Navigate(new DeletePersonal());
+                    break;
+                case "ItemAssistants":
+                    centralFrame.Navigate(new AssistantRegister());
                     break;
                 default:
                     break;

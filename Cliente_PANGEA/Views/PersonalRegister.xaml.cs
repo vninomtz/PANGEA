@@ -24,6 +24,7 @@ namespace Cliente_PANGEA.Views
     public partial class PersonalRegister : Page
     {
         private List<Cuentas> listAccounts;
+        private int idEvent = SingletonEvent.GetEvent().Id;
         public PersonalRegister()
         {
             InitializeComponent();
@@ -63,12 +64,12 @@ namespace Cliente_PANGEA.Views
             Cuentas cuentaSelected = (Cuentas)listViewAccounts.SelectedItem;
             if (ValidateSelectedPersonal())
             {
-                if (PersonalController.AssignPersonal(cuentaSelected) > 0)
+                if (PersonalController.AssignPersonal(cuentaSelected, idEvent) > 0)
                 {
                     MessageBox.Show("Personal registrado con éxito");
                     RefreshTableAccounts();
                 }
-                else if (PersonalController.AssignPersonal(cuentaSelected) == 0)
+                else if (PersonalController.AssignPersonal(cuentaSelected, idEvent) == 0)
                 {
                     MessageBox.Show("La cuenta ya está registrada en el evento como personal");
                 }

@@ -104,7 +104,7 @@ namespace Cliente_PANGEA.Controllers
                 Console.WriteLine($"Error en la conexión a la base de datos {ex}");
                 result = false;
             }
-            return result;
+            return result;  
         }
     }
 }

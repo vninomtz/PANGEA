@@ -25,7 +25,6 @@ namespace Cliente_PANGEA
             InitializeComponent();
             centralFrame.Navigate(new ShowEvents());
             centralFrame.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
-            Button_back.Visibility = Visibility.Hidden;
             Button_account.Content = SingletonAccount.GetAccount().Correo;
             Button_account.Visibility = Visibility.Visible;
 
@@ -34,23 +33,10 @@ namespace Cliente_PANGEA
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             centralFrame.Navigate(new NewEvent());
-            Button_back.Visibility = Visibility.Visible;
-            Button_add.Visibility = Visibility.Hidden;
-            List<DataAccess.Eventos> eventList =  EventController.GetEvents();
-           Console.WriteLine( eventList.Count());
-            
-        }
-
-        private void Button_back_Click(object sender, RoutedEventArgs e)
-        {
-            Button_add.Visibility = Visibility.Visible;
-            Button_back.Visibility = Visibility.Hidden;
-
-            centralFrame.Navigate(new ShowEvents());
-           
-            
 
         }
+
+       
 
       
 

@@ -31,5 +31,10 @@ namespace Cliente_PANGEA
         {
             ListView_events.ItemsSource = EventController.GetPersonalAndEvent(SingletonAccount.GetAccount().Id);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NewEvent());
+        }
     }
 }

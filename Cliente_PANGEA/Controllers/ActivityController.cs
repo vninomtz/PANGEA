@@ -7,8 +7,39 @@ using System.Threading.Tasks;
 
 namespace Cliente_PANGEA.Controllers
 {
-    class ActivityController
+    public class ActivityController
     {
+
+        public static int GetLastActivity()
+        {
+            int id = 0;
+            using(var database = new PangeaConnection())
+            {
+                id = database.Actividades.ToList().Last().Id;
+            }
+
+            return id;
+        }
+        public static int SaveActivity(Actividades newActivity)
+        {
+            int result = 0;
+            using(var dataBase = new PangeaConnection())
+            {
+                try
+                {
+                    dataBase.Actividades.Add(newActivity);
+                    result = dataBase.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                 
+                }
+                 
+            }
+            return result;
+
+        }
         public static List<Horarios> GetActivities(int idEvento)
         {
 

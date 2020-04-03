@@ -137,5 +137,15 @@ namespace Cliente_PANGEA
             }
 
         }
+
+        private void btn_regresar_Click(object sender, RoutedEventArgs e)
+        {
+
+         NavigationService.Navigate(new ShowEvents());
+
+
+
+            
+        }
     }
 }

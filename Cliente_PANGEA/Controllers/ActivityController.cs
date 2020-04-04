@@ -40,6 +40,31 @@ namespace Cliente_PANGEA.Controllers
             return result;
 
         }
+        public static int UpdateActivity(Actividades actividades)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var newActivity = database.Actividades.Where(a => a.Id == actividades.Id).SingleOrDefault(); ;
+                    if (newActivity != null)
+                    {
+                        newActivity.Titulo = actividades.Titulo;
+                        newActivity.Tipo = actividades.Tipo;
+                        newActivity.Descripcion = actividades.Descripcion;
+                        newActivity.Costo = actividades.Costo;
+                        newActivity.UltimaModificacion = actividades.UltimaModificacion;
+                    }
+                    result = database.SaveChanges();
+                    return result;
+                }catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
         public static List<Horarios> GetActivities(int idEvento)
         {
 
@@ -51,6 +76,59 @@ namespace Cliente_PANGEA.Controllers
             }
 
 
+        }
+        public static List<Actividades> GetEventActivities(int idEvent)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listActivities = database.Actividades.Where(a => a.IdEvento == idEvent).ToList();
+                    return listActivities;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+        public static Actividades GetActivityForUpdate(int idActivity)
+        {
+            try
+            {
+                using (var database = new PangeaConnection())
+                {
+                    var activity = database.Actividades.Where(a => a.Id == idActivity).SingleOrDefault();
+                    return activity;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return null;
+        }
+
+        public static int DeleteActivity(int idActivity)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var activity = database.Actividades.Include("Horarios").Where(a=> a.Id == idActivity).FirstOrDefault();
+                    database.Actividades.Remove(activity);
+                    result = database.SaveChanges();
+                    return result;
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            return result;
         }
     }
 }

@@ -1,0 +1,77 @@
+﻿<Page x:Class="Cliente_PANGEA.Views.UpdateActivity"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Cliente_PANGEA.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="990"
+      Title="UpdateActivity">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Modificar Actividad" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="btn_back"
+                      VerticalAlignment="Top" Margin="-850,15,0,0" Background="#FF5C99D6"  BorderBrush="#FF5C99D6"
+                      Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                      ToolTip="Regresar" Width="40" Height="40" Click="btn_back_Click" >
+            <materialDesign:PackIcon
+                        Kind="ArrowBack"
+                        Height="30"
+                        Width="30" />
+        </Button>
+        <Button x:Name="btn_guardar" Background="{x:Null}" Padding="0" Margin="-700,0,0,0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Guardar actividad" Width="40" Height="40" Click="Button_update_Click">
+            <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
+
+        </Button>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" >
+                <TextBox x:Name="TextBox_activityTitle" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                     VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Título de actividad"
+                     Margin="20"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
+                <TextBox x:Name="TextBox_activityDescription" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                     VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Descripción"
+                     Margin="20,30,20,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                          />
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBox x:Name="TextBox_activityType" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                     VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Tipo"
+                     Margin="20"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
+                <StackPanel>
+                    <CheckBox x:Name="MaterialDesignFilledTextFieldTextBoxEnabledComboBox" IsChecked="True" Margin="20,0,0,0"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                              Background="#FF5C99D6" Click="MaterialDesignFilledTextFieldTextBoxEnabledComboBox_Click"  >
+                        Costo
+                    </CheckBox>
+                    <TextBox x:Name="TextBox_cantidad" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" VerticalAlignment="Top"
+                                AcceptsReturn="True" Margin="20,10,20,20"
+                                TextWrapping="Wrap"  materialDesign:HintAssist.Foreground="#FF5C99D6"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"                           
+                                materialDesign:HintAssist.Hint="Cantidad" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" 
+                                Background="#FF5C99D6"  />
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <Button Grid.Column="1"  x:Name="Button_UpdateSchedule" Background="#FF5C99D6" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignRaisedLightButton}"
+                          Margin="20" Click="Button_UpdateSchedule_Click" >
+                Modificar horario
+            </Button>
+
+
+        </Grid>
+
+    </Grid>
+</Page>

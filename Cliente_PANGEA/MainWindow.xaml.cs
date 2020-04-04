@@ -58,7 +58,7 @@ namespace Cliente_PANGEA
                     centralFrame.Navigate(new MainEvent());
                     break;
                 case "ItemActivities":
-                    centralFrame.Navigate(new NewActivity());
+                    centralFrame.Navigate(new ShowActivity());
                     break;
                 case "ItemSales":
 

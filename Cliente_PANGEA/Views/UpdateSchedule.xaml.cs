@@ -18,29 +18,24 @@ using System.Windows.Shapes;
 namespace Cliente_PANGEA.Views
 {
     /// <summary>
-    /// Interaction logic for NewSchedule.xaml
+    /// Interaction logic for UpdateSchedule.xaml
     /// </summary>
-    public partial class NewSchedule : Page
+    public partial class UpdateSchedule : Page
     {
         private int idActivity;
         private List<Horarios> scheduleList;
-        public NewSchedule()
+        public UpdateSchedule()
         {
             InitializeComponent();
             this.idActivity = ActivityController.GetLastActivity();
             this.scheduleList = new List<Horarios>();
+            ShowScheduleSelected();
         }
 
-
-        private int SaveSchedules()
+        private void ShowScheduleSelected()
         {
-            return ScheduleController.SaveSchedules(scheduleList);
-        }
+            ListView_schedules.ItemsSource = ScheduleController.GetSchedules(idActivity);
 
-        private void RefreshTable()
-        {
-            ListView_schedules.ItemsSource = null;
-            ListView_schedules.ItemsSource = scheduleList;
         }
 
         public bool ValidateSelectedSchedule()
@@ -59,8 +54,8 @@ namespace Cliente_PANGEA.Views
             if (ValidateSelectedSchedule())
             {
                 Horarios scheduleSelected = (Horarios)ListView_schedules.SelectedItem;
-                scheduleList.Remove(scheduleSelected);
-                RefreshTable();
+                ScheduleController.DeleteSchedule(scheduleSelected.Id);
+                ShowScheduleSelected();
             }
             else
             {
@@ -68,10 +63,8 @@ namespace Cliente_PANGEA.Views
             }
         }
 
-        private void AddSchedule()
+        private int AddSchedule()
         {
-
-
             Horarios hour = new Horarios
             {
                 IdActividad = idActivity,
@@ -81,10 +74,7 @@ namespace Cliente_PANGEA.Views
                 FechaFin = DateTime.Parse(DatePicker_endDate.Text + " " + TimePicker_endHour.Text),
 
             };
-
-            scheduleList.Add(hour);
-            RefreshTable();
-            
+            return ScheduleController.SaveSchedule(hour);
         }
 
         private bool ValidateEmptyFields()
@@ -137,25 +127,16 @@ namespace Cliente_PANGEA.Views
             }
             else
             {
-                AddSchedule();
-                ClearFields();
+                if (AddSchedule()>0)
+                {
+                    ShowScheduleSelected();
+                    ClearFields();
+                }
+                else
+                {
+                    MessageBox.Show("Error en la conexión con la base de datos");
+                }
                 
-            }
-        }
-
-        private void Button_save_Click(object sender, RoutedEventArgs e)
-        {
-            if (scheduleList.Count == 0)
-            {
-                MessageBox.Show("Por favor ingrese un horario");
-            } else if (SaveSchedules() > 0)
-            {
-                MessageBox.Show("Horarios guardados correctamente", "Operación existosa");
-                NavigationService.Navigate(new NewActivity());
-            }
-            else
-            {
-                MessageBox.Show("Error de conexión con la base de datos", "Operación fallida");
             }
         }
 
@@ -164,14 +145,17 @@ namespace Cliente_PANGEA.Views
             QuitSchedule();
         }
 
-        private void Button_cancel_Click(object sender, RoutedEventArgs e)
+        private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Se cancelará el ingreso de los horarios para la actividad", "Adevertencia", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Se guardaran los horarios de la tabla", "Confirmación", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                NavigationService.Navigate(new NewActivity());
+
+                Actividades activity = ActivityController.GetActivityForUpdate(idActivity);
+                NavigationService.Navigate(new UpdateActivity(activity));
             }
 
         }
+
     }
 }

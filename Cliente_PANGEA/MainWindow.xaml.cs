@@ -1,4 +1,4 @@
-﻿
+
 using Cliente_PANGEA.Views;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Cliente_PANGEA
 {
@@ -60,8 +61,8 @@ namespace Cliente_PANGEA
                 case "ItemActivities":
                     centralFrame.Navigate(new ShowActivity());
                     break;
-                case "ItemSales":
-
+                case "ItemTasks":
+                    centralFrame.Navigate(new ShowTasks());
                     break;
                 case "ItemPersonal":
                     centralFrame.Navigate(new DeletePersonal());

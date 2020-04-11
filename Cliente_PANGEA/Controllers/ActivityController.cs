@@ -118,7 +118,7 @@ namespace Cliente_PANGEA.Controllers
             {
                 try
                 {
-                    var activity = database.Actividades.Include("Horarios").Where(a=> a.Id == idActivity).FirstOrDefault();
+                    var activity = database.Actividades.Include("Horarios").Where(a => a.Id == idActivity).FirstOrDefault();
                     database.Actividades.Remove(activity);
                     result = database.SaveChanges();
                     return result;
@@ -129,6 +129,8 @@ namespace Cliente_PANGEA.Controllers
                 }
             }
             return result;
+
+        }
         public static List<Actividades> GetAllActivities(int idEvent)
         {
             using (var dataBase = new PangeaConnection())

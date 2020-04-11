@@ -26,12 +26,12 @@ namespace Cliente_PANGEA.Controllers
                 }
             } 
         }
-          public static bool ExistingAccount(int idCuenta)
+          public static bool ExistingAccount(int idCuenta, int idEvent)
         {
             bool result = false;
             using (var dataBase = new PangeaConnection())
             {
-                int exist = dataBase.Personal.Where(personal => personal.IdCuenta == idCuenta).Count();
+                int exist = dataBase.Personal.Where(personal => personal.IdCuenta == idCuenta && personal.IdEvento == idEvent).Count();
                 if (exist > 0)
                 {
                     result = true;
@@ -82,7 +82,7 @@ namespace Cliente_PANGEA.Controllers
                 {
                      var idCuenta = cuentas.Id;
                      Personal personal = new Personal(false, idEvento, idCuenta);
-                    if (ExistingAccount(idCuenta)== true)
+                    if (ExistingAccount(idCuenta,idEvento)== true)
                     {
                         return result = 0;
                     }

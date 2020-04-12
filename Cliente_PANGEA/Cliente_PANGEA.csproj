@@ -74,12 +74,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\AsistenteController.cs" />
+    <Compile Include="Controllers\ComiteController.cs" />
+    <Compile Include="Views\DeletePersonal.xaml.cs">
+      <DependentUpon>DeletePersonal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonalRegister.xaml.cs">
+      <DependentUpon>PersonalRegister.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
-    <Compile Include="Controllers\ComiteController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Events.xaml.cs">
       <DependentUpon>Events.xaml</DependentUpon>
     </Compile>
@@ -105,6 +113,12 @@
     <Compile Include="Views\NewTask.xaml.cs">
       <DependentUpon>NewTask.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RegisterActivityAssistant.xaml.cs">
+      <DependentUpon>RegisterActivityAssistant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowActivity.xaml.cs">
+      <DependentUpon>ShowActivity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShowCommittee.xaml.cs">
       <DependentUpon>ShowCommittee.xaml</DependentUpon>
     </Compile>
@@ -114,6 +128,18 @@
     <Compile Include="SingletonEvent.cs" />
     <Compile Include="Views\CrearComite.xaml.cs">
       <DependentUpon>CrearComite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateActivity.xaml.cs">
+      <DependentUpon>UpdateActivity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewActivity.xaml.cs">
+      <DependentUpon>NewActivity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateSchedule.xaml.cs">
+      <DependentUpon>UpdateSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewSchedule.xaml.cs">
+      <DependentUpon>NewSchedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowTasks.xaml.cs">
       <DependentUpon>ShowTasks.xaml</DependentUpon>
@@ -139,13 +165,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AssistantRegister.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CrearComite.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DeletePersonal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonalRegister.xaml" />
     <Page Include="Views\EventProgram.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,6 +197,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RegisterActivityAssistant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShowCommittee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -174,6 +213,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\UpdateActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UpdateSchedule.xaml" />
+    <Page Include="Views\NewSchedule.xaml" />
     <Page Include="Views\ShowTasks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

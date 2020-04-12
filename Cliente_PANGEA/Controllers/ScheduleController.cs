@@ -31,8 +31,61 @@ namespace Cliente_PANGEA.Controllers
                 result = dataBase.SaveChanges();
             }
             return result;
-
            
+        }
+       public static List<Horarios> GetSchedules(int idActivity)
+        {
+            using(var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listSchedule = database.Horarios.Where(h => h.IdActividad == idActivity).ToList();
+                    return listSchedule;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+        public static int DeleteSchedule(int idSchedule)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var schedule = database.Horarios.Where(s => s.Id == idSchedule).FirstOrDefault();
+                    database.Horarios.Remove(schedule);
+                    result = database.SaveChanges();
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
+        public static int SaveSchedule(Horarios schedule)
+        {
+            int result = -1;
+            using (var dataBase = new PangeaConnection())
+            {
+                try
+                {
+                    dataBase.Horarios.Add(schedule);
+                    result = dataBase.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                
+            }
+            return result;
+
         }
     }
 }

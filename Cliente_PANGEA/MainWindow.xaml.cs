@@ -1,4 +1,4 @@
-﻿
+
 using Cliente_PANGEA.Views;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Cliente_PANGEA
 {
@@ -55,13 +56,19 @@ namespace Cliente_PANGEA
                    centralFrame.Navigate(new ShowCommittee());
                     break;
                 case "ItemHome":
-                    centralFrame.Navigate(new MainEvent(SingletonEvent.GetEvent()));
+                    centralFrame.Navigate(new MainEvent());
+                    break;
+                case "ItemActivities":
+                    centralFrame.Navigate(new ShowActivity());
                     break;
                 case "ItemTasks":
                     centralFrame.Navigate(new ShowTasks());
                     break;
-                case "ItemSales":
-
+                case "ItemPersonal":
+                    centralFrame.Navigate(new DeletePersonal());
+                    break;
+                case "ItemAssistants":
+                    centralFrame.Navigate(new AssistantRegister());
                     break;
                 default:
                     break;
@@ -71,4 +78,3 @@ namespace Cliente_PANGEA
 
     }
 }
-

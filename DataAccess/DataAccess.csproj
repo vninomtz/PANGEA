@@ -105,9 +105,6 @@
       <DependentUpon>EntityModelPangea.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>EntityModelPangea.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tareas.cs">
       <DependentUpon>EntityModelPangea.tt</DependentUpon>
     </Compile>
@@ -132,6 +129,7 @@
       <LastGenOutput>EntityModelPangea.Context.cs</LastGenOutput>
       <DependentUpon>EntityModelPangea.edmx</DependentUpon>
     </Content>
+    <Content Include="EntityModelPangea.edmx.sql" />
     <Content Include="EntityModelPangea.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EntityModelPangea.edmx</DependentUpon>

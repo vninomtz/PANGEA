@@ -7,9 +7,40 @@ using DataAccess;
 
 namespace Cliente_PANGEA.Controllers
 {
-    public class PersonalController
+    class PersonalController
     {
-        public static bool DeleteAssignmetsByCommittee(int IdCommittee)
+        public static List<Cuentas> GetAccountsEvent(String correo)
+        {
+            using (var database = new  PangeaConnection())
+            {
+                try
+                {
+                    var accountList = database.Cuentas.Where(cuenta => cuenta.Correo == correo).ToList();
+                    return accountList;
+                    
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error en la conexión a la BD");
+                    return null;
+                }
+            } 
+        }
+          public static bool ExistingAccount(int idCuenta, int idEvent)
+        {
+            bool result = false;
+            using (var dataBase = new PangeaConnection())
+            {
+                int exist = dataBase.Personal.Where(personal => personal.IdCuenta == idCuenta && personal.IdEvento == idEvent).Count();
+                if (exist > 0)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+    
+         public static bool DeleteAssignmetsByCommittee(int IdCommittee)
         {
             bool result = false;
             using (var database = new PangeaConnection())
@@ -41,6 +72,49 @@ namespace Cliente_PANGEA.Controllers
 
             return result;
         }
+
+        public static int AssignPersonal(Cuentas cuentas, int idEvento)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                     var idCuenta = cuentas.Id;
+                     Personal personal = new Personal(false, idEvento, idCuenta);
+                    if (ExistingAccount(idCuenta,idEvento)== true)
+                    {
+                        return result = 0;
+                    }
+                    var assignStaff = database.Personal.Add(personal);
+                    result = database.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error en la conexión a la BD");
+                }
+            }
+            return result;
+        }
+
+  
+        public static List<Personal> GetPersonals(int idEvent)
+        {
+
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var personalList = database.Personal.Include("Cuentas").Where(p => p.Asignado == false && p.IdEvento==idEvent).ToList();
+                    return personalList;
+                }catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                    return null;
+                }
+            }
+        }
+        
         public static List<Cuentas> GetMembersCommittee(int idEvent, int idCommitte, string position)
         {
             using (var dataBase = new PangeaConnection())
@@ -86,6 +160,46 @@ namespace Cliente_PANGEA.Controllers
                 }
             }
         }
+
+        public static int DeletePersonal(int idPersonal)
+        {
+            int result = -1;
+            using(var database = new PangeaConnection())
+            {
+                try
+                {
+                    var personal = database.Personal.Where(personalDB=> personalDB.Id == idPersonal).FirstOrDefault();
+                    database.Personal.Remove(personal);
+                    result = database.SaveChanges();
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
+
+        public static List<Personal> GetPersonalByLastName(String lastName, int idEvent)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listPersonalByLastName = database.Personal.Include("Cuentas").Where(personal => personal.Asignado == false &&  
+                    personal.Cuentas.Apellido.Contains(lastName) && personal.IdEvento == idEvent).ToList();
+                    return listPersonalByLastName;
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return null;
+                }
+            }
+        }
+    
         public static int UpdateAssignmentsStaff(List<Cuentas> listaccounts, bool assigned, string position, int idCommitee)
         {
             int result = -1;

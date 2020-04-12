@@ -87,7 +87,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
-    <Compile Include="Controllers\ScheduleController.cs"/>
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Events.xaml.cs">
       <DependentUpon>Events.xaml</DependentUpon>
     </Compile>
@@ -113,6 +113,9 @@
     <Compile Include="Views\NewTask.xaml.cs">
       <DependentUpon>NewTask.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RegisterActivityAssistant.xaml.cs">
+      <DependentUpon>RegisterActivityAssistant.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShowActivity.xaml.cs">
       <DependentUpon>ShowActivity.xaml</DependentUpon>
     </Compile>
@@ -129,13 +132,13 @@
     <Compile Include="Views\UpdateActivity.xaml.cs">
       <DependentUpon>UpdateActivity.xaml</DependentUpon>
     </Compile>
-        <Compile Include="Views\NewActivity.xaml.cs">
+    <Compile Include="Views\NewActivity.xaml.cs">
       <DependentUpon>NewActivity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UpdateSchedule.xaml.cs">
       <DependentUpon>UpdateSchedule.xaml</DependentUpon>
     </Compile>
-     <Compile Include="Views\NewSchedule.xaml.cs">
+    <Compile Include="Views\NewSchedule.xaml.cs">
       <DependentUpon>NewSchedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowTasks.xaml.cs">
@@ -194,6 +197,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RegisterActivityAssistant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShowActivity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,12 +217,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-       <Page Include="Views\NewActivity.xaml">
+    <Page Include="Views\NewActivity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UpdateSchedule.xaml"/>
-     <Page Include="Views\NewSchedule.xaml"/>
+    <Page Include="Views\UpdateSchedule.xaml" />
+    <Page Include="Views\NewSchedule.xaml" />
     <Page Include="Views\ShowTasks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

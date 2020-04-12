@@ -65,7 +65,7 @@ namespace Cliente_PANGEA.Views
 
         private void Button_AssignActovity(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new RegisterActivityAssistant());
         }
         
         private bool EmptyFields()

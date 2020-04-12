@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/02/2020 01:40:13
+-- Date Created: 04/11/2020 02:21:16
 -- Generated from EDMX file: C:\Users\IvanGutru\Desktop\SextoSemestre\2.-DesarrolloDeSoftware\PANGEA\DataAccess\EntityModelPangea.edmx
 -- --------------------------------------------------
 
@@ -20,50 +20,53 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Actividades_Articulos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Actividades] DROP CONSTRAINT [FK_Actividades_Articulos];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Articulos_Tracks]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Articulos] DROP CONSTRAINT [FK_Articulos_Tracks];
-GO
-IF OBJECT_ID(N'[PangeaModelStoreContainer].[FK_AsistentesEvento_Asistentes]', 'F') IS NOT NULL
-    ALTER TABLE [PangeaModelStoreContainer].[AsistentesEvento] DROP CONSTRAINT [FK_AsistentesEvento_Asistentes];
-GO
-IF OBJECT_ID(N'[PangeaModelStoreContainer].[FK_AsistentesEvento_Eventos]', 'F') IS NOT NULL
-    ALTER TABLE [PangeaModelStoreContainer].[AsistentesEvento] DROP CONSTRAINT [FK_AsistentesEvento_Eventos];
+IF OBJECT_ID(N'[dbo].[FK_Actividades_Eventos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Actividades] DROP CONSTRAINT [FK_Actividades_Eventos];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ConceptosFinancieros_Actividades]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ConceptosFinancieros] DROP CONSTRAINT [FK_ConceptosFinancieros_Actividades];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ConceptosFinancieros_Presupuestos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ConceptosFinancieros] DROP CONSTRAINT [FK_ConceptosFinancieros_Presupuestos];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Horarios_Actividades]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Horarios] DROP CONSTRAINT [FK_Horarios_Actividades];
 GO
-IF OBJECT_ID(N'[PangeaModelStoreContainer].[FK_IncripcionActividades_Actividades]', 'F') IS NOT NULL
-    ALTER TABLE [PangeaModelStoreContainer].[IncripcionActividades] DROP CONSTRAINT [FK_IncripcionActividades_Actividades];
-GO
-IF OBJECT_ID(N'[PangeaModelStoreContainer].[FK_IncripcionActividades_Asistentes]', 'F') IS NOT NULL
-    ALTER TABLE [PangeaModelStoreContainer].[IncripcionActividades] DROP CONSTRAINT [FK_IncripcionActividades_Asistentes];
+IF OBJECT_ID(N'[dbo].[FK_IncripcionActividades_Actividades]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[IncripcionActividades] DROP CONSTRAINT [FK_IncripcionActividades_Actividades];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Materiales_Actividades]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Materiales] DROP CONSTRAINT [FK_Materiales_Actividades];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Materiales_Eventos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Materiales] DROP CONSTRAINT [FK_Materiales_Eventos];
+IF OBJECT_ID(N'[dbo].[FK_Tareas_Actividades]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tareas] DROP CONSTRAINT [FK_Tareas_Actividades];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Articulos_Tracks]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Articulos] DROP CONSTRAINT [FK_Articulos_Tracks];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AsistentesEvento_Asistentes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AsistentesEvento] DROP CONSTRAINT [FK_AsistentesEvento_Asistentes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_IncripcionActividades_Asistentes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[IncripcionActividades] DROP CONSTRAINT [FK_IncripcionActividades_Asistentes];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Personal_Comites]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Personal] DROP CONSTRAINT [FK_Personal_Comites];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ConceptosFinancieros_Presupuestos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ConceptosFinancieros] DROP CONSTRAINT [FK_ConceptosFinancieros_Presupuestos];
+GO
 IF OBJECT_ID(N'[dbo].[FK_Personal_Cuentas]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Personal] DROP CONSTRAINT [FK_Personal_Cuentas];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AsistentesEvento_Eventos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AsistentesEvento] DROP CONSTRAINT [FK_AsistentesEvento_Eventos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Materiales_Eventos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Materiales] DROP CONSTRAINT [FK_Materiales_Eventos];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Personal_Eventos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Personal] DROP CONSTRAINT [FK_Personal_Eventos];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Presupuestos_Eventos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Presupuestos] DROP CONSTRAINT [FK_Presupuestos_Eventos];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Tareas_Actividades]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tareas] DROP CONSTRAINT [FK_Tareas_Actividades];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Tracks_Eventos1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tracks] DROP CONSTRAINT [FK_Tracks_Eventos1];
@@ -112,11 +115,11 @@ GO
 IF OBJECT_ID(N'[dbo].[Tracks]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Tracks];
 GO
-IF OBJECT_ID(N'[PangeaModelStoreContainer].[AsistentesEvento]', 'U') IS NOT NULL
-    DROP TABLE [PangeaModelStoreContainer].[AsistentesEvento];
+IF OBJECT_ID(N'[dbo].[AsistentesEvento]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AsistentesEvento];
 GO
-IF OBJECT_ID(N'[PangeaModelStoreContainer].[IncripcionActividades]', 'U') IS NOT NULL
-    DROP TABLE [PangeaModelStoreContainer].[IncripcionActividades];
+IF OBJECT_ID(N'[dbo].[IncripcionActividades]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[IncripcionActividades];
 GO
 
 -- --------------------------------------------------
@@ -134,7 +137,8 @@ CREATE TABLE [dbo].[Actividades] (
     [FechaCreacion] datetime  NOT NULL,
     [Tipo] nvarchar(50)  NOT NULL,
     [UltimaModificacion] datetime  NULL,
-    [IdArticulo] int  NULL
+    [IdArticulo] int  NULL,
+    [Cupo] int  NULL
 );
 GO
 

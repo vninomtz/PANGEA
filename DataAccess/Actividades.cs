@@ -34,6 +34,7 @@ namespace DataAccess
         public string Tipo { get; set; }
         public Nullable<System.DateTime> UltimaModificacion { get; set; }
         public Nullable<int> IdArticulo { get; set; }
+        public Nullable<int> Cupo { get; set; }
     
         public virtual Articulos Articulos { get; set; }
         public virtual Eventos Eventos { get; set; }

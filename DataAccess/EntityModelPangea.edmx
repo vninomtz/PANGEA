@@ -108,6 +108,7 @@
     <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="UltimaModificacion" Type="datetime" Nullable="true" />
     <Property Name="IdArticulo" Type="int" Nullable="true" />
+    <Property Name="Cupo" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Articulos">
     <Key>
@@ -608,6 +609,7 @@
           <NavigationProperty Name="IncripcionActividades" Relationship="PangeaModel.FK_IncripcionActividades_Actividades" FromRole="Actividades" ToRole="IncripcionActividades" />
           <NavigationProperty Name="Materiales" Relationship="PangeaModel.FK_Materiales_Actividades" FromRole="Actividades" ToRole="Materiales" />
           <NavigationProperty Name="Tareas" Relationship="PangeaModel.FK_Tareas_Actividades" FromRole="Actividades" ToRole="Tareas" />
+          <Property Name="Cupo" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="Articulos">
           <Key>
@@ -1042,6 +1044,7 @@
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
           <ScalarProperty Name="UltimaModificacion" ColumnName="UltimaModificacion" />
           <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="Cupo" ColumnName="Cupo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

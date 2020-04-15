@@ -12,15 +12,12 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Horarios
+    public partial class sysdiagram
     {
-        public int Id { get; set; }
-        public string Direccion { get; set; }
-        public System.DateTime FechaInicio { get; set; }
-        public System.DateTime FechaFin { get; set; }
-        public string Lugar { get; set; }
-        public int IdActividad { get; set; }
-    
-        public virtual Actividades Actividades { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

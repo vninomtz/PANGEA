@@ -38,7 +38,7 @@ namespace Cliente_PANGEA.Views
 
         private void btn_newMaterial_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new NewMaterial());
         }
 
         private void btn_search_Click(object sender, RoutedEventArgs e)

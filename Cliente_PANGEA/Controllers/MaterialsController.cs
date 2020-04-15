@@ -26,5 +26,32 @@ namespace Cliente_PANGEA.Controllers
 
             return null;
         }
+
+        public static int SaveMaterial(string name, string description, int quantity, int idEvent, int idActivity)
+        {
+            try
+            {
+                using (var dataBase = new PangeaConnection())
+                {
+                    Materiales newMaterial = new Materiales
+                    {
+                        Nombre = name,
+                        Descripcion = description,
+                        Cantidad = quantity,
+                        IdActividad = idActivity,
+                        IdEvento = idEvent
+
+                    };
+
+                    dataBase.Materiales.Add(newMaterial);
+                    return dataBase.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+        }
     }
 }

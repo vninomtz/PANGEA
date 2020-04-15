@@ -80,6 +80,9 @@
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewMaterial.xaml.cs">
+      <DependentUpon>NewMaterial.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PersonalRegister.xaml.cs">
       <DependentUpon>PersonalRegister.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DeletePersonal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewMaterial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

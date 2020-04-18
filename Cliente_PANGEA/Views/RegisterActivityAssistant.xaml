@@ -59,7 +59,6 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding}" />
-                                <TextBlock Text="{Binding Nombre}"/>
                                 <TextBlock Text="{Binding Correo}" />
                             </StackPanel>
                         </DataTemplate>
@@ -71,15 +70,15 @@
                     Click="btn_RegsiterActivityAssistant_Click" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />
             </Grid>
             <Grid Grid.Column="1">
-                <ListView x:Name="list_Activity" Padding="5" Margin="10,10,10,10">
+                <ListView x:Name="listView_Activities" Padding="5" Margin="100,10,50,10">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding}" />
-                                <TextBlock Text="{Binding Correo}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+
                 </ListView>
             </Grid>
         </Grid>

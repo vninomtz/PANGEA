@@ -114,7 +114,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="descripcion" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
@@ -198,7 +198,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
     <Property Name="Cantidad" Type="int" Nullable="false" />
@@ -220,7 +220,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Gasto_tentativo" Type="float" Nullable="false" />
     <Property Name="Gasto_real" Type="float" Nullable="true" />
     <Property Name="IdEvento" Type="int" Nullable="true" />
@@ -243,7 +243,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Codigo" Type="int" Nullable="false" />
     <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
@@ -266,13 +266,8 @@
   <EntityType Name="IncripcionActividades">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="asistencia" />
-      <PropertyRef Name="pago" />
-      <PropertyRef Name="fecha_inscripcion" />
-      <PropertyRef Name="idActividad" />
-      <PropertyRef Name="idAsistente" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="asistencia" Type="bit" Nullable="false" />
     <Property Name="pago" Type="bit" Nullable="false" />
     <Property Name="fecha_inscripcion" Type="datetime" Nullable="false" />
@@ -615,7 +610,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
@@ -714,7 +709,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
@@ -741,7 +736,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Gasto_tentativo" Type="Double" Nullable="false" />
           <Property Name="Gasto_real" Type="Double" />
           <Property Name="IdEvento" Type="Int32" />
@@ -767,7 +762,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -794,13 +789,8 @@
         <EntityType Name="IncripcionActividades">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="asistencia" />
-            <PropertyRef Name="pago" />
-            <PropertyRef Name="fecha_inscripcion" />
-            <PropertyRef Name="idActividad" />
-            <PropertyRef Name="idAsistente" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="asistencia" Type="Boolean" Nullable="false" />
           <Property Name="pago" Type="Boolean" Nullable="false" />
           <Property Name="fecha_inscripcion" Type="DateTime" Nullable="false" Precision="0" />

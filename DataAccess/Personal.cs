@@ -12,20 +12,8 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-
     public partial class Personal
     {
-        public Personal()
-        {
-
-        }
-        public Personal(Boolean asignado, int idEvento, int idCuenta)
-        {
-            this.Asignado = asignado;
-            this.IdEvento = idEvento;
-            this.IdCuenta = idCuenta;
-
-        }
         public int Id { get; set; }
         public bool Asignado { get; set; }
         public string Cargo { get; set; }

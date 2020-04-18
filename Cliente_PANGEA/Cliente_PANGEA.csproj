@@ -75,6 +75,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\AsistenteController.cs" />
+    <Compile Include="Controllers\AsistentesEventoController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>
@@ -118,6 +119,9 @@
     </Compile>
     <Compile Include="Views\ShowActivity.xaml.cs">
       <DependentUpon>ShowActivity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowAssistants.xaml.cs">
+      <DependentUpon>ShowAssistants.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowCommittee.xaml.cs">
       <DependentUpon>ShowCommittee.xaml</DependentUpon>
@@ -202,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShowActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowAssistants.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

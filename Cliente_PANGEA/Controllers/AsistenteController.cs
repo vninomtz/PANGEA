@@ -39,7 +39,12 @@ namespace Cliente_PANGEA.Controllers
             int result = -1;
             using (var database = new PangeaConnection())
             {
-                AsistentesEvento assistantEvent = new AsistentesEvento(idAssistant,IdEvent);
+                AsistentesEvento assistantEvent = new AsistentesEvento
+                {
+                    IdAsistente = idAssistant,
+                    IdEvento = IdEvent
+                };
+
                 try
                 {
                     database.AsistentesEvento.Add(assistantEvent);
@@ -71,5 +76,45 @@ namespace Cliente_PANGEA.Controllers
             }
             return false;
         }
+        public static List<Asistentes> GetLastAssistant(int idEvent)
+        {
+            using (var database = new PangeaConnection())
+            {
+                int exist = database.Eventos.Where(u => u.Id == idEvent).Count();
+                if (exist > 0)
+                {
+                    int idAsistant = GetLastIdAssistant();
+                    List<Asistentes> assistant = new List<Asistentes>();
+                    try
+                    {
+                        assistant.Add(database.Asistentes.Where(u => u.Id == idAsistant).FirstOrDefault());
+                        return assistant;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+            return null;
+        }
+        public static int GetLastIdAssistant()
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    int idAssistant = database.Asistentes.ToList().Last().Id;
+                    return idAssistant;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
+ 
     }
 }

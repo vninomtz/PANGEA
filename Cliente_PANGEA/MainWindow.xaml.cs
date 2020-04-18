@@ -68,7 +68,7 @@ namespace Cliente_PANGEA
                     centralFrame.Navigate(new DeletePersonal());
                     break;
                 case "ItemAssistants":
-                    centralFrame.Navigate(new AssistantRegister());
+                    centralFrame.Navigate(new ShowAssistants());
                     break;
                 default:
                     break;

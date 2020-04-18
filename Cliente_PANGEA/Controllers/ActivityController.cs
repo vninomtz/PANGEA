@@ -140,5 +140,69 @@ namespace Cliente_PANGEA.Controllers
                 return activityList;
             }
         }
+
+        public static int ValidateNotRegisterActivityAssistant(int idActivity, int idAssistant)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    result = database.IncripcionActividades.Where(i => i.idActividad == idActivity && i.idAsistente == idAssistant).Count();
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
+
+        public static int RegisterActivityAssistant(int isAssistant, int idActivity)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                IncripcionActividades incripcionActividades = new IncripcionActividades
+                {
+                    idActividad = idActivity,
+                    idAsistente = isAssistant,
+                    pago = true,
+                    asistencia = false,
+                    fecha_inscripcion = DateTime.Now
+                };
+                try
+                {
+                    database.IncripcionActividades.Add(incripcionActividades);
+                    var activity = database.Actividades.Where(a=>a.Id == idActivity).FirstOrDefault();
+                    activity.Cupo -= 1;
+                    return result = database.SaveChanges();  
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
+
+        public static List<Horarios> GetEventActivitiesSpaceAvaible(int idEvent)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var activityList = database.Horarios.Include("Actividades").Where(a => a.Actividades.IdEvento == idEvent && a.Actividades.Cupo > 0).ToList();
+                    return activityList;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+
     }
 }

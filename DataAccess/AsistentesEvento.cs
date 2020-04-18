@@ -14,15 +14,6 @@ namespace DataAccess
     
     public partial class AsistentesEvento
     {
-        public AsistentesEvento()
-        {
-
-        }
-        public AsistentesEvento(int idEvento, int idAssistant)
-        {
-            this.IdEvento = idEvento;
-            this.IdAsistente = idAssistant;
-        }
         public bool Asistencia { get; set; }
         public bool Pago { get; set; }
         public double Cantidad { get; set; }

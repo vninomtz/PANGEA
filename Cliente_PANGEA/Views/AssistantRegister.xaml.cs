@@ -26,6 +26,7 @@ namespace Cliente_PANGEA.Views
         public AssistantRegister()
         {
             InitializeComponent();
+            btn_assignActivity.IsEnabled = false;
         }
 
         private void btn_AssistantRegister_Click(object sender, RoutedEventArgs e)
@@ -48,7 +49,7 @@ namespace Cliente_PANGEA.Views
                         if (result > 0)
                         {
                             MessageBox.Show("Asistente registrado con éxito");
-                            CleanFields();
+                            btn_assignActivity.IsEnabled = true;
                         }
                         else
                         {
@@ -65,6 +66,7 @@ namespace Cliente_PANGEA.Views
 
         private void Button_AssignActovity(object sender, RoutedEventArgs e)
         {
+
             NavigationService.Navigate(new RegisterActivityAssistant());
         }
         
@@ -124,6 +126,15 @@ namespace Cliente_PANGEA.Views
             txt_motherLastName.Text = "";
             txt_email.Text = "";
             txt_emailConfirmation.Text = "";
+        }
+
+        private void Button_ClearFlieds(object sender, RoutedEventArgs e)
+        {
+            CleanFields();
+        }
+        private void btn_regresar_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ShowAssistants());
         }
     }
 }

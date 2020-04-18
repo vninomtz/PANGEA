@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/11/2020 02:21:16
+-- Date Created: 04/18/2020 01:25:29
 -- Generated from EDMX file: C:\Users\IvanGutru\Desktop\SextoSemestre\2.-DesarrolloDeSoftware\PANGEA\DataAccess\EntityModelPangea.edmx
 -- --------------------------------------------------
 
@@ -144,7 +144,7 @@ GO
 
 -- Creating table 'Articulos'
 CREATE TABLE [dbo].[Articulos] (
-    [id] int  NOT NULL,
+    [id] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(50)  NOT NULL,
     [descripcion] nvarchar(50)  NOT NULL,
     [fecha_creacion] datetime  NOT NULL,
@@ -228,7 +228,7 @@ GO
 
 -- Creating table 'Materiales'
 CREATE TABLE [dbo].[Materiales] (
-    [Id] int  NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Nombre] nvarchar(50)  NOT NULL,
     [Descripcion] varchar(max)  NOT NULL,
     [Cantidad] int  NOT NULL,
@@ -250,7 +250,7 @@ GO
 
 -- Creating table 'Presupuestos'
 CREATE TABLE [dbo].[Presupuestos] (
-    [Id] int  NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Gasto_tentativo] float  NOT NULL,
     [Gasto_real] float  NULL,
     [IdEvento] int  NULL
@@ -273,7 +273,7 @@ GO
 
 -- Creating table 'Tracks'
 CREATE TABLE [dbo].[Tracks] (
-    [Id] int  NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Codigo] int  NOT NULL,
     [Descripcion] varchar(max)  NOT NULL,
     [Nombre] nvarchar(50)  NOT NULL,
@@ -293,7 +293,7 @@ GO
 
 -- Creating table 'IncripcionActividades'
 CREATE TABLE [dbo].[IncripcionActividades] (
-    [id] int  NOT NULL,
+    [id] int IDENTITY(1,1) NOT NULL,
     [asistencia] bit  NOT NULL,
     [pago] bit  NOT NULL,
     [fecha_inscripcion] datetime  NOT NULL,
@@ -390,10 +390,10 @@ ADD CONSTRAINT [PK_AsistentesEvento]
     PRIMARY KEY CLUSTERED ([Asistencia], [Pago], [Cantidad], [IdAsistente], [IdEvento] ASC);
 GO
 
--- Creating primary key on [id], [asistencia], [pago], [fecha_inscripcion], [idActividad], [idAsistente] in table 'IncripcionActividades'
+-- Creating primary key on [id] in table 'IncripcionActividades'
 ALTER TABLE [dbo].[IncripcionActividades]
 ADD CONSTRAINT [PK_IncripcionActividades]
-    PRIMARY KEY CLUSTERED ([id], [asistencia], [pago], [fecha_inscripcion], [idActividad], [idAsistente] ASC);
+    PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
 -- --------------------------------------------------

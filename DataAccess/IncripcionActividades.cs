@@ -14,6 +14,7 @@ namespace DataAccess
     
     public partial class IncripcionActividades
     {
+       
         public int id { get; set; }
         public bool asistencia { get; set; }
         public bool pago { get; set; }

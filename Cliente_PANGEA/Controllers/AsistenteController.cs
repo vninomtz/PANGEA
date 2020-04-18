@@ -39,7 +39,11 @@ namespace Cliente_PANGEA.Controllers
             int result = -1;
             using (var database = new PangeaConnection())
             {
-                AsistentesEvento assistantEvent = new AsistentesEvento(idAssistant,IdEvent);
+                AsistentesEvento assistantEvent = new AsistentesEvento
+                {
+                    IdAsistente = idAssistant,
+                    IdEvento = IdEvent
+                };
                 try
                 {
                     database.AsistentesEvento.Add(assistantEvent);

@@ -75,9 +75,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\AsistenteController.cs" />
+    <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
+    <Compile Include="Controllers\FinancialConceptsController.cs" />
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewBudget.xaml.cs">
+      <DependentUpon>NewBudget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewFinancialConcept.xaml.cs">
+      <DependentUpon>NewFinancialConcept.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PersonalRegister.xaml.cs">
       <DependentUpon>PersonalRegister.xaml</DependentUpon>
@@ -173,6 +181,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DeletePersonal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewBudget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewFinancialConcept.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

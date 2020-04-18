@@ -15,6 +15,11 @@
             <RowDefinition Height="6*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Text="Nueva Actividad" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button  HorizontalAlignment="Left" Margin="20,0,0,0" Background="{x:Null}" Padding="0"  x:Name="btn_regresar"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="Button_back_Click" >
+            <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+        </Button>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -49,10 +54,6 @@
                 </StackPanel>
                 
             </StackPanel>
-            <Button x:Name="Button_cancel" Background="#FF5C99D6" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        Margin="20" Click="Button_cancel_Click" >
-                Cancelar
-            </Button>
             <Button Grid.Column="1"  x:Name="Button_save" Background="#FF5C99D6" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignRaisedLightButton}"
                          Click="Button_save_Click" Margin="20" >
                 Registrar horario

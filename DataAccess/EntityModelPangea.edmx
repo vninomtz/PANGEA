@@ -147,7 +147,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Monto" Type="float" Nullable="false" />
     <Property Name="Concepto" Type="nvarchar" Nullable="false" MaxLength="50" />
@@ -220,7 +220,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Gasto_tentativo" Type="float" Nullable="false" />
     <Property Name="Gasto_real" Type="float" Nullable="true" />
     <Property Name="IdEvento" Type="int" Nullable="true" />
@@ -653,7 +653,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Monto" Type="Double" Nullable="false" />
           <Property Name="Concepto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -741,7 +741,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Gasto_tentativo" Type="Double" Nullable="false" />
           <Property Name="Gasto_real" Type="Double" />
           <Property Name="IdEvento" Type="Int32" />

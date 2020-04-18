@@ -70,6 +70,9 @@ namespace Cliente_PANGEA
                 case "ItemAssistants":
                     centralFrame.Navigate(new AssistantRegister());
                     break;
+                case "ItemBudget":
+                    centralFrame.Navigate(new NewBudget());
+                    break;
                 default:
                     break;
             }

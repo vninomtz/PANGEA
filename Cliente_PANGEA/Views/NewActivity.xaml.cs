@@ -128,9 +128,9 @@ namespace Cliente_PANGEA.Views
             ClearCostField();
         }
 
-        private void Button_cancel_Click(object sender, RoutedEventArgs e)
+        private void Button_back_Click(object sender, RoutedEventArgs e)
         {
-            ClearFields();
+            NavigationService.Navigate(new ShowActivity());
         }
     }
     }

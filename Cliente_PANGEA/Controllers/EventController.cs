@@ -18,6 +18,7 @@ namespace Cliente_PANGEA.Controllers
                 try
                 {
                     evento = database.Eventos.ToList().Last();
+                    
 
                     
                 }

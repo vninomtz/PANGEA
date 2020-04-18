@@ -81,7 +81,11 @@ namespace Cliente_PANGEA.Controllers
                 try
                 {
                      var idCuenta = cuentas.Id;
-                     Personal personal = new Personal(false, idEvento, idCuenta);
+                    Personal personal = new Personal { 
+                        Asignado = false,
+                        IdEvento = idEvento,
+                        IdCuenta = idCuenta
+                    };
                     if (ExistingAccount(idCuenta,idEvento)== true)
                     {
                         return result = 0;

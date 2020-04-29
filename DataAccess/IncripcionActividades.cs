@@ -24,5 +24,12 @@ namespace DataAccess
     
         public virtual Actividades Actividades { get; set; }
         public virtual Asistentes Asistentes { get; set; }
+
+        public override string ToString()
+        {
+            return
+                Actividades.Tipo + ": " + Actividades.Titulo + "\nCosto: $" + Actividades.Costo + "    Cupo disponible: " + Actividades.Cupo
+                +"\nPago de actividad: Pagado" + "\nAsistencia a Actividad: "+ asistencia;
+        }
     }
 }

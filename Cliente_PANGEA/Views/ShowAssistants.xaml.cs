@@ -65,7 +65,7 @@ namespace Cliente_PANGEA.Views
             if (listViewAssistantsEvent.SelectedItems.Count>0)
             {
                 AsistentesEvento asistentesEvento = (AsistentesEvento)listViewAssistantsEvent.SelectedItem;
-                //this.NavigationService.Navigate(new RegisterActivityAssistant());
+                this.NavigationService.Navigate(new ValidateAssistance(asistentesEvento));
             }
         }
     }

@@ -23,12 +23,26 @@ namespace Cliente_PANGEA.Views
     public partial class RegisterActivityAssistant : Page
     {
         int idEvent = SingletonEvent.GetEvent().Id;
+        Asistentes asistente;
 
         public RegisterActivityAssistant()
         {
             InitializeComponent();
+            btn_RegisterActivityAssistantForValidate.IsEnabled = false;
+            btn_regresarValidarAsistencia.IsEnabled = false;
+           
             LoadAssistant();
             LoadActivities();
+            
+        }
+        public RegisterActivityAssistant(Asistentes asistentes)
+        {
+            InitializeComponent();
+            this.asistente = asistentes;
+            btn_regresar.IsEnabled = false;
+            btn_RegisterActivityAssistant.IsEnabled = false;
+            LoadActivities();
+            LoadAssistantForValidate(asistentes.Id);
         }
        
         private void LoadAssistant()
@@ -42,6 +56,10 @@ namespace Cliente_PANGEA.Views
                 MessageBox.Show("Error de conexión con la base de datos");
             }
 
+        }
+        private void LoadAssistantForValidate(int idAssistant)
+        {
+            list_Asistente.ItemsSource = AsistenteController.GetAssistantsById(idAssistant);
         }
         private void LoadActivities()
         {
@@ -127,5 +145,53 @@ namespace Cliente_PANGEA.Views
             return false;
         }
 
+        private void btn_RegisterActivityAssistantForValidate_Click(object sender, RoutedEventArgs e)
+        {
+            if (ValidateSelectedAssistant() && ValidateSelectedActivity())
+            {
+                Asistentes assistant = (Asistentes)list_Asistente.SelectedItem;
+                Horarios activity = (Horarios)listView_Activities.SelectedItem;
+                MessageBoxResult messageBoxResult = MessageBox.Show("¿Está seguro de de registrar al asistente a la actividad?", "Confirmación de registro", MessageBoxButton.OKCancel);
+                if (messageBoxResult == MessageBoxResult.OK)
+                {
+                    if (!ValidateNOTRegisterAssistantInActivity(activity.Actividades.Id, assistant.Id))
+                    {
+                        if (ActivityController.RegisterActivityAssistant(assistant.Id, activity.Actividades.Id) > 0)
+                        {
+                            MessageBox.Show("Asistente registrado con éxito");
+                            if (ContinueRegistering())
+                            {
+                                LoadActivities();
+                            }
+                            else
+                            {
+                                AsistentesEvento asistentesEvento = GetAssistantEvent();
+                                NavigationService.Navigate(new ValidateAssistance(asistentesEvento));
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error de conexión con la base de datos");
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private void btn_regresarValidarAsistencia_Click(object sender, RoutedEventArgs e)
+        {
+            AsistentesEvento asistentesEvento = GetAssistantEvent();
+            this.NavigationService.Navigate(new ValidateAssistance(asistentesEvento));
+        }
+        private AsistentesEvento GetAssistantEvent()
+        {
+            if (AsistentesEventoController.GetEventAssistantByIdAssistant(this.asistente.Id)!=null)
+            {
+                return AsistentesEventoController.GetEventAssistantByIdAssistant(this.asistente.Id);
+            }
+            MessageBox.Show("Error al recuperar al asistente de evento");
+            return null;
+        }
     }
 }

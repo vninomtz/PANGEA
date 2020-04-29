@@ -115,6 +115,42 @@ namespace Cliente_PANGEA.Controllers
             }
             return result;
         }
- 
+        public static Asistentes GetEventAssistantsById(int idAssistant)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listAssistantsById = database.Asistentes.Where(a => a.Id == idAssistant).FirstOrDefault();
+                    return listAssistantsById;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+        /**
+         * Recuperar el asistente y mostrarlo en la pantalla "RegisterActivityAssistant" con el cosntructor que recibe
+         * como parametro un asistente
+        */
+        public static List<Asistentes> GetAssistantsById(int idAssistant)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listAssistantsById = database.Asistentes.Where(a => a.Id == idAssistant).ToList();
+                    return listAssistantsById;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+
     }
 }

@@ -53,5 +53,62 @@ namespace Cliente_PANGEA.Controllers
                 return -1;
             }
         }
+        public static int UpdateMaterial(string name, string description, int quantity, int idMaterial)
+        {
+            try
+            {
+                using (var dataBase = new PangeaConnection())
+                {
+                    Materiales materialUpdated = dataBase.Materiales.Where(m => m.Id == idMaterial).FirstOrDefault();
+                    materialUpdated.Nombre = name;
+                    materialUpdated.Descripcion = description;
+                    materialUpdated.Cantidad = quantity;
+
+                    try
+                    {
+                        return dataBase.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error en la conexión a la base de datos {ex}");
+                        return -1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -2;
+            }
+        }
+
+        public static bool DeleteMaterial(int idMaterial)
+        {
+            bool result = false;
+            try
+            {
+                using (var dataBase = new PangeaConnection())
+                {
+                    var material = dataBase.Materiales.Where(m => m.Id == idMaterial).FirstOrDefault();
+                    dataBase.Materiales.Attach(material);
+                    dataBase.Materiales.Remove(material);
+                    if (dataBase.SaveChanges() > 0)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en la conexión a la base de datos {ex}");
+                result = false;
+            }
+            return result;
+        }
     }
 }

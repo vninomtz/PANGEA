@@ -34,6 +34,24 @@ namespace Cliente_PANGEA.Views
             isNew = true;
 
         }
+        public NewMaterial(Materiales material)
+        {
+            InitializeComponent();
+            materialUpdated = material;
+            LoadMaterial();
+
+        }
+
+        private void LoadMaterial()
+        {
+            txt_name.Text = materialUpdated.Nombre;
+            txt_description.Text = materialUpdated.Descripcion;
+            txt_quantity.Text = materialUpdated.Cantidad.ToString();
+            listActivities.Add(materialUpdated.Actividades);
+            cb_activities.ItemsSource = listActivities;
+            cb_activities.SelectedItem = listActivities[0];
+
+        }
         private void LoadActivities()
         {
             listActivities = ActivityController.GetAllActivities(IDEVENT);
@@ -95,7 +113,17 @@ namespace Cliente_PANGEA.Views
         }
         private void UpdateMaterial()
         {
-
+            int quantity = int.Parse(txt_quantity.Text);
+            int result = MaterialsController.UpdateMaterial(txt_name.Text, txt_description.Text, quantity, materialUpdated.Id);
+            if (result > 0)
+            {
+                MessageBox.Show("Se actualizo con éxito el material");
+                this.NavigationService.Navigate(new ShowMaterials());
+            }
+            else
+            {
+                MessageBox.Show("Error en la conexión a la BD");
+            }
         }
 
         private void btn_save_Click(object sender, RoutedEventArgs e)
@@ -110,7 +138,7 @@ namespace Cliente_PANGEA.Views
                     }
                     else
                     {
-
+                        UpdateMaterial();
                     }
                 }
                 else
@@ -127,6 +155,24 @@ namespace Cliente_PANGEA.Views
         private void btn_goBack_Click_1(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new ShowMaterials());
+        }
+
+        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            var dialogResult = MessageBox.Show("¿Estás seguro de eliminar este material? ",
+                "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (dialogResult == MessageBoxResult.Yes)
+            {
+                if (MaterialsController.DeleteMaterial(materialUpdated.Id))
+                {
+                    MessageBox.Show("Se eliminó el material con éxito");
+                    this.NavigationService.Navigate(new ShowMaterials());
+                }
+                else
+                {
+                    MessageBox.Show("Error en la conexión a la BD");
+                }
+            }
         }
     }
 }

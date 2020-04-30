@@ -74,8 +74,8 @@ namespace Cliente_PANGEA.Views
             if (listView_Materials.SelectedItems.Count > 0)
             {
                 Materiales material = (Materiales)listView_Materials.SelectedItem;
-                //this.NavigationService.Navigate();
-                MessageBox.Show($"Material seleccionado: {material.Nombre}");
+                this.NavigationService.Navigate(new NewMaterial(material));
+                
             }
         }
     }

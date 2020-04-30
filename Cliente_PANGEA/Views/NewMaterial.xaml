@@ -30,7 +30,7 @@
                 </Button>
                 <Button x:Name="btn_delete" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"
                             Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
-                            ToolTip="Eliminar tarea" Width="40" Height="40" >
+                            ToolTip="Eliminar tarea" Width="40" Height="40" Click="btn_delete_Click" >
                     <materialDesign:PackIcon Kind="Trash"  Width="40" Height="40"/>
                 </Button>
                 <Button x:Name="btn_save" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"

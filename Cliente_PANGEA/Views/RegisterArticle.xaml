@@ -36,42 +36,69 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <TextBox x:Name="txt_ArticleName" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <TextBox  x:Name="txt_ArticleName" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                     VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"
-                    Margin="40,20,40,40" materialDesign:HintAssist.Hint="Nombre del asistente" 
+                    Margin="40,20,40,40" materialDesign:HintAssist.Hint="Nombre del artículo" 
                     Height="62" MaxLines="50" MaxLength="50" IsUndoEnabled="True"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6" materialDesign:HintAssist.Foreground="#FF5C99D6" />
-                <TextBox x:Name="txt_ArticleAutor" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                    <TextBox x:Name="txt_ArticleAutor" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                     VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"
-                    Margin="40,110,40,40" materialDesign:HintAssist.Hint="Nombre del asistente" 
+                    Margin="40,110,40,40" materialDesign:HintAssist.Hint="Nombre del Autor" 
                     Height="62" MaxLines="50" MaxLength="50" IsUndoEnabled="True"   materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6" materialDesign:HintAssist.Foreground="#FF5C99D6"/>
-                <TextBox x:Name="TextBox_articleDescription" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                    <TextBox x:Name="TextBox_articleDescription" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                      VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Descripción"
                      Margin="40,200,40,0" MaxLength="100" materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
-                <ToggleButton
+                </Grid>
+                <Grid Grid.Column="0" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton Grid.Row="1" Grid.Column="0"
                       Style="{StaticResource MaterialDesignFlatToggleButton}"
-                      ToolTip="MaterialDesignFlatToggleButton" Margin="-270,280,100,54">
-                    <materialDesign:PackIcon Kind="Paperclip" Height="30" Width="30" />
-                </ToggleButton>
-                <TextBlock Grid.Column="0" Text="Adjuntar archivo" 
-                    Margin="82,286,250,53"
+                      ToolTip="Adjuntar archivo " Margin="30,-50,0,0" Checked="ToggleButton_Checked">
+                        <materialDesign:PackIcon Kind="Paperclip" Height="30" Width="30" />
+                    </ToggleButton>
+                    <TextBlock Grid.Column="1" x:Name="textblock_Archivo" Text="" 
+                    Margin="10,10,42,59" FontSize="10"
                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                </Grid>
             </Grid>
+
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    
+                    <ListView x:Name="listView_Tracks" Padding="5" Margin="30,20,20,10" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="2" x:Name="btn_RegisterArticle" Margin="90,17,90,20"
+                    <Button Grid.Column="1" x:Name="btn_RegisterArticle" Margin="10,20,200,21"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    VerticalAlignment="Bottom" HorizontalAlignment="Right"
                     ToolTip="Registrar artículo" Content="Registrar artículo"
+                    Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_RegisterArticle_Click"  />
+                    <Button Grid.Column="1" x:Name="btn_TrackManage" Margin="210,20,15,21"
+                    VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    ToolTip="Registrar artículo" Content="Gestionar Tracks"
                     Background="#FF5C99D6" BorderBrush="#FF5C99D6"  />
                 </Grid>
             </Grid>

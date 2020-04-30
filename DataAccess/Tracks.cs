@@ -29,5 +29,10 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Articulos> Articulos { get; set; }
         public virtual Eventos Eventos { get; set; }
+
+        public override string ToString()
+        {
+            return "Código track: " + Codigo + " Nombre: " + Nombre + "\nDescripción: " + Descripcion;
+        }
     }
 }

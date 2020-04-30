@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AsistenteController.cs" />
     <Compile Include="Controllers\AsistentesEventoController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />

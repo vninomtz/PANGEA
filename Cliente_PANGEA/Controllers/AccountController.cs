@@ -30,5 +30,29 @@ namespace Cliente_PANGEA.Controllers
 
             return cuenta;
         }
+
+        public static int UserExist(string email)
+        {
+            try
+            {
+                using(var dataBase = new PangeaConnection())
+                {
+                    int exist = dataBase.Cuentas.Where(c => c.Correo == email).Count();
+                    
+                    if(exist > 0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+        }
     }
 }

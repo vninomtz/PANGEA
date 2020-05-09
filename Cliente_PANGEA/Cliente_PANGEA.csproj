@@ -78,6 +78,7 @@
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
     <Compile Include="Controllers\FinancialConceptsController.cs" />
+    <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>
     </Compile>
@@ -136,6 +137,9 @@
     <Compile Include="SingletonEvent.cs" />
     <Compile Include="Views\CrearComite.xaml.cs">
       <DependentUpon>CrearComite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrackManagment.xaml.cs">
+      <DependentUpon>TrackManagment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UpdateActivity.xaml.cs">
       <DependentUpon>UpdateActivity.xaml</DependentUpon>
@@ -228,6 +232,10 @@
     <Page Include="Views\ShowEvents.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TrackManagment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UpdateActivity.xaml">
       <SubType>Designer</SubType>

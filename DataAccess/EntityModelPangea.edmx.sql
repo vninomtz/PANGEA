@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/12/2020 13:05:23
--- Generated from EDMX file: C:\Users\alanglezh\PANGEA\DataAccess\EntityModelPangea.edmx
+-- Date Created: 04/29/2020 14:17:49
+-- Generated from EDMX file: C:\Users\alan1.LAPTOP-TQF85LFJ\Documents\DESOFT\PANGEA\DataAccess\EntityModelPangea.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -177,7 +177,7 @@ GO
 
 -- Creating table 'ConceptosFinancieros'
 CREATE TABLE [dbo].[ConceptosFinancieros] (
-    [Id] int  NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Tipo] nvarchar(50)  NOT NULL,
     [Monto] float  NOT NULL,
     [Concepto] nvarchar(50)  NOT NULL,
@@ -250,7 +250,7 @@ GO
 
 -- Creating table 'Presupuestos'
 CREATE TABLE [dbo].[Presupuestos] (
-    [Id] int  NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Gasto_tentativo] float  NOT NULL,
     [Gasto_real] float  NULL,
     [IdEvento] int  NULL

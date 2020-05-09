@@ -71,7 +71,7 @@ namespace Cliente_PANGEA
                     centralFrame.Navigate(new AssistantRegister());
                     break;
                 case "ItemBudget":
-                    centralFrame.Navigate(new NewBudget());
+                    centralFrame.Navigate(new TrackManagment());
                     break;
                 default:
                     break;

@@ -143,6 +143,9 @@
     <Compile Include="Views\NewActivity.xaml.cs">
       <DependentUpon>NewActivity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UpdateArticle.xaml.cs">
+      <DependentUpon>UpdateArticle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UpdateSchedule.xaml.cs">
       <DependentUpon>UpdateSchedule.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UpdateArticle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

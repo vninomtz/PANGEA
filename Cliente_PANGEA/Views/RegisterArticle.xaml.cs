@@ -111,10 +111,6 @@ namespace Cliente_PANGEA.Views
             {
                 MessageBox.Show("Artículo registrado con éxito");
             }
-         //   else if(ArticleController.SaveArticle(articulos,idTrack) == -2)
-         //   {
-         //       MessageBox.Show("Artículo ya registrado en el track");
-         //   }
             else
             {
                 MessageBox.Show("Error de conexión con la base de datos");
@@ -150,6 +146,11 @@ namespace Cliente_PANGEA.Views
                 }
                
             }
+        }
+
+        private void btn_TrackManage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UpdateArticle());
         }
     }
 }

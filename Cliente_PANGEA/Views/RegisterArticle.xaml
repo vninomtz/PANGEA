@@ -99,7 +99,7 @@
                     VerticalAlignment="Bottom" HorizontalAlignment="Right"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
                     ToolTip="Registrar artículo" Content="Gestionar Tracks"
-                    Background="#FF5C99D6" BorderBrush="#FF5C99D6"  />
+                    Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_TrackManage_Click"  />
                 </Grid>
             </Grid>
         </Grid>

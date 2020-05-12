@@ -77,6 +77,9 @@
     <Compile Include="Controllers\AsistenteController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
     <Compile Include="Controllers\MaterialsController.cs" />
+    <Compile Include="CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
     <Compile Include="Views\ShowTasks.xaml.cs">
       <DependentUpon>ShowTasks.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Events.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

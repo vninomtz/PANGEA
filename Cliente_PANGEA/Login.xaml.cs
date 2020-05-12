@@ -98,7 +98,9 @@ namespace Cliente_PANGEA
 
         private void btn_register_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ir a ventana Crear cuenta");
+            CreateAccount account = new CreateAccount();
+            account.Show();
+            this.Close();
         }
 
         private void url_recover_Click(object sender, RoutedEventArgs e)

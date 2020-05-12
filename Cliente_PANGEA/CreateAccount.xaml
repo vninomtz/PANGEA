@@ -1,0 +1,77 @@
+﻿<Window x:Class="Cliente_PANGEA.CreateAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Cliente_PANGEA"
+        mc:Ignorable="d"
+        Title="Crear cuenta" Height="700" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".7*" />
+            <RowDefinition Height="9*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="CREAR CUENTA" HorizontalAlignment="Center" FontSize="35" FontWeight="DemiBold" />
+        <Button x:Name="btn_goBack" Grid.Row="1" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"
+                            Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" HorizontalAlignment="Left"
+                            ToolTip="Regresar" Width="40" Height="40" Click="btn_goBack_Click" >
+            <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+        </Button>
+        <Grid Grid.Row="2" Margin="0,20,0,0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <TextBox x:Name="txt_name" materialDesign:HintAssist.Foreground="#FF5C99D6"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                         MaxLength="100" Margin="20" FontSize="17"
+                         materialDesign:HintAssist.Hint="Nombre"
+                         FontWeight="Bold"/>
+                <TextBox x:Name="txt_email" materialDesign:HintAssist.Foreground="#FF5C99D6"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                         MaxLength="100" Margin="20" FontSize="17"
+                         materialDesign:HintAssist.Hint="Correo"
+                         FontWeight="Bold"/>
+                <PasswordBox x:Name="txt_password" materialDesign:HintAssist.Foreground="#FF5C99D6"
+                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                         MaxLength="100" Margin="20" FontSize="17"
+                         materialDesign:HintAssist.Hint="Contraseña"
+                         FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <TextBox x:Name="txt_lastname" materialDesign:HintAssist.Foreground="#FF5C99D6"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                         MaxLength="100" Margin="20" FontSize="17"
+                         materialDesign:HintAssist.Hint="Apellidos"
+                         FontWeight="Bold"/>
+                <TextBox x:Name="txt_phone" materialDesign:HintAssist.Foreground="#FF5C99D6"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                         MaxLength="100" Margin="20" FontSize="17"
+                         materialDesign:HintAssist.Hint="Teléfono"
+                         FontWeight="Bold"/>
+                <PasswordBox x:Name="txt_passwordConfim" materialDesign:HintAssist.Foreground="#FF5C99D6"
+                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                         materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                         MaxLength="100" Margin="20" FontSize="17"
+                         materialDesign:HintAssist.Hint="Confirmar contraseña"
+                         FontWeight="Bold"/>
+
+                <Button  x:Name="btn_register" FontWeight="DemiBold" Margin="0,20,30,0" HorizontalAlignment="Right"
+                         Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                         Width="130" Height="40" ToolTip="Registrarse"  Background="#FF5C99D6" 
+                         BorderBrush="#FF5C99D6" Foreground="#DDFFFFFF" FontSize="19" Click="btn_register_Click">
+                    Registrarse
+                </Button>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

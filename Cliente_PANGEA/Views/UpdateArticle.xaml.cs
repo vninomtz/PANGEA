@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataAccess;
 
 namespace Cliente_PANGEA.Views
 {
@@ -20,14 +21,14 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class UpdateArticle : Page
     {
-        public UpdateArticle()
+        public UpdateArticle(Actividades activityOfArticle)
         {
             InitializeComponent();
         }
 
         private void btn_regresar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RegisterArticle());
+            NavigationService.Navigate(new ShowArticle());
         }
 
         private void btn_guardar_Click(object sender, RoutedEventArgs e)

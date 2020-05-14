@@ -28,6 +28,7 @@ namespace Cliente_PANGEA.Views
         {
             InitializeComponent();
             LoadTracks();
+            LoadActivities();
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -42,7 +43,6 @@ namespace Cliente_PANGEA.Views
             {
                 textblock_Archivo.Text = openFileDialog.FileName;
             }
-            
         }
 
         private void LoadTracks()
@@ -56,7 +56,17 @@ namespace Cliente_PANGEA.Views
                 MessageBox.Show("Error de conexión con la base de datos");
             }
         }
-
+        private void LoadActivities()
+        {
+            if (ActivityController.GetActivitiesWithNullArticle(idEvent)!=null)
+            {
+                listView_Activities.ItemsSource = ActivityController.GetActivitiesWithNullArticle(idEvent);
+            }
+            else
+            {
+                MessageBox.Show("Eror de conexión con la base de datos");
+            }
+        }
         private bool ValidateNotEmptyField()
         {
             if (txt_ArticleName.Text != "" && txt_ArticleAutor.Text !="" && TextBox_articleDescription.Text != "")
@@ -80,7 +90,15 @@ namespace Cliente_PANGEA.Views
             MessageBox.Show("Por favor selecciona un track");
             return false;
         }
-       
+       private bool ValidateSelectionActivity()
+        {
+            if (listView_Activities.SelectedItems.Count>0)
+            {
+                return true;
+            }
+            MessageBox.Show("Por favor selecciona una actividad");
+            return false;
+        }
         private Articulos CreateArticle()
         {
             String articleAutor = txt_ArticleAutor.Text;
@@ -104,10 +122,30 @@ namespace Cliente_PANGEA.Views
             Tracks tracks = (Tracks)listView_Tracks.SelectedItem;
             return tracks.Id;
         }
-        
+        private Actividades GetActivityOfTable()
+        {
+            Actividades activity = (Actividades)listView_Activities.SelectedItem;
+            return activity;
+        }
         private void SaveArticle(Articulos articulos, int idTrack)
         {
-            if (ArticleController.SaveArticle(articulos,idTrack)>0)
+            if (ArticleController.SaveArticle(articulos,idTrack)<=0)
+            {
+                MessageBox.Show("Error de conexión con la base de datos");
+            }
+        }
+        private int GetLastIdArticle()
+        {
+           int  idArticle = ArticleController.GetLastIdArticle();
+            if (idArticle<=0)
+            {
+                
+            }
+            return idArticle;
+        }
+        private void SaveArticleInActivity(Actividades activity, int idArticle)
+        {
+            if (ArticleController.SaveArticleInActivity(activity,idArticle)>0)
             {
                 MessageBox.Show("Artículo registrado con éxito");
             }
@@ -125,6 +163,7 @@ namespace Cliente_PANGEA.Views
             }
             return false;
         }
+  
         private void CleanFlieds()
         {
             txt_ArticleName.Text = "";
@@ -135,13 +174,17 @@ namespace Cliente_PANGEA.Views
         }
         private void btn_RegisterArticle_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidateNotEmptyField() && ValidateSelectionTrack())
+            if (ValidateNotEmptyField() && ValidateSelectionTrack() && ValidateSelectionActivity())
             {
                 Articulos article = CreateArticle();
                 int idTrack = GetIdTrack();
+                Actividades activity = GetActivityOfTable();
+
                 if (!validateArticleRegisterIntracK(article,idTrack))
                 {
                     SaveArticle(article, idTrack);
+                    int idArticle = GetLastIdArticle();
+                    SaveArticleInActivity(activity,idArticle);
                     CleanFlieds();
                 }
                
@@ -150,7 +193,12 @@ namespace Cliente_PANGEA.Views
 
         private void btn_TrackManage_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new UpdateArticle());
+            
         }
+        private void btn_regresar_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ShowArticle());
+        }
+
     }
 }

@@ -124,6 +124,9 @@
     <Compile Include="Views\ShowActivity.xaml.cs">
       <DependentUpon>ShowActivity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ShowArticle.xaml.cs">
+      <DependentUpon>ShowArticle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShowAssistants.xaml.cs">
       <DependentUpon>ShowAssistants.xaml</DependentUpon>
     </Compile>
@@ -220,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShowActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowArticle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

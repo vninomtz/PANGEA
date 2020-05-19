@@ -91,7 +91,11 @@
                         <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <ListView x:Name="listView_Tracks" Padding="5" Margin="0,0,0,0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="217*"/>
+                            <ColumnDefinition Width="278*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView x:Name="listView_Tracks" Padding="5" Margin="0,0,0,0" Grid.ColumnSpan="2" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">

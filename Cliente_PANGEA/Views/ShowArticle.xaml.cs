@@ -46,15 +46,7 @@ namespace Cliente_PANGEA.Views
             NavigationService.Navigate(new RegisterArticle());
         }
 
-        private bool ValidateLoadArticlesByName()
-        {
-            String articleName = txt_ArticleName.Text;
-            if (ArticleController.GetArticlesByName(idEvent, articleName) != null)
-            {
-                return true;
-            }
-            return false;
-        }
+       
         private void btn_search_Click(object sender, RoutedEventArgs e)
         {
             String articleName = txt_ArticleName.Text;

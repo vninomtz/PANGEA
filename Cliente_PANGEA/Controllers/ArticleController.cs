@@ -49,6 +49,26 @@ namespace Cliente_PANGEA.Controllers
             }
             return result;
         }
+        public static int UpdateArticleInActivity(Actividades activity)
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var newArticle = database.Actividades.Where(a => a.Id == activity.Id).FirstOrDefault();
+                    newArticle.Articulos.archivo = activity.Articulos.archivo;
+                    newArticle.Articulos.ultima_actualizacion = DateTime.Now;
+                    result = database.SaveChanges();
+                    return result;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
         public static int GetLastIdArticle()
         {
             int idArticle = 0;
@@ -122,6 +142,21 @@ namespace Cliente_PANGEA.Controllers
                     return articleListByName;
                 }
                 catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+        public static List<Tracks> GetTrackById(int idTrack)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listTracks = database.Tracks.Where(t => t.Id == idTrack).ToList();
+                    return listTracks;
+                }catch(Exception e)
                 {
                     Console.WriteLine(e);
                 }

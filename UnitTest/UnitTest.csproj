@@ -65,6 +65,7 @@
     <Compile Include="ShowArticleTest.cs" />
     <Compile Include="ShowAssistantsTest.cs" />
     <Compile Include="TaskTest.cs" />
+    <Compile Include="UpdateArticleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

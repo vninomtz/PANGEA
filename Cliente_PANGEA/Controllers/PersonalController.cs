@@ -80,13 +80,14 @@ namespace Cliente_PANGEA.Controllers
             {
                 try
                 {
-                     var idCuenta = cuentas.Id;
-                    Personal personal = new Personal { 
+                    var idCuenta = cuentas.Id;
+                    Personal personal = new Personal
+                    {
                         Asignado = false,
                         IdEvento = idEvento,
                         IdCuenta = idCuenta
                     };
-                    if (ExistingAccount(idCuenta,idEvento)== true)
+                    if (ExistingAccount(idCuenta, idEvento) == true)
                     {
                         return result = 0;
                     }
@@ -101,7 +102,7 @@ namespace Cliente_PANGEA.Controllers
             return result;
         }
 
-  
+
         public static List<Personal> GetPersonals(int idEvent)
         {
 

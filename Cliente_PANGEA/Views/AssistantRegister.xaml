@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Cliente_PANGEA.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="990"
       Title="AssistantRegister">
 
     <Grid Background="White">
@@ -26,6 +26,12 @@
              Registro de asistente
             </TextBlock>
         </StackPanel>
+        <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
+                    x:Name="btn_regresar"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="btn_regresar_Click">
+            <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+        </Button>
         <StackPanel Grid.Row="1" Grid.Column="0" >
             <TextBox x:Name="txt_AssistantName"
             Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
@@ -84,6 +90,11 @@
                 Margin="220,-40,0,-12"
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
             ToolTip="Asignar actividad" Content="Asignar actividad" Click="Button_AssignActovity" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />
+            <Button x:Name="btn_cleanFields"
+                Margin="10,35,4,0"
+                Width="150"
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            ToolTip="Limpiar campos" Content="Limpiar Campos" Click="Button_ClearFlieds" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />
         </StackPanel>
     </Grid>
 </Page>

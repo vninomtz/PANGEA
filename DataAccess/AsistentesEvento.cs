@@ -22,5 +22,10 @@ namespace DataAccess
     
         public virtual Asistentes Asistentes { get; set; }
         public virtual Eventos Eventos { get; set; }
+
+        public override string ToString()
+        {
+            return Asistentes.Nombre + " " + Asistentes.Apellido;
+        }
     }
 }

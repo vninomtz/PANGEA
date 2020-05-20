@@ -128,7 +128,7 @@
                     <ListViewItem x:Name="ItemArticles" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FileDocumentBoxTickOutline" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Materiales" VerticalAlignment="Center"  Margin="20 10"/>
+                            <TextBlock Text="Artículos" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

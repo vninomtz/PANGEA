@@ -74,8 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AsistenteController.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
+    <Compile Include="Controllers\AsistentesEventoController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
     <Compile Include="Controllers\FinancialConceptsController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
@@ -125,8 +127,17 @@
     <Compile Include="Views\RegisterActivityAssistant.xaml.cs">
       <DependentUpon>RegisterActivityAssistant.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RegisterArticle.xaml.cs">
+      <DependentUpon>RegisterArticle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShowActivity.xaml.cs">
       <DependentUpon>ShowActivity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowArticle.xaml.cs">
+      <DependentUpon>ShowArticle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowAssistants.xaml.cs">
+      <DependentUpon>ShowAssistants.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowCommittee.xaml.cs">
       <DependentUpon>ShowCommittee.xaml</DependentUpon>
@@ -147,6 +158,9 @@
     <Compile Include="Views\NewActivity.xaml.cs">
       <DependentUpon>NewActivity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UpdateArticle.xaml.cs">
+      <DependentUpon>UpdateArticle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UpdateSchedule.xaml.cs">
       <DependentUpon>UpdateSchedule.xaml</DependentUpon>
     </Compile>
@@ -155,6 +169,9 @@
     </Compile>
     <Compile Include="Views\ShowTasks.xaml.cs">
       <DependentUpon>ShowTasks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ValidateAssistance.xaml.cs">
+      <DependentUpon>ValidateAssistance.xaml</DependentUpon>
     </Compile>
     <Page Include="Events.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -221,7 +238,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RegisterArticle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShowActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowArticle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowAssistants.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,9 +274,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UpdateArticle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UpdateSchedule.xaml" />
     <Page Include="Views\NewSchedule.xaml" />
     <Page Include="Views\ShowTasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidateAssistance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

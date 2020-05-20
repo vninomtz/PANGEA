@@ -44,6 +44,7 @@ namespace Cliente_PANGEA.Controllers
                     IdAsistente = idAssistant,
                     IdEvento = IdEvent
                 };
+
                 try
                 {
                     database.AsistentesEvento.Add(assistantEvent);
@@ -75,5 +76,81 @@ namespace Cliente_PANGEA.Controllers
             }
             return false;
         }
+        public static List<Asistentes> GetLastAssistant(int idEvent)
+        {
+            using (var database = new PangeaConnection())
+            {
+                int exist = database.Eventos.Where(u => u.Id == idEvent).Count();
+                if (exist > 0)
+                {
+                    int idAsistant = GetLastIdAssistant();
+                    List<Asistentes> assistant = new List<Asistentes>();
+                    try
+                    {
+                        assistant.Add(database.Asistentes.Where(u => u.Id == idAsistant).FirstOrDefault());
+                        return assistant;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                }
+            }
+            return null;
+        }
+        public static int GetLastIdAssistant()
+        {
+            int result = -1;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    int idAssistant = database.Asistentes.ToList().Last().Id;
+                    return idAssistant;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return result;
+        }
+        public static Asistentes GetEventAssistantsById(int idAssistant)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listAssistantsById = database.Asistentes.Where(a => a.Id == idAssistant).FirstOrDefault();
+                    return listAssistantsById;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+        /**
+         * Recuperar el asistente y mostrarlo en la pantalla "RegisterActivityAssistant" con el cosntructor que recibe
+         * como parametro un asistente
+        */
+        public static List<Asistentes> GetAssistantsById(int idAssistant)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var listAssistantsById = database.Asistentes.Where(a => a.Id == idAssistant).ToList();
+                    return listAssistantsById;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
+
     }
 }

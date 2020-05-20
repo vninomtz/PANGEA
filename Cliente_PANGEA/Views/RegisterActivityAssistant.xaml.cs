@@ -28,9 +28,8 @@ namespace Cliente_PANGEA.Views
         public RegisterActivityAssistant()
         {
             InitializeComponent();
-            btn_RegisterActivityAssistantForValidate.IsEnabled = false;
-            btn_regresarValidarAsistencia.IsEnabled = false;
-           
+            btn_RegisterActivityAssistantForValidate.Visibility = Visibility.Hidden;
+            btn_regresarValidarAsistencia.Visibility = Visibility.Hidden;
             LoadAssistant();
             LoadActivities();
             
@@ -39,8 +38,8 @@ namespace Cliente_PANGEA.Views
         {
             InitializeComponent();
             this.asistente = asistentes;
-            btn_regresar.IsEnabled = false;
-            btn_RegisterActivityAssistant.IsEnabled = false;
+            btn_regresar.Visibility = Visibility.Hidden;
+            btn_RegisterActivityAssistant.Visibility = Visibility.Hidden;
             LoadActivities();
             LoadAssistantForValidate(asistentes.Id);
         }

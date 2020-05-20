@@ -23,42 +23,51 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class AssistantRegister : Page
     {
+        int idEvent = SingletonEvent.GetEvent().Id;
+        Asistentes assistant;
         public AssistantRegister()
         {
             InitializeComponent();
             btn_assignActivity.IsEnabled = false;
         }
-
+        private Asistentes CreateAssistant()
+        {
+            assistant = new Asistentes
+            {
+                Nombre = txt_AssistantName.Text,
+                Apellido = txt_fatherLastName.Text + txt_motherLastName.Text,
+                Correo = txt_email.Text,
+            };
+            return assistant;
+        }
+        private bool ValidateSaveAssistant(Asistentes assistant, int idEvent)
+        {
+            if (AsistenteController.SaveAssistant(assistant,idEvent)>0)
+            {
+                return true;
+            }
+            MessageBox.Show("Error en la conexión con la base de datos");
+            return false;
+        }
         private void btn_AssistantRegister_Click(object sender, RoutedEventArgs e)
         {
-
             if (!EmptyFields())
             {
                 if (EqualEmails())
                 {
-                    Asistentes asistente = new Asistentes
+                    assistant = CreateAssistant();
+                    if (!AsistenteController.ExistingAssistant(assistant))
                     {
-                        Nombre = txt_AssistantName.Text,
-                        Apellido = txt_fatherLastName.Text + txt_motherLastName.Text,
-                        Correo = txt_email.Text,
-                    };
-                    int idEvent = SingletonEvent.GetEvent().Id;
-                    if (!AsistenteController.ExistingAssistant(asistente))
-                    {
-                        int result = AsistenteController.SaveAssistant(asistente,idEvent);
-                        if (result > 0)
+                        if (ValidateSaveAssistant(assistant,idEvent))
                         {
                             MessageBox.Show("Asistente registrado con éxito");
                             btn_assignActivity.IsEnabled = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error en la conexión con la base de datos");
+                            btn_AssistantRegister.IsEnabled = false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("El asistente "+ asistente.Nombre + " "+asistente.Apellido +" ya se encuentra registrado");
+                        MessageBox.Show("El asistente "+ assistant.Nombre + " "+assistant.Apellido +" ya se encuentra registrado");
                     }
                 }
             }
@@ -126,6 +135,7 @@ namespace Cliente_PANGEA.Views
             txt_motherLastName.Text = "";
             txt_email.Text = "";
             txt_emailConfirmation.Text = "";
+            btn_AssistantRegister.IsEnabled = true;
         }
 
         private void Button_ClearFlieds(object sender, RoutedEventArgs e)

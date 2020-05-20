@@ -77,47 +77,41 @@ namespace Cliente_PANGEA.Controllers
             }
             return null;
         }
-        public static List<IncripcionActividades> GetAssistantActivitiesEvent(int idAssistant)
+        public static List<IncripcionActividades> GetAssistantActivitiesEvent(List<IncripcionActividades> listIdIncription)
         {
             using (var database = new PangeaConnection())
             {
-                if (GetIdEventIncriptionOfAssistant(idAssistant)>0)
-                {
-                    int idIncription = GetIdEventIncriptionOfAssistant(idAssistant);
+                List<IncripcionActividades> listIncriptions = new List<IncripcionActividades>();
                     try
                     {
-                        var inscription = database.IncripcionActividades.Include("Actividades").Where(i => i.id == idIncription).ToList();
-                        return inscription;
-
+                    foreach(var id in listIdIncription){
+                        var inscription = database.IncripcionActividades.Include("Actividades").Where(i => i.id == id.id).FirstOrDefault();
+                        listIncriptions.Add(inscription);
+                    }
+                        return listIncriptions;
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Error al consultar el id de la inscripcion");
-                }
-                
+                    }   
             }
             return null;
         }
-        private static int GetIdEventIncriptionOfAssistant(int idAssitant)
+        public static List<IncripcionActividades> GetIdEventIncriptionOfAssistant(int idAssitant)
         {
             using (var database = new PangeaConnection())
             {
                 try
                 {
-                    var incription = database.IncripcionActividades.Where(i => i.idAsistente == idAssitant).FirstOrDefault();
-                    return incription.id;
+                    var incription = database.IncripcionActividades.Where(i => i.idAsistente == idAssitant).ToList();
+                    return incription;
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                 }
             }
-            return -1;
+            return null;
         }
         public static int ValidateAssistanceInActivity(int idIncriptionActivity)
         {

@@ -22,7 +22,9 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class ValidateAssistance : Page
     {
-        private int idEvent = SingletonEvent.GetEvent().Id;
+        
+        List<IncripcionActividades> idIncription = new List<IncripcionActividades>();
+
         public ValidateAssistance(AsistentesEvento asistenteEvento)
         {
             InitializeComponent();
@@ -35,16 +37,30 @@ namespace Cliente_PANGEA.Views
         }
         private void LoadAssistantActivities(int idAssistant)
         {
-            if (AsistentesEventoController.GetAssistantActivitiesEvent(idAssistant)!= null)
-            {
-                listView_Activities.ItemsSource = AsistentesEventoController.GetAssistantActivitiesEvent(idAssistant);
-            }
-            else
-            {
-                MessageBox.Show("Error de conexión con la base de datos.");
-            }
-            
+            idIncription = GetIncriptionAsistant(idAssistant);
+            if (ValidateGetAsistants())
+                listView_Activities.ItemsSource = AsistentesEventoController.GetAssistantActivitiesEvent(idIncription);
+
         }
+        private bool ValidateGetAsistants()
+        {
+            if (AsistentesEventoController.GetAssistantActivitiesEvent(idIncription) != null)
+            {
+                return true;
+            }
+            MessageBox.Show("Error de conexión con la base de datos No tiene.");
+            return false;
+        }
+        private List<IncripcionActividades> GetIncriptionAsistant(int idAsistant)
+        {
+            if (AsistentesEventoController.GetIdEventIncriptionOfAssistant(idAsistant)!=null)
+            {
+                idIncription = AsistentesEventoController.GetIdEventIncriptionOfAssistant(idAsistant);
+                return idIncription;
+            }
+            return null;
+        }
+        
         private bool ValidateSelectionActivity()
         {
             if (listView_Activities.SelectedItems.Count>0)
@@ -54,7 +70,7 @@ namespace Cliente_PANGEA.Views
             MessageBox.Show("Favor de seleccionar una Actividad");
             return false;
         }
-        private IncripcionActividades GetIncriptionActivityInList()
+        private IncripcionActividades GetIncriptionActivityOfList()
         {
             IncripcionActividades incriptionActivity = (IncripcionActividades)listView_Activities.SelectedItem;
             return incriptionActivity;
@@ -68,24 +84,33 @@ namespace Cliente_PANGEA.Views
             MessageBox.Show("Favor de seleccionar al asistente");
             return false;
         }
+        private bool ValidateAssistanceInActivity(IncripcionActividades incriptionActivity)
+        {
+            if (AsistentesEventoController.ValidateAssistanceInActivity(incriptionActivity.id) > 0)
+            {
+                return true;
+            }else if (AsistentesEventoController.ValidateAssistanceInActivity(incriptionActivity.id) == 0)
+            {
+                MessageBox.Show("La asistencia a la actividad seleccionada ya fue registrada");
+                return false;
+            }
+            MessageBox.Show("Error de conexión con la base de datos");
+            return false;
+        }
        
         private void btn_ValidateAssistance_Click(object sender, RoutedEventArgs e)
         {
             if (ValidateSelectionActivity() && ValidateSelectionAssistant())
             {
-                if (GetIncriptionActivityInList()!=null)
+                if (GetIncriptionActivityOfList()!=null)
                 {
-                    IncripcionActividades incriptionActivity = GetIncriptionActivityInList();
-                    if (AsistentesEventoController.ValidateAssistanceInActivity(incriptionActivity.id) >0)
+                    IncripcionActividades incriptionActivity = GetIncriptionActivityOfList();
+                    if (ValidateAssistanceInActivity(incriptionActivity))
                     {
                         MessageBox.Show("Asistencia en actividad registrada");
                         AsistentesEvento eventAssistant = (AsistentesEvento)listView_Asistente.SelectedItem;
                         LoadAssistantActivities(eventAssistant.IdAsistente);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error de conexión con la base de datos");
-                    }                
+                    }           
                 }
             }
         }

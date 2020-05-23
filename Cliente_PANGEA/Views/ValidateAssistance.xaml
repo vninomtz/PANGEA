@@ -1,13 +1,13 @@
-﻿<Page x:Class="Cliente_PANGEA.Views.RegisterActivityAssistant"
+﻿<Page x:Class="Cliente_PANGEA.Views.ValidateAssistance"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Cliente_PANGEA.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="990"
-      Title="RegisterActivityAssistant">
+      Title="ValidateAssistance">
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -18,23 +18,17 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".5*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".5*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="1" Text="Asignar Actividad"  FontWeight="Bold"  Margin="60,15,300,10"
+            <TextBlock Grid.Column="1" Text="Gestionar asistente en actividad"  FontWeight="Bold"  Margin="20,15,170,10"
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline4TextBlock}" Grid.ColumnSpan="2"/>
             <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
                     x:Name="btn_regresar"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
                     ToolTip="Regresar" Width="40" Height="40" Click="btn_regresar_Click">
-                <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
-            </Button>
-            <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
-                    x:Name="btn_regresarValidarAsistencia"
-                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
-                    ToolTip="Regresar" Width="40" Height="40" Click="btn_regresarValidarAsistencia_Click" >
                 <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
             </Button>
         </Grid>
@@ -46,7 +40,7 @@
             <TextBlock Grid.Column="0" Text="Asistente" 
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-            <TextBlock Grid.Column="1" Text="Lista de actividades" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Grid.Column="1" Text="Lista de actividades del Asistente" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline6TextBlock}"      />
         </Grid>
         <Grid Grid.Row="2">
@@ -60,27 +54,27 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <ListView x:Name="list_Asistente" Grid.Row="0" >
+                <ListView x:Name="listView_Asistente" Grid.Row="0" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding}" />
-                                <TextBlock Text="{Binding Correo}" />
+                                <TextBlock Text="{Binding }" />
+                                <TextBlock Text="{Binding Asistentes.Correo}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button Grid.Row="2" x:Name="btn_RegisterActivityAssistant" Margin="123,27,101,27"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                    ToolTip="Guardar asignación" Content="Guardar asignación"
-                    Click="btn_RegsiterActivityAssistant_Click" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />
-                <Button Grid.Row="2" x:Name="btn_RegisterActivityAssistantForValidate" Margin="123,27,101,27"
-                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                    ToolTip="Guardar asignación" Content="Guardar asignación"
-                    Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_RegisterActivityAssistantForValidate_Click" />
+                    ToolTip="Asignar actividad" Content="Asignar actividad"
+                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_RegisterActivityAssistant_Click" />
             </Grid>
             <Grid Grid.Column="1">
-                <ListView x:Name="listView_Activities" Padding="5" Margin="100,10,50,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="0" x:Name="listView_Activities" Padding="5" Margin="100,10,50,10">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
@@ -90,6 +84,10 @@
                     </ListView.ItemTemplate>
 
                 </ListView>
+                <Button Grid.Row="1" x:Name="btn_ValidateAssistance" Margin="300,15,100,30"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    ToolTip="Asignar actividad" Content="Validar asistencia"
+                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_ValidateAssistance_Click" />
             </Grid>
         </Grid>
     </Grid>

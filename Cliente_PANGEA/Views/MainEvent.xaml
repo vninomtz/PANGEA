@@ -17,16 +17,10 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Button
-                        x:Name="Button_back"
-                        Background="#0000"
-                        Grid.Row="1"
-                        BorderBrush="Transparent"
-                        HorizontalAlignment="Left"                   
-                        VerticalAlignment="Top" 
-                        ToolTip="Regresar"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_back_Click">
-                <materialDesign:PackIcon  Kind="KeyboardBackspace" Width="30" Height="30" />
+            <Button  HorizontalAlignment="Left" Margin="20,0,0,40" Background="{x:Null}" Padding="0"  x:Name="Button_back"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar a mis eventos" Width="40" Height="40" Click="Button_back_Click" >
+                <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
             </Button>
             <TextBlock x:Name="TextBlock_title" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button

@@ -68,7 +68,13 @@ namespace Cliente_PANGEA
                     centralFrame.Navigate(new DeletePersonal());
                     break;
                 case "ItemAssistants":
-                    centralFrame.Navigate(new AssistantRegister());
+                    centralFrame.Navigate(new ShowAssistants());
+                    break;
+                case "ItemArticles":
+                    centralFrame.Navigate(new ShowArticle());
+                    break;
+                case "ItemBudget":
+                    centralFrame.Navigate(new TrackManagment());
                     break;
                 case "ItemMaterials":
                     centralFrame.Navigate(new ShowMaterials());

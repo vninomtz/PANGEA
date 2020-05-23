@@ -14,6 +14,7 @@ namespace DataAccess
     
     public partial class IncripcionActividades
     {
+       
         public int id { get; set; }
         public bool asistencia { get; set; }
         public bool pago { get; set; }
@@ -23,5 +24,12 @@ namespace DataAccess
     
         public virtual Actividades Actividades { get; set; }
         public virtual Asistentes Asistentes { get; set; }
+
+        public override string ToString()
+        {
+            return
+                Actividades.Tipo + ": " + Actividades.Titulo + "\nCosto: $" + Actividades.Costo + "    Cupo disponible: " + Actividades.Cupo
+                +"\nPago de actividad: Pagado" + "\nAsistencia a Actividad: "+ asistencia;
+        }
     }
 }

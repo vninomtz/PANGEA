@@ -1,4 +1,5 @@
 ﻿using Cliente_PANGEA.Controllers;
+using Cliente_PANGEA.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,6 @@ namespace Cliente_PANGEA
             centralFrame.Navigate(new ShowEvents());
             centralFrame.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
             txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
-            Button_account.Content = SingletonAccount.GetAccount().Correo;
             Button_account.Visibility = Visibility.Visible;
 
         }
@@ -47,7 +47,7 @@ namespace Cliente_PANGEA
 
         private void Button_account_Click(object sender, RoutedEventArgs e)
         {
-
+            centralFrame.Navigate(new ModifyAccount());
         }
     }
 }

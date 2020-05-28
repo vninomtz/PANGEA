@@ -12,7 +12,6 @@ namespace UnitTest
     [TestClass]
     public class ActivityTest
     {
-
         [TestMethod]
         public void SaveActivityTest()
         {

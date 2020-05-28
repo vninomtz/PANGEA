@@ -14,11 +14,13 @@ namespace DataAccess
     
     public partial class AsistentesEvento
     {
+
         public AsistentesEvento(int idAssistant, int IdEvent)
         {
             this.IdAsistente = idAssistant;
             this.IdEvento = IdEvent;
         }
+
         public bool Asistencia { get; set; }
         public bool Pago { get; set; }
         public double Cantidad { get; set; }
@@ -27,5 +29,10 @@ namespace DataAccess
     
         public virtual Asistentes Asistentes { get; set; }
         public virtual Eventos Eventos { get; set; }
+
+        public override string ToString()
+        {
+            return Asistentes.Nombre + " " + Asistentes.Apellido;
+        }
     }
 }

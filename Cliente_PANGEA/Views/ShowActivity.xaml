@@ -10,7 +10,7 @@
       Title="ShowActivity">
 
     <Grid Background="White">
-        <ListView Margin="40,100,40,0" Grid.Column="0" x:Name="listViewActivities">
+        <ListView Margin="115,125,-35,-25" Grid.Column="0" x:Name="listViewActivities">
             <ListView.View >
                 <GridView>
                     <GridViewColumn Header="Titulo" Width="300" DisplayMemberBinding="{Binding Titulo}"/>

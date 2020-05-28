@@ -24,7 +24,7 @@
             </Button>
             <Button x:Name="btn_save" Grid.Row="1" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"
                             Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" HorizontalAlignment="Left"
-                            ToolTip="Guardar" Width="40" Height="40"  >
+                            ToolTip="Guardar" Width="40" Height="40" Click="btn_save_Click"  >
                 <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
             </Button>
         </StackPanel>

@@ -30,5 +30,65 @@ namespace Cliente_PANGEA.Controllers
 
             return cuenta;
         }
+
+        public static int UserExist(string email)
+        {
+            try
+            {
+                using(var dataBase = new PangeaConnection())
+                {
+                    int exist = dataBase.Cuentas.Where(c => c.Correo == email).Count();
+                    
+                    if(exist > 0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+        }
+
+        public static bool SaveUser(string name, string lastname, string email, string phone, string password)
+        {
+            try
+            {
+                using (var dataBase = new PangeaConnection())
+                {
+                    Cuentas newAccount = new Cuentas
+                    {
+                        Nombre = name,
+                        Apellido = lastname,
+                        Correo = email,
+                        Telefono = phone,
+                        Contrasenia = password
+
+                    };
+
+                    dataBase.Cuentas.Add(newAccount);
+                    int result = dataBase.SaveChanges();
+
+                    if (result > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace Cliente_PANGEA
             InitializeComponent();
             centralFrame.Navigate(new ShowEvents());
             centralFrame.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
+            txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
             Button_account.Content = SingletonAccount.GetAccount().Correo;
             Button_account.Visibility = Visibility.Visible;
 
@@ -36,10 +37,17 @@ namespace Cliente_PANGEA
 
         }
 
-       
+        private void Button_signout_Click(object sender, RoutedEventArgs e)
+        {
+            SingletonAccount.SetAccount(null);
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
 
-      
+        private void Button_account_Click(object sender, RoutedEventArgs e)
+        {
 
-        
+        }
     }
 }

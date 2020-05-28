@@ -40,16 +40,13 @@
                 <TextBlock x:Name="txt_UserName" Text="Usuario" VerticalAlignment="Center" FontSize="16" Foreground="White"/>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10" Foreground="White">
                     <StackPanel Width="auto">
-                        <Button x:Name="Button_account" Content="Cuenta"/>
+                        <Button x:Name="Button_account" Content="Cuenta" Click="Button_account_Click" />
                         <Separator/>
-                        <Button Content="Cuenta"/>                        
-                        <Button Content="Ayuda"/>
-                        <Separator/>
-                        <Button Content="Cerrar Sesión"/>
+                        <Button x:Name="Button_signout" Content="Cerrar Sesión" Click="Button_signout_Click"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White">G E A</TextBlock>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White">P A N G E A</TextBlock>
         </Grid>
 
 

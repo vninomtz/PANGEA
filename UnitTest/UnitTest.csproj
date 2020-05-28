@@ -58,21 +58,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityTest.cs" />
-    <Compile Include="ArticleRegisterTest.cs" />
     <Compile Include="ComiteTest.cs" />
-    <Compile Include="EventTest.cs" />
-    <Compile Include="FinancialConceptTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScheduleTest.cs" />
     <Compile Include="TaskTest.cs" />
-    <Compile Include="TrackTest.cs" />
-    <Compile Include="RegisterActivityAssistantTest.cs" />
-    <Compile Include="ShowArticleTest.cs" />
-    <Compile Include="ShowAssistantsTest.cs" />
-    <Compile Include="TaskTest.cs" />
-    <Compile Include="UpdateArticleTest.cs" />
-    <Compile Include="ValidateAssistanceTest.cs" />
+    <Compile Include="MaterialsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

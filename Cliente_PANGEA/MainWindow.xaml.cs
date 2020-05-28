@@ -76,11 +76,25 @@ namespace Cliente_PANGEA
                 case "ItemBudget":
                     centralFrame.Navigate(new TrackManagment());
                     break;
+                case "ItemMaterials":
+                    centralFrame.Navigate(new ShowMaterials());
+                    break;
                 default:
                     break;
             }
         }
 
+        private void Button_account_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void Button_signout_Click(object sender, RoutedEventArgs e)
+        {
+            SingletonAccount.SetAccount(null);
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
     }
 }

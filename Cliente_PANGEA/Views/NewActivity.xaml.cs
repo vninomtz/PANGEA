@@ -44,11 +44,15 @@ namespace Cliente_PANGEA.Views
             {
                 activity.Gratuito = false;
                 activity.Costo = Double.Parse(TextBox_cantidad.Text);
-            }
-            else
+            }else
             {
                 activity.Gratuito = true;
                 activity.Costo = 0;
+            }
+
+            if(MaterialDesignFilled.IsChecked.Value)
+            {
+                activity.Cupo = Int32.Parse(TextBox_capacity.Text);
             }
 
             return ActivityController.SaveActivity(activity);
@@ -61,6 +65,15 @@ namespace Cliente_PANGEA.Views
             TextBox_activityDescription.Text = String.Empty;
             TextBox_cantidad.Text = String.Empty;
             TextBox_activityType.Text = String.Empty;
+            TextBox_capacity.Text = String.Empty;
+        }
+
+        public void ClearCapacityField()
+        {
+            if (MaterialDesignFilled.IsChecked.Value == false)
+            {
+                TextBox_capacity.Text = String.Empty;
+            }
         }
 
         public void ClearCostField()
@@ -76,6 +89,19 @@ namespace Cliente_PANGEA.Views
             double result;
             bool isValid = true;
             if (!Double.TryParse(TextBox_cantidad.Text, out result))
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        private bool ValidateCapacity()
+        {
+            int result;
+            bool isValid = true;
+
+            if (!Int32.TryParse(TextBox_capacity.Text, out result))
             {
                 isValid = false;
             }
@@ -101,6 +127,12 @@ namespace Cliente_PANGEA.Views
                 {
                     isValid = false;
                 }
+            }else if (MaterialDesignFilled.IsChecked.Value)
+            {
+                if (String.IsNullOrEmpty(TextBox_capacity.Text))
+                {
+                    isValid = false;
+                }
             }
             return isValid;
          }
@@ -114,7 +146,12 @@ namespace Cliente_PANGEA.Views
             else if (!ValidateCost() && MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
             {
                 MessageBox.Show("Por favor ingrese una cantidad correcta ", "Campo incorrecto");
-            } else if (SaveActivity() > 0)
+            }
+            else if (!ValidateCapacity())
+            {
+                MessageBox.Show("Por favor ingrese un cupo correcto", "Campo incorrecto");
+            }
+            else if (SaveActivity() > 0)
             {
                 MessageBox.Show("Actividad guardada", "Operación exitosa");
                 NavigationService.Navigate(new NewSchedule());
@@ -128,10 +165,17 @@ namespace Cliente_PANGEA.Views
             ClearCostField();
         }
 
+        private void MaterialDesignFilledTextField_Click(object sender, RoutedEventArgs e)
+        {
+            ClearCapacityField();
+        }
+
         private void Button_back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ShowActivity());
         }
+
+       
     }
     }
 

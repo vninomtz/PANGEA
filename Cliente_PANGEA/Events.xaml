@@ -39,7 +39,7 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White">G E A</TextBlock>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White">P A N G E A</TextBlock>
 
 
         </Grid>

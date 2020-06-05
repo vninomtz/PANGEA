@@ -33,7 +33,23 @@
                      VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Descripción"
                      Margin="20,30,20,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
                           />
-                
+
+                <StackPanel>
+                    <CheckBox x:Name="MaterialDesignFilled" IsChecked="True" Margin="20,0,0,0"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"
+                              Background="#FF5C99D6" Click="MaterialDesignFilledTextField_Click"   >
+                        Cupo limitado
+                    </CheckBox>
+                    <TextBox x:Name="TextBox_capacity" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" VerticalAlignment="Top"
+                                AcceptsReturn="True" Margin="20,10,20,20"
+                                TextWrapping="Wrap"  materialDesign:HintAssist.Foreground="#FF5C99D6"  materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"                           
+                                materialDesign:HintAssist.Hint="Cupo" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilled}" 
+                                Background="#FF5C99D6" />
+
+                </StackPanel>
+
+
+
+
             </StackPanel>
 
             <StackPanel Grid.Column="1">

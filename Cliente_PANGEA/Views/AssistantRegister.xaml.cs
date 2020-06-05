@@ -35,7 +35,7 @@ namespace Cliente_PANGEA.Views
             assistant = new Asistentes
             {
                 Nombre = txt_AssistantName.Text,
-                Apellido = txt_fatherLastName.Text + txt_motherLastName.Text,
+                Apellido = txt_fatherLastName.Text + " " +txt_motherLastName.Text,
                 Correo = txt_email.Text,
             };
             return assistant;

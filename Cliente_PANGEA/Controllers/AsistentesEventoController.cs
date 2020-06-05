@@ -113,6 +113,22 @@ namespace Cliente_PANGEA.Controllers
             }
             return null;
         }
+        public static List<IncripcionActividades> GetListEventIncriptionOfAssistantWithAssitanceValidate(int idAssitant)
+        {
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    var incription = database.IncripcionActividades.Where(i => i.idAsistente == idAssitant && i.asistencia==true).ToList();
+                    return incription;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            return null;
+        }
         public static int ValidateAssistanceInActivity(int idIncriptionActivity)
         {
             int result = -1;

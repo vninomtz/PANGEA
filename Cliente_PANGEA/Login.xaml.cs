@@ -105,7 +105,9 @@ namespace Cliente_PANGEA
 
         private void url_recover_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ir a ventana recuperar contraseña");
+            RecoverPassword recoverPassword = new RecoverPassword();
+            recoverPassword.Show();
+            this.Close();
         }
     }
 }

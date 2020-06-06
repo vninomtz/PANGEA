@@ -90,7 +90,7 @@
     </Compile>
     <Compile Include="Views\GenerateConstancy.xaml.cs">
       <DependentUpon>GenerateConstancy.xaml</DependentUpon>
-    <Compile/>
+    </Compile>
     <Compile Include="SingletonPersonal.cs" />
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>

@@ -7,6 +7,7 @@ using System.Windows.Navigation;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using Microsoft.Win32;
 
 namespace Cliente_PANGEA.Views
 {
@@ -38,8 +39,13 @@ namespace Cliente_PANGEA.Views
 
         private void Button_PDF_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.ShowDialog();
+
+            FileStream fileStream = new FileStream(saveFileDialog.FileName + ".pdf", FileMode.Create);
+
             Document doc = new Document();
-            PdfWriter.GetInstance(doc, new FileStream("Programa del Evento.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, fileStream);
             doc.Open();
 
             Paragraph title = new Paragraph();
@@ -68,7 +74,7 @@ namespace Cliente_PANGEA.Views
 
 
             doc.Close();
-            System.Diagnostics.Process.Start("Programa del Evento.pdf");
+            System.Diagnostics.Process.Start(saveFileDialog.FileName + ".pdf");
 
 
 

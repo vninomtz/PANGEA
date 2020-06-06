@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -84,6 +85,29 @@ namespace Cliente_PANGEA.Views
             }
         }
 
+        public bool CorrectFields()
+        {
+
+            bool result = true;
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            if (!regexName.IsMatch(TextBox_activityDescription.Text))
+            {
+                result = false;
+            }
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            if (!regexDescription.IsMatch(TextBox_activityTitle.Text))
+            {
+
+                result = false;
+            }
+            if (!regexDescription.IsMatch(TextBox_activityType.Text))
+            {
+
+                result = false;
+            }
+            return result;
+        }
+
         private bool ValidateCost()
         {
             double result;
@@ -142,6 +166,9 @@ namespace Cliente_PANGEA.Views
             if (!ValidateEmptyFields())
             {
                 MessageBox.Show("Por favor ingrese información en todos los campos", "Campos vacios");
+            } else if (!CorrectFields())
+            {
+                MessageBox.Show("Los campos contienen datos invalidos");
             }
             else if (!ValidateCost() && MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
             {

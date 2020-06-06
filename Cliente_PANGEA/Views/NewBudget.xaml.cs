@@ -35,14 +35,11 @@ namespace Cliente_PANGEA.Views
             
             if (budget == "-1")
             {
-                Console.WriteLine("Ex");
                 budget = "0";
             }
             TextBox_tentativeExpense.Text = budget;
            
-            
-
-            
+                      
         }
 
         public void LoadFinancialConceptsTable()

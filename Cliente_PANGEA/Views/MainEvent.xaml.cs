@@ -2,6 +2,7 @@
 using Cliente_PANGEA.Views;
 using DataAccess;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -59,6 +60,29 @@ namespace Cliente_PANGEA
             Button_edit.Visibility = Visibility.Hidden;
            
           
+        }
+
+        public bool CorrectFields()
+        {
+
+            bool result = true;
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            if (!regexName.IsMatch(TextBox_eventName.Text))
+            {
+                result = false;
+            }
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            if (!regexDescription.IsMatch(TextBox_place.Text))
+            {
+
+                result = false;
+            }
+            if (!regexDescription.IsMatch(TextBox_description.Text))
+            {
+
+                result = false;
+            }
+            return result;
         }
 
         public void DisableFields()
@@ -158,6 +182,9 @@ namespace Cliente_PANGEA
             else if (!ValidateCost())
             {
                 MessageBox.Show("Ingresa una cantidad correcta por favor");
+            } else if (!CorrectFields())
+            {
+                MessageBox.Show("Los campos contienen caracteres invalidos");
             }
             else if (DatePicker_initialDate.SelectedDate.Value.CompareTo(DatePicker_endDate.SelectedDate.Value) > 0)
             {

@@ -15,11 +15,19 @@
             <RowDefinition Height="6*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Text="Presupuesto" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="Button_delete" Grid.Row="1" Background="Transparent"  Margin="20,10,0,20" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+        <Button x:Name="Button_delete" Grid.Row="0" Background="Transparent"  Margin="20,10,0,20" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top"
                             Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
                             ToolTip="Eliminar concepto financiero" Width="40" Height="40" Click="Button_delete_Click"  >
             <materialDesign:PackIcon Kind="Trash"  Width="40" Height="40"/>
         </Button>
+
+        <Button x:Name="Button_save"  HorizontalAlignment="Left" VerticalAlignment="Top"  Background="{x:Null}" Padding="0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" 
+                    ToolTip="Guardar presupuesto" Width="40" Height="40"  Margin="80,10,0,20" Click="Button_save_Click">
+            <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
+
+        </Button>
+
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
@@ -29,12 +37,7 @@
                 Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Editar" Margin="0,0,400,0" Click="Button_edit_Click" >
                 <materialDesign:PackIcon Kind="Edit" Padding="1" />
             </Button>
-            <Button x:Name="Button_save"  HorizontalAlignment="Center" VerticalAlignment="Top"  Background="{x:Null}" Padding="0"
-                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" 
-                    ToolTip="Guardar presupuesto" Width="40" Height="40"  Margin="0,0,500,0" Click="Button_save_Click">
-            <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
-
-            </Button>
+            
             <Button x:Name="Button_editOff"  Background="#FF5C99D6" BorderBrush="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center"  
                 Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" ToolTip="Cancelarédición" Margin="0,0,400,0" Click="Button_editOff_Click" >
                 <materialDesign:PackIcon Kind="EditOff"  Padding="1" />

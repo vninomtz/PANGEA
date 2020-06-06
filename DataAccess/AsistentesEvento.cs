@@ -19,13 +19,9 @@ namespace DataAccess
         public double Cantidad { get; set; }
         public int IdAsistente { get; set; }
         public int IdEvento { get; set; }
+        public int IdAsistentesEvento { get; set; }
     
         public virtual Asistentes Asistentes { get; set; }
         public virtual Eventos Eventos { get; set; }
-
-        public override string ToString()
-        {
-            return Asistentes.Nombre + " " + Asistentes.Apellido;
-        }
     }
 }

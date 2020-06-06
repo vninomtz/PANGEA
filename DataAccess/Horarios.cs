@@ -22,11 +22,5 @@ namespace DataAccess
         public int IdActividad { get; set; }
     
         public virtual Actividades Actividades { get; set; }
-        public override string ToString()
-        {
-            return
-                Actividades.Tipo + ": " + Actividades.Titulo + "\nCosto: $" + Actividades.Costo + "    Cupo disponible: " + Actividades.Cupo +
-                "\nFecha de inicio: " + FechaInicio + " " + "\nFecha fin: " + FechaFin;
-        }
     }
 }

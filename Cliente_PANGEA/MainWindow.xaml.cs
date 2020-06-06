@@ -82,6 +82,21 @@ namespace Cliente_PANGEA
             }
         }
 
+        private void ValidateRol()
+        {
+            String cargo = SingletonPersonal.GetPersonal().Cargo;
+            if (cargo == "Miembro Comité")
+            {
+                ItemBudget.IsEnabled = false;
+                ItemPersonal.IsEnabled = false;
+                ItemPersonal.IsEnabled = false;
+
+            } else if(cargo == "Líder Comité")
+            {
+                ItemPersonal.IsEnabled = false;
+            }
+        }
+
         private void Button_account_Click(object sender, RoutedEventArgs e)
         {
             centralFrame.Navigate(new ModifyAccount());

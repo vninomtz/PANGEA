@@ -4,490 +4,506 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PangeaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Actividades">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdEvento" Type="int" Nullable="false" />
-          <Property Name="Titulo" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
-          <Property Name="Gratuito" Type="bit" Nullable="false" />
-          <Property Name="Costo" Type="float" Nullable="false" />
-          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UltimaModificacion" Type="datetime" />
-          <Property Name="IdArticulo" Type="int" />
-          <Property Name="Cupo" Type="int" />
-        </EntityType>
-        <EntityType Name="Articulos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
-          <Property Name="ultima_actualizacion" Type="datetime" Nullable="false" />
-          <Property Name="autor" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="archivo" Type="varchar(max)" Nullable="false" />
-          <Property Name="idTrack" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Asistentes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AsistentesEvento">
-          <Key>
-            <PropertyRef Name="IdAsistentesEvento" />
-          </Key>
-          <Property Name="IdAsistentesEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Asistencia" Type="bit" Nullable="false" />
-          <Property Name="Pago" Type="bit" Nullable="false" />
-          <Property Name="Cantidad" Type="float" Nullable="false" />
-          <Property Name="IdAsistente" Type="int" Nullable="false" />
-          <Property Name="IdEvento" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Comites">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
-          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-          <Property Name="UltimaModificacion" Type="datetime" />
-          <Property Name="IdEvento" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ConceptosFinancieros">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Monto" Type="float" Nullable="false" />
-          <Property Name="Concepto" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Fecha_creacion" Type="datetime" Nullable="false" />
-          <Property Name="IdActividad" Type="int" Nullable="false" />
-          <Property Name="IdPresupuesto" Type="int" />
-        </EntityType>
-        <EntityType Name="Cuentas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Correo" Type="nvarchar" MaxLength="510" Nullable="false" />
-          <Property Name="Contrasenia" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="Telefono" Type="nvarchar" MaxLength="10" />
-          <Property Name="Token" Type="nvarchar" MaxLength="250" />
-          <Property Name="UltimoAcceso" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Eventos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CodigoEvento" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
-          <Property Name="Eliminado" Type="bit" Nullable="false" />
-          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
-          <Property Name="FechaFin" Type="datetime" Nullable="false" />
-          <Property Name="Lugar" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="Gratuito" Type="bit" Nullable="false" />
-          <Property Name="Costo" Type="float" />
-        </EntityType>
-        <EntityType Name="Horarios">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Direccion" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
-          <Property Name="FechaFin" Type="datetime" Nullable="false" />
-          <Property Name="Lugar" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="IdActividad" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="IncripcionActividades">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="asistencia" Type="bit" Nullable="false" />
-          <Property Name="pago" Type="bit" Nullable="false" />
-          <Property Name="fecha_inscripcion" Type="datetime" Nullable="false" />
-          <Property Name="idActividad" Type="int" Nullable="false" />
-          <Property Name="idAsistente" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Materiales">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
-          <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="IdActividad" Type="int" Nullable="false" />
-          <Property Name="IdEvento" Type="int" />
-        </EntityType>
-        <EntityType Name="Personal">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Asignado" Type="bit" Nullable="false" />
-          <Property Name="Cargo" Type="nvarchar" MaxLength="50" />
-          <Property Name="IdEvento" Type="int" Nullable="false" />
-          <Property Name="IdCuenta" Type="int" Nullable="false" />
-          <Property Name="IdComite" Type="int" />
-        </EntityType>
-        <EntityType Name="Presupuestos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Gasto_tentativo" Type="float" Nullable="false" />
-          <Property Name="Gasto_real" Type="float" />
-          <Property Name="IdEvento" Type="int" />
-        </EntityType>
-        <EntityType Name="Tareas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
-          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-          <Property Name="Finalizada" Type="bit" Nullable="false" />
-          <Property Name="Responsable" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UltimaModificacion" Type="datetime" />
-          <Property Name="FechaFinalizacion" Type="datetime" />
-          <Property Name="IdActividad" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tracks">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Codigo" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdEvento" Type="int" />
-        </EntityType>
-        <Association Name="FK_Actividades_Articulos">
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1" />
-          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Actividades">
-              <PropertyRef Name="IdArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Actividades_Eventos">
-          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
-          <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Eventos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Actividades">
-              <PropertyRef Name="IdEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Articulos_Tracks">
-          <End Role="Tracks" Type="Self.Tracks" Multiplicity="1" />
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tracks">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Articulos">
-              <PropertyRef Name="idTrack" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AsistentesEvento_Asistentes">
-          <End Role="Asistentes" Type="Self.Asistentes" Multiplicity="1" />
-          <End Role="AsistentesEvento" Type="Self.AsistentesEvento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Asistentes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AsistentesEvento">
-              <PropertyRef Name="IdAsistente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AsistentesEvento_Eventos">
-          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
-          <End Role="AsistentesEvento" Type="Self.AsistentesEvento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Eventos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AsistentesEvento">
-              <PropertyRef Name="IdEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Comites_Eventos">
-          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
-          <End Role="Comites" Type="Self.Comites" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Eventos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Comites">
-              <PropertyRef Name="IdEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ConceptosFinancieros_Actividades">
-          <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
-          <End Role="ConceptosFinancieros" Type="Self.ConceptosFinancieros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Actividades">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ConceptosFinancieros">
-              <PropertyRef Name="IdActividad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ConceptosFinancieros_Presupuestos">
-          <End Role="Presupuestos" Type="Self.Presupuestos" Multiplicity="0..1" />
-          <End Role="ConceptosFinancieros" Type="Self.ConceptosFinancieros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Presupuestos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ConceptosFinancieros">
-              <PropertyRef Name="IdPresupuesto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Horarios_Actividades">
-          <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
-          <End Role="Horarios" Type="Self.Horarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Actividades">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Horarios">
-              <PropertyRef Name="IdActividad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IncripcionActividades_Actividades">
-          <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
-          <End Role="IncripcionActividades" Type="Self.IncripcionActividades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Actividades">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="IncripcionActividades">
-              <PropertyRef Name="idActividad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IncripcionActividades_Asistentes">
-          <End Role="Asistentes" Type="Self.Asistentes" Multiplicity="1" />
-          <End Role="IncripcionActividades" Type="Self.IncripcionActividades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Asistentes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="IncripcionActividades">
-              <PropertyRef Name="idAsistente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Materiales_Actividades">
-          <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
-          <End Role="Materiales" Type="Self.Materiales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Actividades">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Materiales">
-              <PropertyRef Name="IdActividad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Personal_Comites">
-          <End Role="Comites" Type="Self.Comites" Multiplicity="0..1" />
-          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Comites">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Personal">
-              <PropertyRef Name="IdComite" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Personal_Cuentas">
-          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cuentas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Personal">
-              <PropertyRef Name="IdCuenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Personal_Eventos">
-          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
-          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Eventos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Personal">
-              <PropertyRef Name="IdEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Presupuestos_Eventos">
-          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
-          <End Role="Presupuestos" Type="Self.Presupuestos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Eventos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Presupuestos">
-              <PropertyRef Name="IdEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tareas_Actividades">
-          <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
-          <End Role="Tareas" Type="Self.Tareas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Actividades">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tareas">
-              <PropertyRef Name="IdActividad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tracks_Eventos1">
-          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
-          <End Role="Tracks" Type="Self.Tracks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Eventos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tracks">
-              <PropertyRef Name="IdEvento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="PangeaModelStoreContainer">
-          <EntitySet Name="Actividades" EntityType="Self.Actividades" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Asistentes" EntityType="Self.Asistentes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AsistentesEvento" EntityType="Self.AsistentesEvento" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Comites" EntityType="Self.Comites" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ConceptosFinancieros" EntityType="Self.ConceptosFinancieros" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Horarios" EntityType="Self.Horarios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IncripcionActividades" EntityType="Self.IncripcionActividades" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Materiales" EntityType="Self.Materiales" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Presupuestos" EntityType="Self.Presupuestos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tareas" EntityType="Self.Tareas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tracks" EntityType="Self.Tracks" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Actividades_Articulos" Association="Self.FK_Actividades_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="Actividades" EntitySet="Actividades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Actividades_Eventos" Association="Self.FK_Actividades_Eventos">
-            <End Role="Eventos" EntitySet="Eventos" />
-            <End Role="Actividades" EntitySet="Actividades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Articulos_Tracks" Association="Self.FK_Articulos_Tracks">
-            <End Role="Tracks" EntitySet="Tracks" />
-            <End Role="Articulos" EntitySet="Articulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AsistentesEvento_Asistentes" Association="Self.FK_AsistentesEvento_Asistentes">
-            <End Role="Asistentes" EntitySet="Asistentes" />
-            <End Role="AsistentesEvento" EntitySet="AsistentesEvento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AsistentesEvento_Eventos" Association="Self.FK_AsistentesEvento_Eventos">
-            <End Role="Eventos" EntitySet="Eventos" />
-            <End Role="AsistentesEvento" EntitySet="AsistentesEvento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comites_Eventos" Association="Self.FK_Comites_Eventos">
-            <End Role="Eventos" EntitySet="Eventos" />
-            <End Role="Comites" EntitySet="Comites" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ConceptosFinancieros_Actividades" Association="Self.FK_ConceptosFinancieros_Actividades">
-            <End Role="Actividades" EntitySet="Actividades" />
-            <End Role="ConceptosFinancieros" EntitySet="ConceptosFinancieros" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ConceptosFinancieros_Presupuestos" Association="Self.FK_ConceptosFinancieros_Presupuestos">
-            <End Role="Presupuestos" EntitySet="Presupuestos" />
-            <End Role="ConceptosFinancieros" EntitySet="ConceptosFinancieros" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Horarios_Actividades" Association="Self.FK_Horarios_Actividades">
-            <End Role="Actividades" EntitySet="Actividades" />
-            <End Role="Horarios" EntitySet="Horarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IncripcionActividades_Actividades" Association="Self.FK_IncripcionActividades_Actividades">
-            <End Role="Actividades" EntitySet="Actividades" />
-            <End Role="IncripcionActividades" EntitySet="IncripcionActividades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IncripcionActividades_Asistentes" Association="Self.FK_IncripcionActividades_Asistentes">
-            <End Role="Asistentes" EntitySet="Asistentes" />
-            <End Role="IncripcionActividades" EntitySet="IncripcionActividades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Materiales_Actividades" Association="Self.FK_Materiales_Actividades">
-            <End Role="Actividades" EntitySet="Actividades" />
-            <End Role="Materiales" EntitySet="Materiales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Personal_Comites" Association="Self.FK_Personal_Comites">
-            <End Role="Comites" EntitySet="Comites" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Personal_Cuentas" Association="Self.FK_Personal_Cuentas">
-            <End Role="Cuentas" EntitySet="Cuentas" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Personal_Eventos" Association="Self.FK_Personal_Eventos">
-            <End Role="Eventos" EntitySet="Eventos" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Presupuestos_Eventos" Association="Self.FK_Presupuestos_Eventos">
-            <End Role="Eventos" EntitySet="Eventos" />
-            <End Role="Presupuestos" EntitySet="Presupuestos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tareas_Actividades" Association="Self.FK_Tareas_Actividades">
-            <End Role="Actividades" EntitySet="Actividades" />
-            <End Role="Tareas" EntitySet="Tareas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tracks_Eventos1" Association="Self.FK_Tracks_Eventos1">
-            <End Role="Eventos" EntitySet="Eventos" />
-            <End Role="Tracks" EntitySet="Tracks" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="PangeaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PangeaModelStoreContainer">
+    <EntitySet Name="Actividades" EntityType="PangeaModel.Store.Actividades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Articulos" EntityType="PangeaModel.Store.Articulos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Asistentes" EntityType="PangeaModel.Store.Asistentes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comites" EntityType="PangeaModel.Store.Comites" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConceptosFinancieros" EntityType="PangeaModel.Store.ConceptosFinancieros" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cuentas" EntityType="PangeaModel.Store.Cuentas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Eventos" EntityType="PangeaModel.Store.Eventos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Horarios" EntityType="PangeaModel.Store.Horarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Materiales" EntityType="PangeaModel.Store.Materiales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Personal" EntityType="PangeaModel.Store.Personal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Presupuestos" EntityType="PangeaModel.Store.Presupuestos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tareas" EntityType="PangeaModel.Store.Tareas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tracks" EntityType="PangeaModel.Store.Tracks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AsistentesEvento" EntityType="PangeaModel.Store.AsistentesEvento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IncripcionActividades" EntityType="PangeaModel.Store.IncripcionActividades" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Actividades_Articulos" Association="PangeaModel.Store.FK_Actividades_Articulos">
+      <End Role="Articulos" EntitySet="Articulos" />
+      <End Role="Actividades" EntitySet="Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividades_Eventos" Association="PangeaModel.Store.FK_Actividades_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Actividades" EntitySet="Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConceptosFinancieros_Actividades" Association="PangeaModel.Store.FK_ConceptosFinancieros_Actividades">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="ConceptosFinancieros" EntitySet="ConceptosFinancieros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Horarios_Actividades" Association="PangeaModel.Store.FK_Horarios_Actividades">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Horarios" EntitySet="Horarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncripcionActividades_Actividades" Association="PangeaModel.Store.FK_IncripcionActividades_Actividades">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="IncripcionActividades" EntitySet="IncripcionActividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materiales_Actividades" Association="PangeaModel.Store.FK_Materiales_Actividades">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Materiales" EntitySet="Materiales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tareas_Actividades" Association="PangeaModel.Store.FK_Tareas_Actividades">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Tareas" EntitySet="Tareas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Articulos_Tracks" Association="PangeaModel.Store.FK_Articulos_Tracks">
+      <End Role="Tracks" EntitySet="Tracks" />
+      <End Role="Articulos" EntitySet="Articulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsistentesEvento_Asistentes" Association="PangeaModel.Store.FK_AsistentesEvento_Asistentes">
+      <End Role="Asistentes" EntitySet="Asistentes" />
+      <End Role="AsistentesEvento" EntitySet="AsistentesEvento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IncripcionActividades_Asistentes" Association="PangeaModel.Store.FK_IncripcionActividades_Asistentes">
+      <End Role="Asistentes" EntitySet="Asistentes" />
+      <End Role="IncripcionActividades" EntitySet="IncripcionActividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Comites" Association="PangeaModel.Store.FK_Personal_Comites">
+      <End Role="Comites" EntitySet="Comites" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConceptosFinancieros_Presupuestos" Association="PangeaModel.Store.FK_ConceptosFinancieros_Presupuestos">
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+      <End Role="ConceptosFinancieros" EntitySet="ConceptosFinancieros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Cuentas" Association="PangeaModel.Store.FK_Personal_Cuentas">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsistentesEvento_Eventos" Association="PangeaModel.Store.FK_AsistentesEvento_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="AsistentesEvento" EntitySet="AsistentesEvento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materiales_Eventos" Association="PangeaModel.Store.FK_Materiales_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Materiales" EntitySet="Materiales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Eventos" Association="PangeaModel.Store.FK_Personal_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presupuestos_Eventos" Association="PangeaModel.Store.FK_Presupuestos_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Presupuestos" EntitySet="Presupuestos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tracks_Eventos1" Association="PangeaModel.Store.FK_Tracks_Eventos1">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Tracks" EntitySet="Tracks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comites_Eventos" Association="PangeaModel.Store.FK_Comites_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Comites" EntitySet="Comites" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Actividades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEvento" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Gratuito" Type="bit" Nullable="false" />
+    <Property Name="Costo" Type="float" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UltimaModificacion" Type="datetime" Nullable="true" />
+    <Property Name="IdArticulo" Type="int" Nullable="true" />
+    <Property Name="Cupo" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Articulos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="descripcion" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+    <Property Name="ultima_actualizacion" Type="datetime" Nullable="false" />
+    <Property Name="autor" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="archivo" Type="varchar(max)" Nullable="false" />
+    <Property Name="idTrack" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Asistentes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Correo" Type="nvarchar" Nullable="false" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Comites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="UltimaModificacion" Type="datetime" Nullable="true" />
+    <Property Name="IdEvento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConceptosFinancieros">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Monto" Type="float" Nullable="false" />
+    <Property Name="Concepto" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Fecha_creacion" Type="datetime" Nullable="false" />
+    <Property Name="IdActividad" Type="int" Nullable="false" />
+    <Property Name="IdPresupuesto" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Cuentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Correo" Type="nvarchar" Nullable="false" MaxLength="510" />
+    <Property Name="Contrasenia" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Telefono" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Token" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="UltimoAcceso" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Eventos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoEvento" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaFin" Type="datetime" Nullable="false" />
+    <Property Name="Lugar" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Gratuito" Type="bit" Nullable="false" />
+    <Property Name="Costo" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Horarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaFin" Type="datetime" Nullable="false" />
+    <Property Name="Lugar" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="IdActividad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materiales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="IdActividad" Type="int" Nullable="false" />
+    <Property Name="IdEvento" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Asignado" Type="bit" Nullable="false" />
+    <Property Name="Cargo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="IdEvento" Type="int" Nullable="false" />
+    <Property Name="IdCuenta" Type="int" Nullable="false" />
+    <Property Name="IdComite" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Presupuestos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gasto_tentativo" Type="float" Nullable="false" />
+    <Property Name="Gasto_real" Type="float" Nullable="true" />
+    <Property Name="IdEvento" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Tareas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="Finalizada" Type="bit" Nullable="false" />
+    <Property Name="Responsable" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UltimaModificacion" Type="datetime" Nullable="true" />
+    <Property Name="FechaFinalizacion" Type="datetime" Nullable="true" />
+    <Property Name="IdActividad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tracks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="IdEvento" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="AsistentesEvento">
+    <Key>
+      <PropertyRef Name="IdAsistentesEvento" />
+    </Key>
+    <Property Name="Asistencia" Type="bit" Nullable="false" />
+    <Property Name="Pago" Type="bit" Nullable="false" />
+    <Property Name="Cantidad" Type="float" Nullable="false" />
+    <Property Name="IdAsistente" Type="int" Nullable="false" />
+    <Property Name="IdEvento" Type="int" Nullable="false" />
+    <Property Name="IdAsistentesEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IncripcionActividades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="asistencia" Type="bit" Nullable="false" />
+    <Property Name="pago" Type="bit" Nullable="false" />
+    <Property Name="fecha_inscripcion" Type="datetime" Nullable="false" />
+    <Property Name="idActividad" Type="int" Nullable="false" />
+    <Property Name="idAsistente" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Actividades_Articulos">
+    <End Role="Articulos" Type="PangeaModel.Store.Articulos" Multiplicity="0..1" />
+    <End Role="Actividades" Type="PangeaModel.Store.Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Actividades">
+        <PropertyRef Name="IdArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividades_Eventos">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="1" />
+    <End Role="Actividades" Type="PangeaModel.Store.Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Actividades">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConceptosFinancieros_Actividades">
+    <End Role="Actividades" Type="PangeaModel.Store.Actividades" Multiplicity="1" />
+    <End Role="ConceptosFinancieros" Type="PangeaModel.Store.ConceptosFinancieros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConceptosFinancieros">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Horarios_Actividades">
+    <End Role="Actividades" Type="PangeaModel.Store.Actividades" Multiplicity="1" />
+    <End Role="Horarios" Type="PangeaModel.Store.Horarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Horarios">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncripcionActividades_Actividades">
+    <End Role="Actividades" Type="PangeaModel.Store.Actividades" Multiplicity="1" />
+    <End Role="IncripcionActividades" Type="PangeaModel.Store.IncripcionActividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncripcionActividades">
+        <PropertyRef Name="idActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materiales_Actividades">
+    <End Role="Actividades" Type="PangeaModel.Store.Actividades" Multiplicity="1" />
+    <End Role="Materiales" Type="PangeaModel.Store.Materiales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Materiales">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tareas_Actividades">
+    <End Role="Actividades" Type="PangeaModel.Store.Actividades" Multiplicity="1" />
+    <End Role="Tareas" Type="PangeaModel.Store.Tareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tareas">
+        <PropertyRef Name="IdActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Articulos_Tracks">
+    <End Role="Tracks" Type="PangeaModel.Store.Tracks" Multiplicity="1" />
+    <End Role="Articulos" Type="PangeaModel.Store.Articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tracks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Articulos">
+        <PropertyRef Name="idTrack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsistentesEvento_Asistentes">
+    <End Role="Asistentes" Type="PangeaModel.Store.Asistentes" Multiplicity="1" />
+    <End Role="AsistentesEvento" Type="PangeaModel.Store.AsistentesEvento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asistentes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AsistentesEvento">
+        <PropertyRef Name="IdAsistente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IncripcionActividades_Asistentes">
+    <End Role="Asistentes" Type="PangeaModel.Store.Asistentes" Multiplicity="1" />
+    <End Role="IncripcionActividades" Type="PangeaModel.Store.IncripcionActividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asistentes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="IncripcionActividades">
+        <PropertyRef Name="idAsistente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Comites">
+    <End Role="Comites" Type="PangeaModel.Store.Comites" Multiplicity="0..1" />
+    <End Role="Personal" Type="PangeaModel.Store.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="IdComite" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConceptosFinancieros_Presupuestos">
+    <End Role="Presupuestos" Type="PangeaModel.Store.Presupuestos" Multiplicity="0..1" />
+    <End Role="ConceptosFinancieros" Type="PangeaModel.Store.ConceptosFinancieros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presupuestos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConceptosFinancieros">
+        <PropertyRef Name="IdPresupuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Cuentas">
+    <End Role="Cuentas" Type="PangeaModel.Store.Cuentas" Multiplicity="1" />
+    <End Role="Personal" Type="PangeaModel.Store.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="IdCuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsistentesEvento_Eventos">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="1" />
+    <End Role="AsistentesEvento" Type="PangeaModel.Store.AsistentesEvento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AsistentesEvento">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materiales_Eventos">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="0..1" />
+    <End Role="Materiales" Type="PangeaModel.Store.Materiales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Materiales">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Eventos">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="1" />
+    <End Role="Personal" Type="PangeaModel.Store.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presupuestos_Eventos">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="0..1" />
+    <End Role="Presupuestos" Type="PangeaModel.Store.Presupuestos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Presupuestos">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tracks_Eventos1">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="0..1" />
+    <End Role="Tracks" Type="PangeaModel.Store.Tracks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tracks">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comites_Eventos">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="1" />
+    <End Role="Comites" Type="PangeaModel.Store.Comites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comites">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PangeaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1205,7 +1221,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(PangeaModel.AsistentesEvento)">
         <MappingFragment StoreEntitySet="AsistentesEvento">
           <ScalarProperty Name="IdAsistentesEvento" ColumnName="IdAsistentesEvento" />
-                <ScalarProperty Name="Asistencia" ColumnName="Asistencia" />
+          <ScalarProperty Name="Asistencia" ColumnName="Asistencia" />
           <ScalarProperty Name="Pago" ColumnName="Pago" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="IdAsistente" ColumnName="IdAsistente" />

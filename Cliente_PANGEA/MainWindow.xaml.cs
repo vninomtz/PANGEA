@@ -72,7 +72,7 @@ namespace Cliente_PANGEA
                     centralFrame.Navigate(new ShowArticle());
                     break;
                 case "ItemBudget":
-                    centralFrame.Navigate(new TrackManagment());
+                    centralFrame.Navigate(new NewBudget());
                     break;
                 case "ItemMaterials":
                     centralFrame.Navigate(new ShowMaterials());

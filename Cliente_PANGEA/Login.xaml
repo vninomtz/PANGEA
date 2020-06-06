@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Cliente_PANGEA"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Inicio de sesión" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Inicio de sesión" Height="500" Width="800" WindowStartupLocation="CenterScreen" Icon="Logo.png" 
+        >
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />

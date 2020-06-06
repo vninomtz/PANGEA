@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Cliente_PANGEA"
         mc:Ignorable="d"
-        Title="Crear cuenta" Height="700" Width="900" WindowStartupLocation="CenterScreen">
+        Title="Crear cuenta" Height="700" Width="900" WindowStartupLocation="CenterScreen" Icon="Logo.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />

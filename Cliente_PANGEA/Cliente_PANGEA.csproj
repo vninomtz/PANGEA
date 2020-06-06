@@ -88,11 +88,15 @@
     <Compile Include="RecoverPassword.xaml.cs">
       <DependentUpon>RecoverPassword.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GenerateConstancy.xaml.cs">
+      <DependentUpon>GenerateConstancy.xaml</DependentUpon>
+    <Compile/>
+    <Compile Include="SingletonPersonal.cs" />
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GenerateConstancy.xaml.cs">
-      <DependentUpon>GenerateConstancy.xaml</DependentUpon>
+    <Compile Include="Views\ModifyAccount.xaml.cs">
+      <DependentUpon>ModifyAccount.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewBudget.xaml.cs">
       <DependentUpon>NewBudget.xaml</DependentUpon>
@@ -229,7 +233,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GenerateConstancy.xaml">
+    <Page Include="Views\GenerateConstancy.xaml"/>
+    <Page Include="Views\ModifyAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

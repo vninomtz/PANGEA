@@ -125,6 +125,10 @@ namespace Cliente_PANGEA.Views
             {
                 MessageBox.Show("Por favor Ingresar información en todos los campos");
             }
+            else if (DatePicker_initialDate.SelectedDate.Value.CompareTo(DatePicker_endDate.SelectedDate.Value) > 0)
+            {
+                MessageBox.Show("Error con las fechas seleccionadas", "datos inconsistentes");
+            }
             else
             {
                 if (AddSchedule()>0)

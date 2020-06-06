@@ -37,10 +37,6 @@ namespace Cliente_PANGEA.Controllers
             {
                 personalList = dataBase.Personal.Include("Eventos").Where(p => p.IdCuenta == idaccount).ToList<Personal>();
 
-                foreach (var p  in personalList)
-                {
-                    Console.WriteLine(p.Eventos.Nombre);
-                }
             }
             return personalList;
         }       

@@ -2,8 +2,6 @@
 using Cliente_PANGEA.Views;
 using DataAccess;
 using System;
-using System.Collections.Generic;
-
 using System.Windows;
 using System.Windows.Controls;
 
@@ -160,7 +158,12 @@ namespace Cliente_PANGEA
             else if (!ValidateCost())
             {
                 MessageBox.Show("Ingresa una cantidad correcta por favor");
-            } else
+            }
+            else if (DatePicker_initialDate.SelectedDate.Value.CompareTo(DatePicker_endDate.SelectedDate.Value) > 0)
+            {
+                MessageBox.Show("Error con las fechas seleccionadas", "datos inconsistentes");
+            }
+            else
             {
                 UpdateEvent();
                

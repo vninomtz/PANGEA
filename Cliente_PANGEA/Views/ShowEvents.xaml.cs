@@ -1,4 +1,5 @@
 ﻿using Cliente_PANGEA.Controllers;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -20,7 +21,7 @@ namespace Cliente_PANGEA
         private void ListView_events_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
            DataAccess.Personal eventSelected = (DataAccess.Personal)ListView_events.SelectedItem;
-
+            SingletonPersonal.SetPersonal(eventSelected);
            MainWindow ventana =  new MainWindow(eventSelected.Eventos);
            ventana.Show();
            Window.GetWindow(this).Close();

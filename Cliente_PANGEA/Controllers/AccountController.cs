@@ -30,6 +30,29 @@ namespace Cliente_PANGEA.Controllers
 
             return cuenta;
         }
+        public static Cuentas GetAccount(int idAccount)
+        {
+            Cuentas cuenta;
+            using (var database = new PangeaConnection())
+            {
+                try
+                {
+                    cuenta = database.Cuentas.Where(c => c.Id == idAccount).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    cuenta = new Cuentas
+                    {
+                        Id = -1
+                    };
+
+                    Console.WriteLine(ex);
+                }
+
+            }
+
+            return cuenta;
+        }
 
         public static int UserExist(string email)
         {
@@ -90,6 +113,7 @@ namespace Cliente_PANGEA.Controllers
                 return false;
             }
         }
+
         public static int SaveTokenInAccount(String email, String token)
         {
             int result = -1;
@@ -144,6 +168,37 @@ namespace Cliente_PANGEA.Controllers
                 Console.WriteLine(e);
             }
             return result;
+        }
+
+        public static bool UpdateAccount(int idAccount, string name, string lastname,string phone)
+        {
+            try
+            {
+                using (var dataBase = new PangeaConnection())
+                {
+                    Cuentas accountUpdate = dataBase.Cuentas.Where(c => c.Id == idAccount).FirstOrDefault();
+                    accountUpdate.Nombre = name;
+                    accountUpdate.Apellido = lastname;
+                    accountUpdate.Telefono = phone;
+
+                    int result = dataBase.SaveChanges();
+
+                    if (result > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+
         }
     }
 }

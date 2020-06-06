@@ -74,13 +74,28 @@ namespace Cliente_PANGEA
                     centralFrame.Navigate(new ShowArticle());
                     break;
                 case "ItemBudget":
-                    centralFrame.Navigate(new TrackManagment());
+                    centralFrame.Navigate(new NewBudget());
                     break;
                 case "ItemMaterials":
                     centralFrame.Navigate(new ShowMaterials());
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void ValidateRol()
+        {
+            String cargo = SingletonPersonal.GetPersonal().Cargo;
+            if (cargo == "Miembro Comité")
+            {
+                ItemBudget.IsEnabled = false;
+                ItemPersonal.IsEnabled = false;
+                ItemPersonal.IsEnabled = false;
+
+            } else if(cargo == "Líder Comité")
+            {
+                ItemPersonal.IsEnabled = false;
             }
         }
 

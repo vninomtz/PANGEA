@@ -93,6 +93,10 @@
       <End Role="Eventos" EntitySet="Eventos" />
       <End Role="Tracks" EntitySet="Tracks" />
     </AssociationSet>
+    <AssociationSet Name="FK_Comites_Eventos" Association="PangeaModel.Store.FK_Comites_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Comites" EntitySet="Comites" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Actividades">
     <Key>
@@ -163,7 +167,7 @@
     <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Apellido" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Correo" Type="nvarchar" Nullable="false" MaxLength="510" />
-    <Property Name="Contrasenia" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Contrasenia" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="Telefono" Type="nvarchar" Nullable="true" MaxLength="10" />
     <Property Name="Token" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="UltimoAcceso" Type="datetime" Nullable="true" />
@@ -251,17 +255,14 @@
   </EntityType>
   <EntityType Name="AsistentesEvento">
     <Key>
-      <PropertyRef Name="Asistencia" />
-      <PropertyRef Name="Pago" />
-      <PropertyRef Name="Cantidad" />
-      <PropertyRef Name="IdAsistente" />
-      <PropertyRef Name="IdEvento" />
+      <PropertyRef Name="IdAsistentesEvento" />
     </Key>
     <Property Name="Asistencia" Type="bit" Nullable="false" />
     <Property Name="Pago" Type="bit" Nullable="false" />
     <Property Name="Cantidad" Type="float" Nullable="false" />
     <Property Name="IdAsistente" Type="int" Nullable="false" />
     <Property Name="IdEvento" Type="int" Nullable="false" />
+    <Property Name="IdAsistentesEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="IncripcionActividades">
     <Key>
@@ -490,6 +491,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Comites_Eventos">
+    <End Role="Eventos" Type="PangeaModel.Store.Eventos" Multiplicity="1" />
+    <End Role="Comites" Type="PangeaModel.Store.Comites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comites">
+        <PropertyRef Name="IdEvento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -582,6 +595,10 @@
             <End Role="Eventos" EntitySet="Eventos" />
             <End Role="Tracks" EntitySet="Tracks" />
           </AssociationSet>
+          <AssociationSet Name="FK_Comites_Eventos" Association="PangeaModel.FK_Comites_Eventos">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Comites" EntitySet="Comites" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Actividades">
           <Key>
@@ -613,8 +630,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ultima_actualizacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ultima_actualizacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="autor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="archivo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="idTrack" Type="Int32" Nullable="false" />
@@ -643,6 +660,7 @@
           <Property Name="UltimaModificacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Personal" Relationship="PangeaModel.FK_Personal_Comites" FromRole="Comites" ToRole="Personal" />
           <Property Name="IdEvento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="PangeaModel.FK_Comites_Eventos" FromRole="Comites" ToRole="Eventos" />
         </EntityType>
         <EntityType Name="ConceptosFinancieros">
           <Key>
@@ -652,7 +670,7 @@
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Monto" Type="Double" Nullable="false" />
           <Property Name="Concepto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IdActividad" Type="Int32" Nullable="false" />
           <Property Name="IdPresupuesto" Type="Int32" />
           <NavigationProperty Name="Actividades" Relationship="PangeaModel.FK_ConceptosFinancieros_Actividades" FromRole="ConceptosFinancieros" ToRole="Actividades" />
@@ -666,7 +684,7 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Correo" Type="String" Nullable="false" MaxLength="510" FixedLength="false" Unicode="true" />
-          <Property Name="Contrasenia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contrasenia" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="UltimoAcceso" Type="DateTime" Precision="3" />
@@ -681,8 +699,8 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Eliminado" Type="Boolean" Nullable="false" />
-          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Lugar" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Gratuito" Type="Boolean" Nullable="false" />
           <Property Name="Costo" Type="Double" />
@@ -692,6 +710,7 @@
           <NavigationProperty Name="Personal" Relationship="PangeaModel.FK_Personal_Eventos" FromRole="Eventos" ToRole="Personal" />
           <NavigationProperty Name="Presupuestos" Relationship="PangeaModel.FK_Presupuestos_Eventos" FromRole="Eventos" ToRole="Presupuestos" />
           <NavigationProperty Name="Tracks" Relationship="PangeaModel.FK_Tracks_Eventos1" FromRole="Eventos" ToRole="Tracks" />
+          <NavigationProperty Name="Comites" Relationship="PangeaModel.FK_Comites_Eventos" FromRole="Eventos" ToRole="Comites" />
         </EntityType>
         <EntityType Name="Horarios">
           <Key>
@@ -772,11 +791,7 @@
         </EntityType>
         <EntityType Name="AsistentesEvento">
           <Key>
-            <PropertyRef Name="Asistencia" />
-            <PropertyRef Name="Pago" />
-            <PropertyRef Name="Cantidad" />
-            <PropertyRef Name="IdAsistente" />
-            <PropertyRef Name="IdEvento" />
+            <PropertyRef Name="IdAsistentesEvento" />
           </Key>
           <Property Name="Asistencia" Type="Boolean" Nullable="false" />
           <Property Name="Pago" Type="Boolean" Nullable="false" />
@@ -785,6 +800,7 @@
           <Property Name="IdEvento" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Asistentes" Relationship="PangeaModel.FK_AsistentesEvento_Asistentes" FromRole="AsistentesEvento" ToRole="Asistentes" />
           <NavigationProperty Name="Eventos" Relationship="PangeaModel.FK_AsistentesEvento_Eventos" FromRole="AsistentesEvento" ToRole="Eventos" />
+          <Property Name="IdAsistentesEvento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="IncripcionActividades">
           <Key>
@@ -793,7 +809,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="asistencia" Type="Boolean" Nullable="false" />
           <Property Name="pago" Type="Boolean" Nullable="false" />
-          <Property Name="fecha_inscripcion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_inscripcion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idActividad" Type="Int32" Nullable="false" />
           <Property Name="idAsistente" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Actividades" Relationship="PangeaModel.FK_IncripcionActividades_Actividades" FromRole="IncripcionActividades" ToRole="Actividades" />
@@ -1015,6 +1031,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Comites_Eventos">
+          <End Type="PangeaModel.Eventos" Role="Eventos" Multiplicity="1" />
+          <End Type="PangeaModel.Comites" Role="Comites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comites">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1192,6 +1220,7 @@
     <EntitySetMapping Name="AsistentesEvento">
       <EntityTypeMapping TypeName="IsTypeOf(PangeaModel.AsistentesEvento)">
         <MappingFragment StoreEntitySet="AsistentesEvento">
+          <ScalarProperty Name="IdAsistentesEvento" ColumnName="IdAsistentesEvento" />
           <ScalarProperty Name="Asistencia" ColumnName="Asistencia" />
           <ScalarProperty Name="Pago" ColumnName="Pago" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />

@@ -40,7 +40,6 @@
         <AssociationConnector Association="PangeaModel.FK_Tracks_Eventos1" />
         <EntityTypeShape EntityType="PangeaModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="PangeaModel.FK_Comites_Eventos" />
-        <AssociationConnector Association="PangeaModel.FK_Comites_Eventos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -15,7 +15,7 @@ namespace Cliente_PANGEA.Controllers
             {
                 using (var dataBase = new PangeaConnection())
                 {
-                    return dataBase.Materiales.Include("Actividades").Where(m => m.IdEvento == idEvent).ToList();
+                    return dataBase.Materiales.Include("Actividades").Where(m => m.Actividades.IdEvento == idEvent).ToList();
                 }
             }
             catch (Exception ex)

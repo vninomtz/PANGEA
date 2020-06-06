@@ -49,8 +49,9 @@ namespace Cliente_PANGEA
 
         private void SaveAccount()
         {
+            String passwordEncode = Encrypter.EncodePassword(txt_password.Password);
             bool result = AccountController.SaveUser
-                (txt_name.Text, txt_lastname.Text, txt_email.Text, txt_phone.Text, txt_password.Password);
+                (txt_name.Text, txt_lastname.Text, txt_email.Text, txt_phone.Text, passwordEncode);
 
             if (result)
             {

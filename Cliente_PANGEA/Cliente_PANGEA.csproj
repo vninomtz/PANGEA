@@ -79,6 +79,7 @@
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\AsistentesEventoController.cs" />
     <Compile Include="Controllers\ComiteController.cs" />
+    <Compile Include="Controllers\Encrypter.cs" />
     <Compile Include="Controllers\FinancialConceptsController.cs" />
     <Compile Include="Controllers\MaterialsController.cs" />
     <Compile Include="Controllers\TrackController.cs" />

@@ -55,7 +55,8 @@ namespace Cliente_PANGEA
             {
                 if (ExistUser())
                 {
-                    account = AccountController.Login(txt_email.Text, txt_password.Password);
+                    String passwordEncode = Encrypter.EncodePassword(txt_password.Password);
+                    account = AccountController.Login(txt_email.Text, passwordEncode);
                     if (account == null)
                     {
                         MessageBox.Show("Contraseña incorrecta", "Datos invalidos");

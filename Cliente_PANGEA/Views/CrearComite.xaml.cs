@@ -28,7 +28,9 @@ namespace Cliente_PANGEA.Views
         List<Cuentas> listLeader = new List<Cuentas>();
         bool isNew = true;
         int IDEVENT = SingletonEvent.GetEvent().Id;
-        
+        String rolLiderComitee = "Lider Comite";
+        String rolMemberComitee = "Miembro";
+
         public CrearComite(Comites comite)
         {
             InitializeComponent();
@@ -48,8 +50,8 @@ namespace Cliente_PANGEA.Views
 
         public void LoadMembersCommittee(int idEvent, int idCommittee)
         {
-            this.listMembers = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Miembro");
-            this.listLeader = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Líder");
+            this.listMembers = PersonalController.GetMembersCommittee(idEvent, idCommittee, rolMemberComitee);
+            this.listLeader = PersonalController.GetMembersCommittee(idEvent, idCommittee, rolLiderComitee);
             list_leader.ItemsSource = this.listLeader;
             list_members.ItemsSource = this.listMembers;
 

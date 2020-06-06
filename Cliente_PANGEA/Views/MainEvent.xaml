@@ -22,6 +22,12 @@
                     ToolTip="Regresar a mis eventos" Width="40" Height="40" Click="Button_back_Click" >
                 <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
             </Button>
+            <Button x:Name="Button_save" HorizontalAlignment="Left" Background="{x:Null}" Padding="0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" Margin="80,0,0,40"
+                    ToolTip="Guardar comité" Width="40" Height="40" Click="Button_save_Click" >
+                <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
+
+            </Button>
             <TextBlock x:Name="TextBlock_title" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button
                 x:Name="Button_edit"
@@ -58,12 +64,7 @@
             </Button>
         </Grid>
 
-        <Button x:Name="Button_save" Grid.Column="0" HorizontalAlignment="Left" Background="{x:Null}" Padding="0"
-                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" Margin="90,38,0,0"
-                    ToolTip="Guardar comité" Width="40" Height="40" Click="Button_save_Click" >
-            <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
 
-        </Button>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

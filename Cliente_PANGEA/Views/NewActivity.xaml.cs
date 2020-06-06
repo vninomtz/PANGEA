@@ -147,7 +147,7 @@ namespace Cliente_PANGEA.Views
             {
                 MessageBox.Show("Por favor ingrese una cantidad correcta ", "Campo incorrecto");
             }
-            else if (!ValidateCapacity())
+            else if (!ValidateCapacity() && MaterialDesignFilled.IsChecked.Value)
             {
                 MessageBox.Show("Por favor ingrese un cupo correcto", "Campo incorrecto");
             }

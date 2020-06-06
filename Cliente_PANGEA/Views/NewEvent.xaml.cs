@@ -31,12 +31,24 @@ namespace Cliente_PANGEA
             {
                 MessageBox.Show("Ingresa una cantidad correcta por favor");
             }
+            else if (DatePicker_initDate.SelectedDate.Value.CompareTo(DatePicker_endDate.SelectedDate.Value) > 0)
+            {
+                MessageBox.Show("Error con las fechas seleccionada", "datos inconsistentes");
+            }
+            else if (DatePicker_initDate.SelectedDate.Value.CompareTo(DatePicker_endDate.SelectedDate.Value) > 0)
+            {
+                MessageBox.Show("Error con las fechas seleccionadas", "datos inconsistentes");
+            }
             else
             {
                 if (SaveEvent() > 0 && SavePersonal() > 0)
                 {
                     MessageBox.Show("Se ha creado el evento con éxito");
-                    NavigationService.Navigate(new MainEvent(EventController.GetLastEvent()));
+               
+                    MainWindow mainWindow = new MainWindow(EventController.GetLastEvent());
+                    mainWindow.Show();
+                    Window.GetWindow(this).Close();
+
                 }
                 
             }
@@ -57,9 +69,10 @@ namespace Cliente_PANGEA
         }
         public int SaveEvent()
         {
+            
             DataAccess.Eventos evento = new Eventos
             {
-                CodigoEvento = "1234",
+                CodigoEvento = "",
                 Nombre = TextBox_nombreEvento.Text,
                 Lugar = TextBox_Lugar.Text,
                 Gratuito = !MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value,
@@ -67,6 +80,12 @@ namespace Cliente_PANGEA
                 FechaInicio = DateTime.Parse(DatePicker_initDate.Text),
                 FechaFin = DateTime.Parse(DatePicker_endDate.SelectedDate.ToString())
             };
+
+            var random = new Random();
+            int randomNumber = random.Next(100, 999);
+
+            String eventCode = evento.Nombre.Substring(0, 2).ToUpper() + "-" + randomNumber;
+            evento.CodigoEvento = eventCode;
 
             if (MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
             {
@@ -76,6 +95,7 @@ namespace Cliente_PANGEA
             return EventController.SaveEvent(evento);
         }
 
+        
         public bool ValidateEmptyFields()
         {
             bool validation = true;

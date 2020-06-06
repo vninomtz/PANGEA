@@ -85,6 +85,7 @@
     <Compile Include="CreateAccount.xaml.cs">
       <DependentUpon>CreateAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingletonPersonal.cs" />
     <Compile Include="Views\DeletePersonal.xaml.cs">
       <DependentUpon>DeletePersonal.xaml</DependentUpon>
     </Compile>

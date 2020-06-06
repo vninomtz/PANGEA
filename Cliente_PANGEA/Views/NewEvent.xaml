@@ -23,7 +23,7 @@
             </Button>
             <Button x:Name="btn_guardar" Grid.Column="0" HorizontalAlignment="Left" Background="{x:Null}" Padding="0"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"  Margin="80,0,0,0"
-                    ToolTip="Guardar comité" Width="40" Height="40" Click="Button_Click">
+                    ToolTip="Guardar evento" Width="40" Height="40" Click="Button_Click">
                 <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
 
             </Button>

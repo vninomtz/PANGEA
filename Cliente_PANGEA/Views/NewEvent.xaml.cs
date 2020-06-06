@@ -1,6 +1,7 @@
 ﻿using Cliente_PANGEA.Controllers;
 using DataAccess;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -26,21 +27,59 @@ namespace Cliente_PANGEA
             if (!ValidateEmptyFields())
             {
                 MessageBox.Show("Campos vacios");
+            } else if (!CorrectFields())
+            {
+                MessageBox.Show("Los campos contienen caracteres invalidos");
             }
             else if (!ValidateCost())
             {
                 MessageBox.Show("Ingresa una cantidad correcta por favor");
+            }
+            else if (DatePicker_initDate.SelectedDate.Value.CompareTo(DatePicker_endDate.SelectedDate.Value) > 0)
+            {
+                MessageBox.Show("Error con las fechas seleccionada", "datos inconsistentes");
+            }
+            else if (DatePicker_initDate.SelectedDate.Value.CompareTo(DatePicker_endDate.SelectedDate.Value) > 0)
+            {
+                MessageBox.Show("Error con las fechas seleccionadas", "datos inconsistentes");
             }
             else
             {
                 if (SaveEvent() > 0 && SavePersonal() > 0)
                 {
                     MessageBox.Show("Se ha creado el evento con éxito");
-                    NavigationService.Navigate(new MainEvent(EventController.GetLastEvent()));
+               
+                    MainWindow mainWindow = new MainWindow(EventController.GetLastEvent());
+                    mainWindow.Show();
+                    Window.GetWindow(this).Close();
+
                 }
                 
             }
 
+        }
+
+        public bool CorrectFields()
+        {
+           
+            bool result = true;
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            if (!regexName.IsMatch(TextBox_nombreEvento.Text))
+            {
+                result = false;
+            }
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            if (!regexDescription.IsMatch(TextBox_Lugar.Text))
+            {
+         
+                result = false;
+            }
+            if (!regexDescription.IsMatch(TextBox_description.Text))
+            {
+                
+                result = false;
+            }
+            return result;
         }
         public int SavePersonal()
         {
@@ -57,9 +96,10 @@ namespace Cliente_PANGEA
         }
         public int SaveEvent()
         {
+            
             DataAccess.Eventos evento = new Eventos
             {
-                CodigoEvento = "1234",
+                CodigoEvento = "",
                 Nombre = TextBox_nombreEvento.Text,
                 Lugar = TextBox_Lugar.Text,
                 Gratuito = !MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value,
@@ -67,6 +107,12 @@ namespace Cliente_PANGEA
                 FechaInicio = DateTime.Parse(DatePicker_initDate.Text),
                 FechaFin = DateTime.Parse(DatePicker_endDate.SelectedDate.ToString())
             };
+
+            var random = new Random();
+            int randomNumber = random.Next(100, 999);
+
+            String eventCode = evento.Nombre.Substring(0, 2).ToUpper() + "-" + randomNumber;
+            evento.CodigoEvento = eventCode;
 
             if (MaterialDesignFilledTextFieldTextBoxEnabledComboBox.IsChecked.Value)
             {
@@ -76,6 +122,7 @@ namespace Cliente_PANGEA
             return EventController.SaveEvent(evento);
         }
 
+        
         public bool ValidateEmptyFields()
         {
             bool validation = true;

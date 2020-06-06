@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,6 +45,8 @@ namespace Cliente_PANGEA.Views
             else if (!ValidateTotal())
             {
                 MessageBox.Show("Por favor ingrese una cantidad correcta");
+            } else if (!CorrectFields()){
+                MessageBox.Show("El campo concepto contienen caracteres invalidos");
             }
             else if (AddConcept() < 0)
             {
@@ -55,6 +58,19 @@ namespace Cliente_PANGEA.Views
             }
 
 
+        }
+
+        public bool CorrectFields()
+        {
+
+            bool result = true;
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            if (!regexName.IsMatch(TextBox_concept.Text))
+            {
+                result = false;
+            }
+           
+            return result;
         }
 
         private void ClearFields()

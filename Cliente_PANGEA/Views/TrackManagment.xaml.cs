@@ -1,6 +1,7 @@
 ﻿using Cliente_PANGEA.Controllers;
 using DataAccess;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -32,6 +33,9 @@ namespace Cliente_PANGEA.Views
             else if (SaveTrack() == -1)
             {
                 MessageBox.Show("Error en la conexión con la base de datos");
+            } else if (!CorrectFields())
+            {
+                MessageBox.Show("Los campos contienen datos invalidos");
             }
             else
             {
@@ -54,6 +58,25 @@ namespace Cliente_PANGEA.Views
             }
 
             return areThere;
+        }
+
+        public bool CorrectFields()
+        {
+
+            bool result = true;
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            if (!regexName.IsMatch(TextBox_nombreTrack.Text))
+            {
+                result = false;
+            }
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            if (!regexDescription.IsMatch(TextBox_descripcionTrack.Text))
+            {
+
+                result = false;
+            }
+           
+            return result;
         }
 
         private int SaveTrack()

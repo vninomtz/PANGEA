@@ -16,12 +16,15 @@
         </Grid.RowDefinitions>
        
         <TextBlock Text="Registro de Horarios" FontWeight="Bold" FontSize="30" Foreground="#FF2D3945" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-       
-            
-        <Button x:Name="Button_cancel" Background="#0000" Height="60" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="Regresar"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_cancel_Click"  Foreground="#FF5C99D6"  >
-            <materialDesign:PackIcon  Grid.Row="0" Kind="Cancel" Width="40" Height="40" />
+
+        <Button Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Padding="0"
+                    x:Name="btn_regresar" Margin="10,10,0,0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="Button_cancel_Click">
+            <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+
         </Button>
+        
         <Button x:Name="Button_save" Grid.Column="0" HorizontalAlignment="Left" Background="{x:Null}" Padding="0"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" Margin="70,0,0,10"
                     ToolTip="Guardar comité" Width="40" Height="40" Click="Button_save_Click"  >

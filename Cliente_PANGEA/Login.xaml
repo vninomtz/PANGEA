@@ -41,7 +41,7 @@
                           materialDesign:HintAssist.Hint="Contraseña"
                           materialDesign:TextFieldAssist.HasClearButton="True" />
                         <Label HorizontalAlignment="Right" Margin="0,0,20,0">
-                            <Hyperlink  Name="url_recover" Click="url_recover_Click">Olvide mi contraseña</Hyperlink>
+                            <Hyperlink  Name="url_recover" Click="url_recover_Click">Olvidé mi contraseña</Hyperlink>
                         </Label>
                         <Grid  Margin="0,10,0,0">
                             <Grid.ColumnDefinitions>

@@ -47,7 +47,7 @@ namespace Cliente_PANGEA
 
         private void Button_account_Click(object sender, RoutedEventArgs e)
         {
-            centralFrame.Navigate(new ModifyAccount());
+            centralFrame.Navigate(new ModifyAccount(this));
         }
     }
 }

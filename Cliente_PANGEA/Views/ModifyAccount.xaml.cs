@@ -23,10 +23,25 @@ namespace Cliente_PANGEA.Views
     public partial class ModifyAccount : Page
     {
         Cuentas account = SingletonAccount.GetAccount();
+        Events windowEvent = null;
+        MainWindow windowMain = null;
         public ModifyAccount()
         {
             InitializeComponent();
             LoadAccount();
+        }
+
+        public ModifyAccount(Events windows)
+        {
+            InitializeComponent();
+            LoadAccount();
+            this.windowEvent = windows;
+        }
+        public ModifyAccount(MainWindow windows)
+        {
+            InitializeComponent();
+            LoadAccount();
+            this.windowMain = windows;
         }
 
         private void LoadAccount()
@@ -74,12 +89,26 @@ namespace Cliente_PANGEA.Views
                 MessageBox.Show("Se acuatlizo con éxito la cuenta");
                 account = AccountController.GetAccount(account.Id);
                 SingletonAccount.SetAccount(account);
+                UpdateWindows();
                 this.NavigationService.GoBack();
             }
             else
             {
                 MessageBox.Show("Error en la conexión a la BD");
             }
+        }
+
+        private void UpdateWindows()
+        {
+            if(this.windowEvent != null)
+            {
+                this.windowEvent.txt_UserName.Text = SingletonAccount.GetAccount().ToString();
+            }
+            else
+            {
+                this.windowMain.txt_UserName.Text = SingletonAccount.GetAccount().ToString();
+            }
+            
         }
     }
 }

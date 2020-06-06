@@ -32,6 +32,8 @@ namespace Cliente_PANGEA
             centralFrame.Navigate(new MainEvent(evento));
         }
 
+       
+
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -84,7 +86,7 @@ namespace Cliente_PANGEA
 
         private void Button_account_Click(object sender, RoutedEventArgs e)
         {
-            centralFrame.Navigate(new ModifyAccount());
+            centralFrame.Navigate(new ModifyAccount(this));
         }
 
         private void Button_signout_Click(object sender, RoutedEventArgs e)

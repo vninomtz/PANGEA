@@ -79,7 +79,7 @@
                     materialDesign:HintAssist.Hint="Descripción"
                     Height="80" FontWeight="Bold"/>
                 <ComboBox x:Name="cb_activities"
-                      materialDesign:HintAssist.Hint="Selecciona la Actividd"
+                      materialDesign:HintAssist.Hint="Selecciona la Actividad"
                       materialDesign:TextFieldAssist.HasClearButton="True"
                       IsEditable="True" Margin="20,10,20,0"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}">

@@ -50,6 +50,8 @@ namespace Cliente_PANGEA.Views
             listActivities.Add(materialUpdated.Actividades);
             cb_activities.ItemsSource = listActivities;
             cb_activities.SelectedItem = listActivities[0];
+            cb_activities.IsEditable = false;
+            cb_activities.IsEnabled = false;
 
         }
         private void LoadActivities()

@@ -40,6 +40,5 @@ namespace DataAccess
         public virtual DbSet<Tracks> Tracks { get; set; }
         public virtual DbSet<AsistentesEvento> AsistentesEvento { get; set; }
         public virtual DbSet<IncripcionActividades> IncripcionActividades { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

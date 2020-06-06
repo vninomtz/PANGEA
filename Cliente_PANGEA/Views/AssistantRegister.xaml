@@ -69,7 +69,7 @@
             TextWrapping="Wrap"
             Margin="40,70,40,40"
             materialDesign:HintAssist.Hint="Correo electrónico"
-                     LostFocus="CorrectEmail"
+            LostFocus="CorrectEmail"
             IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" MaxLines="50" MaxLength="50"  />
             <TextBox x:Name="txt_emailConfirmation"
             Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"

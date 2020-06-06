@@ -100,6 +100,7 @@ namespace Cliente_PANGEA.Views
                     iTextSharp.text.Image imageUv = GetImageLogUv();
                     iTextSharp.text.Image imagefei = GetImageFei();
                     iTextSharp.text.Paragraph description = GetAssistanceDescription();
+                    
 
                     iTextSharp.text.Paragraph activityName = new iTextSharp.text.Paragraph();
                     activityName.Font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 28f, iTextSharp.text.Color.BLACK);
@@ -139,6 +140,7 @@ namespace Cliente_PANGEA.Views
             iTextSharp.text.Image imageUv = GetImageLogUv();
             iTextSharp.text.Image imagefei = GetImageFei();
             iTextSharp.text.Paragraph description = GetAssistanceDescription();
+            
 
             iTextSharp.text.Paragraph nameEvent = new iTextSharp.text.Paragraph();
             nameEvent.Font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 24f, iTextSharp.text.Color.BLACK);
@@ -149,7 +151,7 @@ namespace Cliente_PANGEA.Views
             date.Font = FontFactory.GetFont(FontFactory.HELVETICA, 24f, iTextSharp.text.Color.BLACK);
             date.Add("\nDel " + SingletonEvent.GetEvent().FechaFin.ToShortDateString()+" al "+ SingletonEvent.GetEvent().FechaFin.ToShortDateString());
             date.Alignment = 1;
-
+            
             document.Add(imageUv);
             document.Add(imagefei);
             document.Add(titleUniversity);
@@ -188,14 +190,16 @@ namespace Cliente_PANGEA.Views
         }
         private iTextSharp.text.Image GetImageLogUv()
         {
-            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(@"C:\Users\IvanGutru\Desktop\SextoSemestre\2.-DesarrolloDeSoftware\PANGEA\Cliente_PANGEA\Resources\img\logoUv.png");
+            String parent = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(parent+@"\Resources\img\logoUv.png");
             image.Alignment = iTextSharp.text.Image.ALIGN_LEFT;
             image.ScaleToFit(150, 150);
             return image;
         }
         private iTextSharp.text.Image GetImageFei()
         {
-            iTextSharp.text.Image imagefei = iTextSharp.text.Image.GetInstance(@"C:\Users\IvanGutru\Desktop\SextoSemestre\2.-DesarrolloDeSoftware\PANGEA\Cliente_PANGEA\Resources\img\fei.png");
+            String parent = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            iTextSharp.text.Image imagefei = iTextSharp.text.Image.GetInstance(parent+@"\Resources\img\fei.png");
             imagefei.Alignment = iTextSharp.text.Image.ALIGN_RIGHT;
             imagefei.ScaleToFit(150, 150);
             imagefei.SetAbsolutePosition(670, 450);

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Cliente_PANGEA.Controllers
 {
-    class AccountController
+    public class AccountController
     {
         public static Cuentas Login(String email, String password)
         {
@@ -89,6 +89,61 @@ namespace Cliente_PANGEA.Controllers
                 Console.WriteLine(ex.Message);
                 return false;
             }
+        }
+        public static int SaveTokenInAccount(String email, String token)
+        {
+            int result = -1;
+            try
+            {
+                using (var database = new PangeaConnection())
+                {
+                    var account = database.Cuentas.Where(c => c.Correo == email).FirstOrDefault();
+                    account.Token = token;
+                    result = database.SaveChanges();
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return result; 
+        }
+        public static Cuentas GetTokenAccount(String email, String token)
+        {
+            
+            try
+            {
+                using (var database = new PangeaConnection())
+                {
+                    var account = database.Cuentas.Where(c=>c.Correo == email && c.Token == token).FirstOrDefault();
+                    return account;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return null;
+        }
+        public static int UpdatePassword(String email, String newPassword)
+        {
+            int result = -1;
+            try
+            {
+                using (var database = new PangeaConnection())
+                {
+                    var account = database.Cuentas.Where(c=>c.Correo == email).FirstOrDefault();
+                    account.Contrasenia = newPassword;
+                    result = database.SaveChanges();
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return result;
         }
     }
 }

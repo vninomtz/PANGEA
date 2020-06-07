@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -87,6 +88,25 @@ namespace Cliente_PANGEA.Views
             
         }
 
+        public bool CorrectFields()
+        {
+
+            bool result = true;
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            if (!regexName.IsMatch(TextBox_address.Text))
+            {
+                result = false;
+            }
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            if (!regexDescription.IsMatch(TextBox_place.Text))
+            {
+
+                result = false;
+            }
+           
+            return result;
+        }
+
         private bool ValidateEmptyFields()
         {
             bool isValid = true;
@@ -135,7 +155,10 @@ namespace Cliente_PANGEA.Views
             {
                 MessageBox.Show("Por favor Ingresar información en todos los campos");
             }
-            else
+            else if (!CorrectFields())
+            {
+                MessageBox.Show("Los campos contienen caracteres invalidos");
+            }
             {
                 AddSchedule();
                 ClearFields();

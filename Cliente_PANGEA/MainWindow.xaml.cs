@@ -30,7 +30,10 @@ namespace Cliente_PANGEA
             txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
             Button_account.Visibility = Visibility.Visible;
             centralFrame.Navigate(new MainEvent(evento));
+            ValidateRol();
         }
+
+       
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -82,9 +85,24 @@ namespace Cliente_PANGEA
             }
         }
 
+        private void ValidateRol()
+        {
+            String cargo = SingletonPersonal.GetPersonal().Cargo;
+            if (cargo == "Miembro Comité")
+            {
+                ItemBudget.IsEnabled = false;
+                ItemPersonal.IsEnabled = false;
+                ItemPersonal.IsEnabled = false;
+
+            } else if(cargo == "Líder Comité")
+            {
+                ItemPersonal.IsEnabled = false;
+            }
+        }
+
         private void Button_account_Click(object sender, RoutedEventArgs e)
         {
-            centralFrame.Navigate(new ModifyAccount());
+            centralFrame.Navigate(new ModifyAccount(this));
         }
 
         private void Button_signout_Click(object sender, RoutedEventArgs e)

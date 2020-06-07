@@ -1,6 +1,7 @@
 ﻿using Cliente_PANGEA.Controllers;
 using DataAccess;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -26,6 +27,9 @@ namespace Cliente_PANGEA
             if (!ValidateEmptyFields())
             {
                 MessageBox.Show("Campos vacios");
+            } else if (!CorrectFields())
+            {
+                MessageBox.Show("Los campos contienen caracteres invalidos");
             }
             else if (!ValidateCost())
             {
@@ -53,6 +57,29 @@ namespace Cliente_PANGEA
                 
             }
 
+        }
+
+        public bool CorrectFields()
+        {
+           
+            bool result = true;
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            if (!regexName.IsMatch(TextBox_nombreEvento.Text))
+            {
+                result = false;
+            }
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            if (!regexDescription.IsMatch(TextBox_Lugar.Text))
+            {
+         
+                result = false;
+            }
+            if (!regexDescription.IsMatch(TextBox_description.Text))
+            {
+                
+                result = false;
+            }
+            return result;
         }
         public int SavePersonal()
         {

@@ -193,7 +193,7 @@ namespace Cliente_PANGEA.Views
 
         private void btn_TrackManage_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new TrackManagment());
+            NavigationService.Navigate(new TrackManagment());
         }
         private void btn_regresar_Click(object sender, RoutedEventArgs e)
         {

@@ -16,9 +16,15 @@
             <RowDefinition Height="6*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        
+        <Button Grid.Row="0" Background="{x:Null}" Padding="0" Margin="20,10,0,0"
+                    x:Name="Button_Delete" VerticalAlignment="Top" HorizontalAlignment="Left"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" 
+                    ToolTip="Eliminar track" Width="40" Height="40" Click="Button_Delete_Click">
+            <materialDesign:PackIcon Kind="Delete"  Width="40" Height="40"/>
+        </Button>
+
         <Button x:Name="button_save" Grid.Column="0" Background="Transparent" Padding="0"  HorizontalAlignment="Left"
-                            Margin="90,0,0,0"   Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                            Margin="90,10,0,0"  VerticalAlignment="Top" Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
                             ToolTip="Guardar track" Width="40" Height="40" Click="button_save_Click" >
             <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
         </Button>
@@ -46,12 +52,7 @@
             <TextBox x:Name="TextBox_descripcionTrack" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                 VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Descripción Track"
                 Margin="545,0,200,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6" />
-            <Button Grid.Row="1" Background="{x:Null}" Padding="0" Margin="70,0,0,0"
-                    x:Name="Button_Delete" VerticalAlignment="Top" HorizontalAlignment="Left"
-                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" 
-                    ToolTip="Eliminar track" Width="40" Height="40" Click="Button_Delete_Click">
-                <materialDesign:PackIcon Kind="Delete"  Width="40" Height="40"/>
-            </Button>
+            
             <ListView Grid.Row="1" x:Name="ListView_tracks"  ItemsSource="{Binding Items1}" Margin="40" >
                 <ListView.View>
                     <GridView>

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/18/2020 01:25:29
--- Generated from EDMX file: C:\Users\IvanGutru\Desktop\SextoSemestre\2.-DesarrolloDeSoftware\PANGEA\DataAccess\EntityModelPangea.edmx
+-- Date Created: 06/06/2020 17:00:00
+-- Generated from EDMX file: C:\Users\alan1.LAPTOP-TQF85LFJ\Documents\DESOFT\PANGEA\DataAccess\EntityModelPangea.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -70,6 +70,9 @@ IF OBJECT_ID(N'[dbo].[FK_Presupuestos_Eventos]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_Tracks_Eventos1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tracks] DROP CONSTRAINT [FK_Tracks_Eventos1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Comites_Eventos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Comites] DROP CONSTRAINT [FK_Comites_Eventos];
 GO
 
 -- --------------------------------------------------
@@ -193,7 +196,7 @@ CREATE TABLE [dbo].[Cuentas] (
     [Nombre] nvarchar(50)  NOT NULL,
     [Apellido] nvarchar(50)  NOT NULL,
     [Correo] nvarchar(510)  NOT NULL,
-    [Contrasenia] nvarchar(50)  NOT NULL,
+    [Contrasenia] nvarchar(256)  NOT NULL,
     [Telefono] nvarchar(10)  NULL,
     [Token] nvarchar(250)  NULL,
     [UltimoAcceso] datetime  NULL
@@ -287,7 +290,8 @@ CREATE TABLE [dbo].[AsistentesEvento] (
     [Pago] bit  NOT NULL,
     [Cantidad] float  NOT NULL,
     [IdAsistente] int  NOT NULL,
-    [IdEvento] int  NOT NULL
+    [IdEvento] int  NOT NULL,
+    [IdAsistentesEvento] int IDENTITY(1,1) NOT NULL
 );
 GO
 
@@ -384,10 +388,10 @@ ADD CONSTRAINT [PK_Tracks]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Asistencia], [Pago], [Cantidad], [IdAsistente], [IdEvento] in table 'AsistentesEvento'
+-- Creating primary key on [IdAsistentesEvento] in table 'AsistentesEvento'
 ALTER TABLE [dbo].[AsistentesEvento]
 ADD CONSTRAINT [PK_AsistentesEvento]
-    PRIMARY KEY CLUSTERED ([Asistencia], [Pago], [Cantidad], [IdAsistente], [IdEvento] ASC);
+    PRIMARY KEY CLUSTERED ([IdAsistentesEvento] ASC);
 GO
 
 -- Creating primary key on [id] in table 'IncripcionActividades'
@@ -667,6 +671,21 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_Tracks_Eventos1'
 CREATE INDEX [IX_FK_Tracks_Eventos1]
 ON [dbo].[Tracks]
+    ([IdEvento]);
+GO
+
+-- Creating foreign key on [IdEvento] in table 'Comites'
+ALTER TABLE [dbo].[Comites]
+ADD CONSTRAINT [FK_Comites_Eventos]
+    FOREIGN KEY ([IdEvento])
+    REFERENCES [dbo].[Eventos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Comites_Eventos'
+CREATE INDEX [IX_FK_Comites_Eventos]
+ON [dbo].[Comites]
     ([IdEvento]);
 GO
 

@@ -16,8 +16,6 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="Programa del evento" FontSize="30" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"></TextBlock>
-        <materialDesign:PackIcon Grid.Row="0"  HorizontalAlignment="Right" Kind="FormatListBulletedSquare" Width="35" Height="35" 
-                                 Margin="0,2,10,0" />
         <Button
                         x:Name="Button_back"
                         Background="#0000"

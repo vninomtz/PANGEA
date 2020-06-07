@@ -23,9 +23,15 @@ namespace Cliente_PANGEA.Views
     public partial class ShowCommittee : Page
     {
         int IDEVENT = SingletonEvent.GetEvent().Id;
+        string rolLeaderCommitee = "Lider Comite";
         public ShowCommittee()
         {
             InitializeComponent();
+            if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee)
+            {
+                btn_newCommittee.Visibility = Visibility.Hidden;
+                txt_nameCreateCommitte.Visibility = Visibility.Hidden;
+            }
             showCommittee();
             
         }
@@ -36,7 +42,19 @@ namespace Cliente_PANGEA.Views
         }
         private void showCommittee()
         {
-            List<Comites> listComites = ComiteController.GetAllCommitte(IDEVENT);
+            List<Comites> listComites;
+            if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee)
+            {
+                int idCommitte = SingletonPersonal.GetPersonal().IdComite.GetValueOrDefault(-1);
+                listComites = new List<Comites>();
+                Comites comites = ComiteController.GetCommitte(idCommitte);
+                listComites.Add(comites);
+            }
+            else
+            {
+                listComites = ComiteController.GetAllCommitte(IDEVENT);
+            }
+            
 
             listViewCommittee.ItemsSource = listComites;
 

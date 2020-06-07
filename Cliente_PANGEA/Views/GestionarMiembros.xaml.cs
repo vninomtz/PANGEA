@@ -27,6 +27,9 @@ namespace Cliente_PANGEA.Views
         List<Cuentas> listStaff;
         Comites committeeUpdated;
         int IDEVENT = SingletonEvent.GetEvent().Id;
+        String rolLiderComitee = "Lider Comite";
+        String rolMemberComitee = "Miembro";
+
         public GestionarMiembros(Comites committee)
         {
             InitializeComponent();
@@ -39,8 +42,8 @@ namespace Cliente_PANGEA.Views
         }
         public void GetMembersCommittee(int idEvent, int idCommittee)
         {
-            this.listMembers = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Miembro");
-            this.listleaderCommittee = PersonalController.GetMembersCommittee(idEvent, idCommittee, "Líder");
+            this.listMembers = PersonalController.GetMembersCommittee(idEvent, idCommittee, rolMemberComitee);
+            this.listleaderCommittee = PersonalController.GetMembersCommittee(idEvent, idCommittee, rolLiderComitee);
         }
         public void GetStaffAvailable()
         {
@@ -150,10 +153,10 @@ namespace Cliente_PANGEA.Views
         public bool UpdateListMembersCommittee()
         {
 
-            int result = PersonalController.UpdateAssignmentsStaff(this.listleaderCommittee, true, "Líder", this.committeeUpdated.Id);
+            int result = PersonalController.UpdateAssignmentsStaff(this.listleaderCommittee, true, rolLiderComitee, this.committeeUpdated.Id);
             if(result > -1)
             {
-                result = PersonalController.UpdateAssignmentsStaff(this.listMembers, true, "Miembro", this.committeeUpdated.Id);
+                result = PersonalController.UpdateAssignmentsStaff(this.listMembers, true, rolMemberComitee, this.committeeUpdated.Id);
                 if(result > -1)
                 {
                     return true;

@@ -104,6 +104,23 @@ namespace Cliente_PANGEA.Controllers
 
         }
 
+        public static Comites GetCommitte(int idCommitee)
+        {
+            using (var dataBase = new PangeaConnection())
+            {
+                try
+                {
+                    Comites committe = dataBase.Comites.Where(u => u.Id == idCommitee).FirstOrDefault();
+                    return committe;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error en la conexión a la BD:" + e);
+                    return null;
+                }
+            }
+        }
+
         public static bool DeleteCommittee(int idCommittee)
         {
             bool result = false;

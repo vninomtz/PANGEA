@@ -13,12 +13,12 @@
         <EntityTypeShape EntityType="PangeaModel.Cuentas" Width="1.5" PointX="0.75" PointY="20.125" />
         <EntityTypeShape EntityType="PangeaModel.Eventos" Width="1.5" PointX="0.75" PointY="15" />
         <EntityTypeShape EntityType="PangeaModel.Horarios" Width="1.5" PointX="9.75" PointY="23" />
-        <EntityTypeShape EntityType="PangeaModel.Materiales" Width="1.5" PointX="9.75" PointY="18.625" />
+        <EntityTypeShape EntityType="PangeaModel.Materiales" Width="1.5" PointX="9.75" PointY="17.75" />
         <EntityTypeShape EntityType="PangeaModel.Personal" Width="1.5" PointX="3" PointY="15.625" />
         <EntityTypeShape EntityType="PangeaModel.Presupuestos" Width="1.5" PointX="3" PointY="31.125" />
         <EntityTypeShape EntityType="PangeaModel.Tareas" Width="1.5" PointX="9.75" PointY="32.875" />
         <EntityTypeShape EntityType="PangeaModel.Tracks" Width="1.5" PointX="3" PointY="27.75" />
-        <EntityTypeShape EntityType="PangeaModel.AsistentesEvento" Width="1.5" PointX="6" PointY="15.75" />
+        <EntityTypeShape EntityType="PangeaModel.AsistentesEvento" Width="1.5" PointX="6.75" PointY="15.5" />
         <EntityTypeShape EntityType="PangeaModel.IncripcionActividades" Width="1.5" PointX="12.75" PointY="21.375" />
         <AssociationConnector Association="PangeaModel.FK_Actividades_Articulos" />
         <AssociationConnector Association="PangeaModel.FK_Actividades_Eventos" />

@@ -15,18 +15,33 @@ namespace Cliente_PANGEA
         public ShowEvents()
         {
             InitializeComponent();
-            LoadEventsTable();    
+            LoadEventsTable();
         }
 
         private void ListView_events_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-           DataAccess.Personal eventSelected = (DataAccess.Personal)ListView_events.SelectedItem;
-            SingletonPersonal.SetPersonal(eventSelected);
-           MainWindow ventana =  new MainWindow(eventSelected.Eventos);
-           ventana.Show();
-           Window.GetWindow(this).Close();
+         
+            
+            DataAccess.Personal eventSelected = (DataAccess.Personal)ListView_events.SelectedItem;
+            if (eventSelected != null) {
+                if (!eventSelected.Cargo.Equals("No asignado")){
+                    SingletonPersonal.SetPersonal(eventSelected);
+                    MainWindow ventana = new MainWindow(eventSelected.Eventos);
+                    ventana.Show();
+                    Window.GetWindow(this).Close();
+                }
+               
+            }
 
+
+            
         }
+        
+    
+        
+
+
+        
 
         private void LoadEventsTable()
         {

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Cliente_PANGEA"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Inicio de sesión" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Inicio de sesión" Height="500" Width="800" WindowStartupLocation="CenterScreen" Icon="Logo.png" 
+        >
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -41,7 +42,7 @@
                           materialDesign:HintAssist.Hint="Contraseña"
                           materialDesign:TextFieldAssist.HasClearButton="True" />
                         <Label HorizontalAlignment="Right" Margin="0,0,20,0">
-                            <Hyperlink  Name="url_recover" Click="url_recover_Click">Olvide mi contraseña</Hyperlink>
+                            <Hyperlink  Name="url_recover" Click="url_recover_Click">Olvidé mi contraseña</Hyperlink>
                         </Label>
                         <Grid  Margin="0,10,0,0">
                             <Grid.ColumnDefinitions>

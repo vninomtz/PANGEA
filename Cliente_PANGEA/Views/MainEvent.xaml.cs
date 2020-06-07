@@ -22,6 +22,7 @@ namespace Cliente_PANGEA
             DisableFields();            
             SingletonEvent.SetSingletonEvent(evento);
             LoadEventInformation();
+            ValidateRol();
             
         }
 
@@ -30,7 +31,19 @@ namespace Cliente_PANGEA
             InitializeComponent();
             DisableFields();
             LoadEventInformation();
+            ValidateRol();
             
+        }
+        private void ValidateRol()
+        {
+            switch (SingletonPersonal.GetPersonal().Cargo)
+            {
+                case "Líder Comité":
+                case "Miembro Comité":
+                    Button_edit.IsEnabled = false;
+                    break;
+
+            }
         }
 
         private void LoadEventInformation()

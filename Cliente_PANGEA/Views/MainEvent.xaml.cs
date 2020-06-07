@@ -22,7 +22,13 @@ namespace Cliente_PANGEA
             DisableFields();            
             SingletonEvent.SetSingletonEvent(evento);
             LoadEventInformation();
-            ValidateRol();
+            if(SingletonPersonal.GetPersonal() != null)
+            {
+                ValidateRol();
+            }
+
+
+           
             
         }
 
@@ -31,7 +37,7 @@ namespace Cliente_PANGEA
             InitializeComponent();
             DisableFields();
             LoadEventInformation();
-            ValidateRol();
+           
             
         }
         private void ValidateRol()

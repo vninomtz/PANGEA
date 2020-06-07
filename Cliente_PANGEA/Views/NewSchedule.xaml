@@ -27,7 +27,7 @@
         
         <Button x:Name="Button_save" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Padding="0"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" Margin="70,10,0,0"
-                    ToolTip="Guardar comité" Width="40" Height="40" Click="Button_save_Click"  >
+                    ToolTip="Guardar horarios" Width="40" Height="40" Click="Button_save_Click"  >
             <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
 
         </Button>

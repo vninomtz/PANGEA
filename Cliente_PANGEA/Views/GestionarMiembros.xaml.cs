@@ -27,8 +27,8 @@ namespace Cliente_PANGEA.Views
         List<Cuentas> listStaff;
         Comites committeeUpdated;
         int IDEVENT = SingletonEvent.GetEvent().Id;
-        String rolLiderComitee = "Lider Comite";
-        String rolMemberComitee = "Miembro";
+        String rolLiderComitee = "Líder Comité"; 
+        String rolMemberComitee = "Miembro Comité";
 
         public GestionarMiembros(Comites committee)
         {

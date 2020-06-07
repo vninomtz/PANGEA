@@ -84,9 +84,19 @@ namespace Cliente_PANGEA
                 case "ItemMaterials":
                     centralFrame.Navigate(new ShowMaterials());
                     break;
+                case "ItemExit":
+                    ExitMainWindow();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void ExitMainWindow()
+        {
+            Events eventsWindow = new Events();
+            eventsWindow.Show();
+            this.Close();
         }
 
         private void ValidateRol()

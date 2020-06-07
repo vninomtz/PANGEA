@@ -27,12 +27,16 @@ namespace Cliente_PANGEA.Views
         public ShowCommittee()
         {
             InitializeComponent();
-            if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee)
+            if (  SingletonPersonal.GetPersonal() != null)
             {
-                btn_newCommittee.Visibility = Visibility.Hidden;
-                txt_nameCreateCommitte.Visibility = Visibility.Hidden;
+                if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee)
+                {
+                    btn_newCommittee.Visibility = Visibility.Hidden;
+                    txt_nameCreateCommitte.Visibility = Visibility.Hidden;
+                }
+                showCommittee();
             }
-            showCommittee();
+                
             
         }
 

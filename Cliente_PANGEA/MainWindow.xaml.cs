@@ -30,6 +30,7 @@ namespace Cliente_PANGEA
             txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
             Button_account.Visibility = Visibility.Visible;
             centralFrame.Navigate(new MainEvent(evento));
+            ValidateRol();
         }
 
        

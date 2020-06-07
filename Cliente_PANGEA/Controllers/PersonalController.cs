@@ -85,7 +85,9 @@ namespace Cliente_PANGEA.Controllers
                     {
                         Asignado = false,
                         IdEvento = idEvento,
-                        IdCuenta = idCuenta
+                        IdCuenta = idCuenta,
+                        Cargo = "No asignado"
+
                     };
                     if (ExistingAccount(idCuenta, idEvento) == true)
                     {

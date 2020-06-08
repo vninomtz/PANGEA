@@ -12,21 +12,20 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="10*" ></RowDefinition>
+            <RowDefinition Height="6*" ></RowDefinition>
         </Grid.RowDefinitions>
+        
+        
 
         <TextBlock Grid.Row="0" Text="Programa del evento" FontSize="30" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"></TextBlock>
-        <Button
-                        x:Name="Button_back"
-                        Background="#0000"
-                        Grid.Row="0"
-                        BorderBrush="Transparent"
-                        HorizontalAlignment="Left"                   
-                        VerticalAlignment="Top" 
-                        ToolTip="Regresar"
-                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_back_Click">
-            <materialDesign:PackIcon  Kind="KeyboardBackspace" Width="30" Height="30" />
+        <Button Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Padding="0"
+                    x:Name="Button_back" Margin="10,10,0,0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="Button_back_Click">
+            <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+
         </Button>
+       
 
         <ListView x:Name="ListView_eventProgram" Grid.Row="1" ItemsSource="{Binding Items1}" VerticalAlignment="Top"
                   HorizontalAlignment="Center" >

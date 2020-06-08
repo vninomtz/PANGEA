@@ -84,7 +84,8 @@ namespace Cliente_PANGEA.Views
             Tracks newTrack = new Tracks
             {
                 Nombre = TextBox_nombreTrack.Text,
-                Descripcion = TextBox_descripcionTrack.Text
+                Descripcion = TextBox_descripcionTrack.Text,
+                IdEvento = SingletonEvent.GetEvent().Id
             };
 
             return TrackController.AddTrack(newTrack);

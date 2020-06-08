@@ -30,7 +30,11 @@ namespace Cliente_PANGEA
             txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
             Button_account.Visibility = Visibility.Visible;
             centralFrame.Navigate(new MainEvent(evento));
-            ValidateRol();
+            if(SingletonPersonal.GetPersonal()!= null)
+            {
+                ValidateRol();
+            }
+            
         }
 
        
@@ -80,9 +84,19 @@ namespace Cliente_PANGEA
                 case "ItemMaterials":
                     centralFrame.Navigate(new ShowMaterials());
                     break;
+                case "ItemExit":
+                    ExitMainWindow();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void ExitMainWindow()
+        {
+            Events eventsWindow = new Events();
+            eventsWindow.Show();
+            this.Close();
         }
 
         private void ValidateRol()

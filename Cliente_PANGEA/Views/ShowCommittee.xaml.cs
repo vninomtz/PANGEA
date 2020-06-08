@@ -23,16 +23,21 @@ namespace Cliente_PANGEA.Views
     public partial class ShowCommittee : Page
     {
         int IDEVENT = SingletonEvent.GetEvent().Id;
-        string rolLeaderCommitee = "Lider Comite";
+        String rolLeaderCommitee = "Líder Comité";
+        String rolMemberCommitee = "Miembro Comité";
         public ShowCommittee()
         {
             InitializeComponent();
-            if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee)
+            if (  SingletonPersonal.GetPersonal() != null)
             {
-                btn_newCommittee.Visibility = Visibility.Hidden;
-                txt_nameCreateCommitte.Visibility = Visibility.Hidden;
+                if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee || SingletonPersonal.GetPersonal().Cargo == rolMemberCommitee)
+                {
+                    btn_newCommittee.Visibility = Visibility.Hidden;
+                    txt_nameCreateCommitte.Visibility = Visibility.Hidden;
+                }
+                showCommittee();
             }
-            showCommittee();
+                
             
         }
 
@@ -43,12 +48,14 @@ namespace Cliente_PANGEA.Views
         private void showCommittee()
         {
             List<Comites> listComites;
-            if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee)
+            if (SingletonPersonal.GetPersonal().Cargo == rolLeaderCommitee || SingletonPersonal.GetPersonal().Cargo == rolMemberCommitee)
             {
                 int idCommitte = SingletonPersonal.GetPersonal().IdComite.GetValueOrDefault(-1);
                 listComites = new List<Comites>();
                 Comites comites = ComiteController.GetCommitte(idCommitte);
                 listComites.Add(comites);
+
+
             }
             else
             {
@@ -58,11 +65,16 @@ namespace Cliente_PANGEA.Views
 
             listViewCommittee.ItemsSource = listComites;
 
+            
 
         }
 
         private void listViewCommittee_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (SingletonPersonal.GetPersonal().Cargo == rolMemberCommitee)
+            {
+                return;
+            }
             if (listViewCommittee.SelectedItems.Count > 0)
             {
                 Comites commite = (Comites)listViewCommittee.SelectedItem;

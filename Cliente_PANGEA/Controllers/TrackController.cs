@@ -14,7 +14,7 @@ namespace Cliente_PANGEA.Controllers
             {
                 try
                 {
-                    tracksList = dataBase.Tracks.ToList<Tracks>();
+                    tracksList = dataBase.Tracks.Where(track => track.IdEvento == idEvento).ToList<Tracks>();
                     
                 }
                 catch (Exception ex)

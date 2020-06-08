@@ -22,14 +22,11 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Margin="-300,0,0,0" FontSize="35"
             Text ="Personal del evento" VerticalAlignment="Center" HorizontalAlignment ="Center"/>
-            <Button Grid.Column="0" x:Name="btn_DeletePersonal"
-                      VerticalAlignment="Top" Margin="90,25,0,0" Background="#FF5C99D6"  BorderBrush="#FF5C99D6"
-                      Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                      ToolTip="Eliminar personal" Click="btn_DeletePersonal_Click"  >
-                <materialDesign:PackIcon
-                        Kind="Trash"
-                        Height="34"
-                        Width="34" />
+
+            <Button x:Name="btn_DeletePersonal" Grid.Column="0" Background="Transparent" Padding="0" VerticalAlignment="Top" Margin="90,25,0,0"
+                            Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                            ToolTip="Eliminar personal" Width="40" Height="40" Click="btn_DeletePersonal_Click"  >
+                <materialDesign:PackIcon Kind="Trash"  Width="40" Height="40"/>
             </Button>
         </Grid>
         <Grid Grid.Row="1">
@@ -59,14 +56,9 @@
                 </Button>
             </Grid>
             <Grid Grid.Column="1">
-                <Button x:Name="btn_RegisterPersonal"
-                      VerticalAlignment="Top" Margin="0,40,60,0" Background="#FF5C99D6"  BorderBrush="#FF5C99D6"
-                      Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                      ToolTip="Agregar" Click="btn_RegisterPersonal_Click" >
-                    <materialDesign:PackIcon
-                        Kind="Add"
-                        Height="34"
-                        Width="34" />
+                    <Button x:Name="btn_RegisterPersonal" Grid.Column="0" Background="{x:Null}" Padding="0" Foreground="Black" BorderBrush="#FF5C99D6" 
+                    Margin="-70,0,0,0" Width="40" Height="40" RenderTransformOrigin="0.375,0.55" Click="btn_RegisterPersonal_Click">
+                    <materialDesign:PackIcon Kind="Add"  Width="40" Height="40" BorderBrush="#FF5C99D6" Foreground="#FF5C99D6" OpacityMask="#FF5C99D6"/>
                 </Button>
                 <TextBlock FontWeight="Normal" Margin="160,0,0,0" FontSize="16"
                     Text ="Registro de Personal" VerticalAlignment="Center" HorizontalAlignment ="Center">

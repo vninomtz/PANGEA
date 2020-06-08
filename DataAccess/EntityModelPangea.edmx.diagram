@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ceafb49a1ffc43bf911783bdd345406f" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="ceafb49a1ffc43bf911783bdd345406f" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="PangeaModel.Actividades" Width="1.5" PointX="7.5" PointY="20.5" />
         <EntityTypeShape EntityType="PangeaModel.Articulos" Width="1.5" PointX="5.25" PointY="27.5" />
         <EntityTypeShape EntityType="PangeaModel.Asistentes" Width="1.5" PointX="3.75" PointY="11.875" />

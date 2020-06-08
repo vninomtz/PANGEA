@@ -22,7 +22,6 @@ namespace Cliente_PANGEA.Controllers
                     {
                         Id = -1
                     };
-
                     Console.WriteLine(ex);                   
                 }
                 

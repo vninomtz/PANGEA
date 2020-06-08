@@ -96,7 +96,18 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock Text="{Binding}" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Código de track: " />
+                                                <TextBlock Text="{Binding Codigo}" />
+                                                <TextBlock Text="    " />
+                                                <TextBlock Text="Nombre: " />
+                                                <TextBlock Text="{Binding Nombre}" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Descripción: " />
+                                                <TextBlock Text="{Binding Descripcion}" />
+                                            </StackPanel>
+                                         
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -116,7 +127,16 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding}" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Tipo}"/>
+                                            <TextBlock Text=": "/>
+                                            <TextBlock Text="{Binding Titulo}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Fecha: "/>
+                                            <TextBlock Text="{Binding FechaCreacion}"/>
+                                        </StackPanel>
+                                        
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

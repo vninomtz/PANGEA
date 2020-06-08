@@ -104,7 +104,7 @@ namespace Cliente_PANGEA.Views
 
                     iTextSharp.text.Paragraph activityName = new iTextSharp.text.Paragraph();
                     activityName.Font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 28f, iTextSharp.text.Color.BLACK);
-                    activityName.Add("\n\n" + incripcionActividades.Actividades.Tipo + " " + incripcionActividades.Actividades.Titulo);
+                    activityName.Add("\n\n" + incripcionActividades.Actividades.Tipo + ": " + incripcionActividades.Actividades.Titulo);
                     activityName.Alignment = 1;
 
                     iTextSharp.text.Paragraph date = new iTextSharp.text.Paragraph();

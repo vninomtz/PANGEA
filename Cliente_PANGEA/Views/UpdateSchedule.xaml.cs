@@ -23,13 +23,10 @@ namespace Cliente_PANGEA.Views
     public partial class UpdateSchedule : Page
     {
         private Actividades activityReceived;
-        private int idActivity;
-        private List<Horarios> scheduleList;
         public UpdateSchedule(Actividades actividades)
         {
             InitializeComponent();
             this.activityReceived = actividades;
-            this.scheduleList = new List<Horarios>();
             ShowScheduleSelected();
         }
 

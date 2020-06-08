@@ -172,13 +172,13 @@ namespace Cliente_PANGEA.Controllers
             return result;
         }
 
-        public static List<Horarios> GetEventActivitiesSpaceAvaible(int idEvent)
+        public static List<Actividades> GetEventActivitiesSpaceAvaible(int idEvent)
         {
             using (var database = new PangeaConnection())
             {
                 try
                 {
-                    var activityList = database.Horarios.Include("Actividades").Where(a => a.Actividades.IdEvento == idEvent && a.Actividades.Cupo > 0).ToList();
+                    var activityList = database.Actividades.Include("Horarios").Where(a => a.IdEvento == idEvent && a.Cupo >0 || a.Cupo == null).ToList();
                     return activityList;
                 }
                 catch (Exception e)

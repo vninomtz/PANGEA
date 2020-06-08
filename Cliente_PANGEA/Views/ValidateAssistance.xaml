@@ -58,7 +58,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding }" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Asistentes.Nombre}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding Asistentes.Apellido}" />
+                                </StackPanel>
                                 <TextBlock Text="{Binding Asistentes.Correo}" />
                             </StackPanel>
                         </DataTemplate>
@@ -78,8 +82,24 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding}" />
-                            </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Actividades.Tipo}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Actividades.Titulo}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Costo:  " />
+                                        <TextBlock Text="{Binding Actividades.Costo}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Pago de actividad: " />
+                                        <TextBlock Text="{Binding pago}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Asistencia a actividad:  " />
+                                        <TextBlock Text="{Binding asistencia}" />
+                                    </StackPanel>
+                                </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
 

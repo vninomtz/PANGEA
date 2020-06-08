@@ -95,22 +95,6 @@ namespace Cliente_PANGEA.Controllers
             }
             return null;
         }
-        public static Actividades GetActivityForUpdate(int idActivity)
-        {
-            try
-            {
-                using (var database = new PangeaConnection())
-                {
-                    var activity = database.Actividades.Where(a => a.Id == idActivity).SingleOrDefault();
-                    return activity;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            return null;
-        }
 
         public static int DeleteActivity(int idActivity)
         {

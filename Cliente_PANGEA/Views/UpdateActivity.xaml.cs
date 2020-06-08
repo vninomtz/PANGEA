@@ -22,12 +22,11 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class UpdateActivity : Page
     {
-        private int idActivity;
-        
+        private Actividades activityReceived;
         public UpdateActivity(Actividades activity)
         {
             InitializeComponent();
-            this.idActivity = activity.Id;
+            this.activityReceived = activity;
             ShowActivitySelected(activity);
         }
 
@@ -42,7 +41,7 @@ namespace Cliente_PANGEA.Views
         {
             Actividades activity = new Actividades
             {
-                Id = idActivity,
+                Id = activityReceived.Id,
                 IdEvento = SingletonEvent.GetEvent().Id,
                 Titulo = TextBox_activityTitle.Text,
                 Descripcion = TextBox_activityDescription.Text,
@@ -141,9 +140,9 @@ namespace Cliente_PANGEA.Views
 
         private void Button_UpdateSchedule_Click(object sender, RoutedEventArgs e)
         {
-            if (ScheduleController.GetSchedules(idActivity)!=null)
+            if (ScheduleController.GetSchedules(activityReceived.Id)!=null)
             {
-                this.NavigationService.Navigate(new UpdateSchedule());
+                this.NavigationService.Navigate(new UpdateSchedule(activityReceived));
             }
             else
             {

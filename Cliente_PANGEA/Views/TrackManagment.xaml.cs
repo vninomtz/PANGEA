@@ -64,12 +64,12 @@ namespace Cliente_PANGEA.Views
         {
 
             bool result = true;
-            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9-,-. ]+$");
             if (!regexName.IsMatch(TextBox_nombreTrack.Text))
             {
                 result = false;
             }
-            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9-,-. !@#\$%\&\*\?¿._~\/]+$");
             if (!regexDescription.IsMatch(TextBox_descripcionTrack.Text))
             {
 
@@ -116,6 +116,11 @@ namespace Cliente_PANGEA.Views
                 
 
             }
+        }
+
+        private void Button_back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegisterArticle());
         }
     }
 }

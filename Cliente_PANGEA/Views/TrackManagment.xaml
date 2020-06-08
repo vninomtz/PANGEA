@@ -16,7 +16,15 @@
             <RowDefinition Height="6*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Background="{x:Null}" Padding="0" Margin="20,10,0,0"
+        <Button Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Padding="0"
+                    x:Name="Button_back" Margin="10,10,0,0"
+                    Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                    ToolTip="Regresar" Width="40" Height="40" Click="Button_back_Click" >
+            <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
+
+        </Button>
+
+        <Button Grid.Row="0" Background="{x:Null}" Padding="0" Margin="60,10,0,0"
                     x:Name="Button_Delete" VerticalAlignment="Top" HorizontalAlignment="Left"
                     Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" 
                     ToolTip="Eliminar track" Width="40" Height="40" Click="Button_Delete_Click">
@@ -24,7 +32,7 @@
         </Button>
 
         <Button x:Name="button_save" Grid.Column="0" Background="Transparent" Padding="0"  HorizontalAlignment="Left"
-                            Margin="90,10,0,0"  VerticalAlignment="Top" Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
+                            Margin="110,10,0,0"  VerticalAlignment="Top" Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
                             ToolTip="Guardar track" Width="40" Height="40" Click="button_save_Click" >
             <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="40"/>
         </Button>

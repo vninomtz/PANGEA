@@ -59,7 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComiteTest.cs" />
+    <Compile Include="ConstancyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecoverPasswordTest.cs" />
+    <Compile Include="ShowActivitiesTest.cs" />
     <Compile Include="TaskTest.cs" />
     <Compile Include="MaterialsTest.cs" />
   </ItemGroup>

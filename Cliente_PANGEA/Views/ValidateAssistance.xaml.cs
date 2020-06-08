@@ -24,9 +24,10 @@ namespace Cliente_PANGEA.Views
     {
         
         List<IncripcionActividades> idIncription = new List<IncripcionActividades>();
-
+        AsistentesEvento assistantEvent;
         public ValidateAssistance(AsistentesEvento asistenteEvento)
         {
+            assistantEvent = asistenteEvento;
             InitializeComponent();
             LoadEventAssistant(asistenteEvento.IdAsistente);
             LoadAssistantActivities(asistenteEvento.IdAsistente);
@@ -48,7 +49,7 @@ namespace Cliente_PANGEA.Views
             {
                 return true;
             }
-            MessageBox.Show("Error de conexión con la base de datos No tiene.");
+            MessageBox.Show("Error de conexión con la base de datos.");
             return false;
         }
         private List<IncripcionActividades> GetIncriptionAsistant(int idAsistant)
@@ -128,6 +129,11 @@ namespace Cliente_PANGEA.Views
         private void btn_regresar_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new ShowAssistants());
+        }
+
+        private void btn_GenerateConstancy_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new GenerateConstancy(assistantEvent));
         }
     }
 }

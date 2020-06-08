@@ -34,7 +34,9 @@ namespace Cliente_PANGEA.Controllers
             Tracks newTrack = new Tracks
             {
                 Nombre = infoTrack.Nombre,
-                Descripcion = infoTrack.Descripcion
+                Descripcion = infoTrack.Descripcion,
+                IdEvento = infoTrack.IdEvento
+                
             };
 
             using(var dataBase = new PangeaConnection())

@@ -49,7 +49,7 @@
                          VerticalAlignment="Bottom"
                         Margin="20"
                         Style="{StaticResource MaterialDesignRaisedLightButton}"                        
-                        ToolTip="Resource name: MaterialDesignRaisedLightButton" Click="Button_PDF_Click" >
+                        Click="Button_PDF_Click" >
             Generar PDF
         </Button>
 

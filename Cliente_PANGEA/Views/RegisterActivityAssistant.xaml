@@ -41,18 +41,27 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Asistente" 
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-            <TextBlock Grid.Column="1" Text="Lista de actividades" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.6*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Lista de actividades" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline6TextBlock}"      />
+                <TextBlock Grid.Column="1" Text="Lista de Horarios" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"      />
+            </Grid>
+         
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
@@ -64,7 +73,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nombre}" />
+                                    <TextBlock Text="{Binding Apellido}" />
+                                </StackPanel>
                                 <TextBlock Text="{Binding Correo}" />
                             </StackPanel>
                         </DataTemplate>
@@ -74,22 +86,57 @@
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
                     ToolTip="Guardar asignación" Content="Guardar asignación"
                     Click="btn_RegsiterActivityAssistant_Click" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />
-                <Button Grid.Row="2" x:Name="btn_RegisterActivityAssistantForValidate" Margin="123,27,101,27"
+                <Button Grid.Row="2" x:Name="btn_RegisterActivityAssistantForValidate" Margin="90,27,85,27"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
                     ToolTip="Guardar asignación" Content="Guardar asignación"
                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_RegisterActivityAssistantForValidate_Click" />
             </Grid>
             <Grid Grid.Column="1">
-                <ListView x:Name="listView_Activities" Padding="5" Margin="100,10,50,10">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-
-                </ListView>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <ListView x:Name="listView_Activities" Padding="5" Margin="50,10,30,10" MouseDoubleClick="listView_Activities_MouseDoubleClick">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Tipo}" />
+                                        <TextBlock Text=": " />
+                                        <TextBlock Text="{Binding Titulo}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Costo:  $" />
+                                        <TextBlock Text="{Binding Costo}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Cupo: " />
+                                        <TextBlock Text="{Binding Cupo}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ListView x:Name="listView_ActivitiesSchedules" Padding="5" Margin="0,10,5,10" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Fecha de inicio:  " />
+                                        <TextBlock Text="{Binding FechaInicio}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Fecha de fin:  " />
+                                        <TextBlock Text="{Binding FechaFin}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

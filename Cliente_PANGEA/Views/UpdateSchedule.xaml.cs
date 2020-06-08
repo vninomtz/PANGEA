@@ -22,19 +22,17 @@ namespace Cliente_PANGEA.Views
     /// </summary>
     public partial class UpdateSchedule : Page
     {
-        private int idActivity;
-        private List<Horarios> scheduleList;
-        public UpdateSchedule()
+        private Actividades activityReceived;
+        public UpdateSchedule(Actividades actividades)
         {
             InitializeComponent();
-            this.idActivity = ActivityController.GetLastActivity();
-            this.scheduleList = new List<Horarios>();
+            this.activityReceived = actividades;
             ShowScheduleSelected();
         }
 
         private void ShowScheduleSelected()
         {
-            ListView_schedules.ItemsSource = ScheduleController.GetSchedules(idActivity);
+            ListView_schedules.ItemsSource = ScheduleController.GetSchedules(activityReceived.Id);
 
         }
 
@@ -67,7 +65,7 @@ namespace Cliente_PANGEA.Views
         {
             Horarios hour = new Horarios
             {
-                IdActividad = idActivity,
+                IdActividad = activityReceived.Id,
                 Direccion = TextBox_address.Text,
                 Lugar = TextBox_place.Text,
                 FechaInicio = DateTime.Parse(DatePicker_initialDate.Text + " " + TimePicker_initialHour.Text),
@@ -154,9 +152,9 @@ namespace Cliente_PANGEA.Views
             MessageBoxResult result = MessageBox.Show("Se guardaran los horarios de la tabla", "Confirmación", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-
-                Actividades activity = ActivityController.GetActivityForUpdate(idActivity);
-                NavigationService.Navigate(new UpdateActivity(activity));
+                activityReceived.UltimaModificacion = DateTime.Now;
+                ActivityController.UpdateActivity(activityReceived);
+                NavigationService.Navigate(new UpdateActivity(activityReceived));
             }
 
         }

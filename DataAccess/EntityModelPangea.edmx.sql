@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/06/2020 17:00:00
--- Generated from EDMX file: C:\Users\alan1.LAPTOP-TQF85LFJ\Documents\DESOFT\PANGEA\DataAccess\EntityModelPangea.edmx
+-- Date Created: 06/07/2020 00:17:52
+-- Generated from EDMX file: C:\Users\IvanGutru\Desktop\SextoSemestre\2.-DesarrolloDeSoftware\PANGEA\DataAccess\EntityModelPangea.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;

@@ -1,4 +1,4 @@
-﻿<Page x:Class="Cliente_PANGEA.Views.ValidateAssistance"
+﻿<Page x:Class="Cliente_PANGEA.Views.GenerateConstancy"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="990"
-      Title="ValidateAssistance">
+      Title="GenerateConstancy">
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width=".5*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="1" Text="Gestionar asistente en actividad"  FontWeight="Bold"  Margin="20,15,170,10"
+            <TextBlock Grid.Column="1" Text="Generar Constancia de asistencia"  FontWeight="Bold"  Margin="20,15,170,10"
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                 Style="{StaticResource MaterialDesignHeadline4TextBlock}" Grid.ColumnSpan="2"/>
             <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" Background="{x:Null}" Padding="0"
@@ -51,7 +51,7 @@
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
-                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="4.2*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <ListView x:Name="listView_Asistente" Grid.Row="0" >
@@ -68,38 +68,42 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Grid.Row="2" x:Name="btn_RegisterActivityAssistant" Margin="123,30,101,16"
+                <Button Grid.Row="2" x:Name="btn_GenerateEventConstancy" Margin="90,20,100,15"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                    ToolTip="Asignar actividad" Content="Asignar actividad"
-                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_RegisterActivityAssistant_Click" />
+                    ToolTip="Generar constancia de evento" Content="Generar constancia evento"
+                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_GenerateEventConstancy_Click"  />
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1.1*"/>
                 </Grid.RowDefinitions>
                 <ListView Grid.Row="0" x:Name="listView_Activities" Padding="5" Margin="100,10,50,10">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Actividades.Tipo}" />
-                                        <TextBlock Text=" " />
-                                        <TextBlock Text="{Binding Actividades.Titulo}" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Costo:  " />
-                                        <TextBlock Text="{Binding Actividades.Costo}" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Pago de actividad: " />
-                                        <TextBlock Text="{Binding pago}" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Asistencia a actividad:  " />
-                                        <TextBlock Text="{Binding asistencia}" />
-                                    </StackPanel>
+                                    <TextBlock Text="{Binding Actividades.Tipo}" />
+                                    <TextBlock Text=": " />
+                                    <TextBlock Text="{Binding Actividades.Titulo}" />
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Costo: $" />
+                                    <TextBlock Text="{Binding Actividades.Costo}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Cupo: " />
+                                    <TextBlock Text="{Binding Actividades.Cupo}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Pago de actividad: " />
+                                    <TextBlock Text="{Binding pago}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Asistencia a actividad:  " />
+                                    <TextBlock Text="{Binding asistencia}" />
+                                </StackPanel>
+                            </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
 
@@ -109,17 +113,13 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" x:Name="btn_ValidateAssistance" Margin="50,20,70,15"
+                    <Button Grid.Column="1" x:Name="btn_GenerateActivityConstancy" Margin="0,20,70,15"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                    ToolTip="Validar asistencia" Content="Validar asistencia"
-                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_ValidateAssistance_Click" />
-                    <Button Grid.Column="1" x:Name="btn_GenerateConstancy" Margin="70,20,50,15"
-                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                    ToolTip="Generar constancia" Content="Generar constancia"
-                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_GenerateConstancy_Click"/>
+                    ToolTip="Generar constancia de actividad" Content="Generar constancia actividad"
+                     Background="#FF5C99D6" BorderBrush="#FF5C99D6" Click="btn_GenerateActivityConstancy_Click" />
 
                 </Grid>
-               </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

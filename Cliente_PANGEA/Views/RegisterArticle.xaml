@@ -71,7 +71,7 @@
                     <ToggleButton Grid.Row="1" Grid.Column="0"
                       Style="{StaticResource MaterialDesignFlatToggleButton}"
                       ToolTip="Adjuntar archivo " Margin="30,-50,0,0" Checked="ToggleButton_Checked">
-                        <materialDesign:PackIcon Kind="Paperclip" Height="30" Width="30" />
+                        <materialDesign:PackIcon Kind="PdfBox" Height="40" Width="40" BorderBrush="#FF5C99D6" />
                     </ToggleButton>
                     <TextBlock Grid.Column="1" x:Name="textblock_Archivo" Text="" 
                     Margin="10,10,42,59" FontSize="10"
@@ -99,7 +99,17 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding}" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Código de track: " />
+                                            <TextBlock Text="{Binding Codigo}" />
+                                            <TextBlock Text="    " />
+                                            <TextBlock Text="Nombre: " />
+                                            <TextBlock Text="{Binding Nombre}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Descripción: " />
+                                            <TextBlock Text="{Binding Descripcion}" />
+                                        </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -114,7 +124,15 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{Binding}" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Tipo}"/>
+                                            <TextBlock Text=": "/>
+                                            <TextBlock Text="{Binding Titulo}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Fecha: "/>
+                                            <TextBlock Text="{Binding FechaCreacion}"/>
+                                        </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

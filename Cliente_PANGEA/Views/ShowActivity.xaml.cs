@@ -33,18 +33,19 @@ namespace Cliente_PANGEA.Views
         {
            listViewActivities.ItemsSource =  ActivityController.GetEventActivities(idEvento);
         }
-        private void btn_UpdateActivity_Click(object sender, RoutedEventArgs e)
+
+        private void btn_newActivity_Click(object sender, RoutedEventArgs e)
         {
-            if (listViewActivities.SelectedItems.Count >0)
+            NavigationService.Navigate(new NewActivity());
+        }
+
+        private void listViewActivities_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (listViewActivities.SelectedItems.Count > 0)
             {
                 Actividades activity = (Actividades)listViewActivities.SelectedItem;
                 this.NavigationService.Navigate(new UpdateActivity(activity));
             }
-        }
-
-        private void btn_RegisterActivity_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new NewActivity());
         }
     }
 }

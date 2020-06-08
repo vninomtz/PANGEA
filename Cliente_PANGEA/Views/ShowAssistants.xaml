@@ -31,9 +31,9 @@
                       Style="{StaticResource MaterialDesignFloatingActionAccentButton}" ToolTip="Buscar" Click="btn_search_Click" >
                 <materialDesign:PackIcon Kind="Search" Height="24" Width="24" />
             </Button>
-            <Button Grid.Column="2" x:Name="btn_RegisterAssistant" VerticalAlignment="Top" Margin="0,40,60,0" Background="#FF5C99D6"  BorderBrush="#FF5C99D6"
-                      Style="{StaticResource MaterialDesignFloatingActionAccentButton}" ToolTip="Agregar" Click="btn_RegisterAssistant_Click" >
-                <materialDesign:PackIcon Kind="Add" Height="34" Width="34" />
+            <Button Grid.Column="2" x:Name="btn_RegisterAssistant"  Background="{x:Null}" Padding="0" Foreground="Black" BorderBrush="#FF5C99D6" 
+                     VerticalAlignment="Top" Margin="0,40,60,0" Width="40" Height="40" Click="btn_RegisterAssistant_Click" RenderTransformOrigin="0.375,0.55">
+                <materialDesign:PackIcon Kind="Add"  Width="40" Height="40" BorderBrush="#FF5C99D6" Foreground="#FF5C99D6" OpacityMask="#FF5C99D6"/>
             </Button>
             <TextBlock Grid.Column="2" FontWeight="Normal" Margin="160,0,0,0" FontSize="16"
                     Text ="Registrar asistentes" VerticalAlignment="Center" HorizontalAlignment ="Center">

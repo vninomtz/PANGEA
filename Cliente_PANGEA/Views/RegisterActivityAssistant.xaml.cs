@@ -24,6 +24,8 @@ namespace Cliente_PANGEA.Views
     {
         int idEvent = SingletonEvent.GetEvent().Id;
         Asistentes asistente;
+        private List<Horarios> scheduleList = new List<Horarios>();
+        private List<Actividades> activityList = new List<Actividades>();
 
         public RegisterActivityAssistant()
         {
@@ -60,11 +62,21 @@ namespace Cliente_PANGEA.Views
         {
             list_Asistente.ItemsSource = AsistenteController.GetAssistantsById(idAssistant);
         }
-        private void LoadActivities()
+        private List<Actividades> GetAcitivities()
         {
             if (ActivityController.GetEventActivitiesSpaceAvaible(idEvent) != null)
             {
-                listView_Activities.ItemsSource = ActivityController.GetEventActivitiesSpaceAvaible(idEvent);
+                activityList = ActivityController.GetEventActivitiesSpaceAvaible(idEvent);
+                return activityList;
+            }
+            return null;
+        }
+        private void LoadActivities()
+        {
+            if (GetAcitivities() != null)
+            {
+                listView_Activities.ItemsSource = activityList;
+
             }
             else
             {
@@ -149,13 +161,13 @@ namespace Cliente_PANGEA.Views
             if (ValidateSelectedAssistant() && ValidateSelectedActivity())
             {
                 Asistentes assistant = (Asistentes)list_Asistente.SelectedItem;
-                Horarios activity = (Horarios)listView_Activities.SelectedItem;
+                Actividades activity = (Actividades)listView_Activities.SelectedItem;
                 MessageBoxResult messageBoxResult = MessageBox.Show("¿Está seguro de de registrar al asistente a la actividad?", "Confirmación de registro", MessageBoxButton.OKCancel);
                 if (messageBoxResult == MessageBoxResult.OK)
                 {
-                    if (!ValidateNOTRegisterAssistantInActivity(activity.Actividades.Id, assistant.Id))
+                    if (!ValidateNOTRegisterAssistantInActivity(activity.Id, assistant.Id))
                     {
-                        if (ActivityController.RegisterActivityAssistant(assistant.Id, activity.Actividades.Id) > 0)
+                        if (ActivityController.RegisterActivityAssistant(assistant.Id, activity.Id) > 0)
                         {
                             MessageBox.Show("Asistente registrado con éxito");
                             if (ContinueRegistering())
@@ -191,6 +203,24 @@ namespace Cliente_PANGEA.Views
             }
             MessageBox.Show("Error al recuperar al asistente de evento");
             return null;
+        }
+        private List<Horarios> GetSchedules(Actividades activity)
+        {
+            if (ScheduleController.GetSchedules(activity.Id)!=null)
+            {
+                scheduleList = ScheduleController.GetSchedules(activity.Id);
+                return scheduleList;
+            }
+            return null;
+        }
+
+        private void listView_Activities_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (listView_Activities.SelectedItems.Count > 0)
+            {
+                Actividades activity = (Actividades)listView_Activities.SelectedItem;
+                listView_ActivitiesSchedules.ItemsSource = GetSchedules(activity);
+            }
         }
     }
 }

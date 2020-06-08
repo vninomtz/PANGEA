@@ -18,15 +18,11 @@
 
         <Grid Grid.Row="0">
             <TextBlock Grid.Row="0"  FontWeight="Bold" Margin="30,0,0,0" FontSize="35"
-            Text ="Registro de Personal" VerticalAlignment="Center" HorizontalAlignment ="Center"/>
-            <Button x:Name="btn_back"
-                      VerticalAlignment="Top" Margin="-850,10,0,0" Background="#FF5C99D6"  BorderBrush="#FF5C99D6"
-                      Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                      ToolTip="Regresar" Click="btn_back_Click" >
-                <materialDesign:PackIcon
-                        Kind="ArrowBack"
-                        Height="34"
-                        Width="34" />
+            Text ="Registrar cuenta como Personal" VerticalAlignment="Center" HorizontalAlignment ="Center"/>
+            <Button x:Name="btn_back" Grid.Row="1" Grid.Column="0" Background="Transparent" Padding="0" Margin="20,0,0,0"
+                            Foreground="#FF5C99D6" BorderBrush="#FF5C99D6" HorizontalAlignment="Left"
+                            ToolTip="Regresar" Width="40" Height="40" Click="btn_back_Click"  >
+                <materialDesign:PackIcon Kind="ArrowLeft"  Width="40" Height="40"/>
             </Button>
         </Grid>
         <Grid Grid.Row="1">
@@ -45,7 +41,6 @@
                     VerticalAlignment="Top" TextWrapping="Wrap" 
                     Margin="20,20,10,0"
                     Height="62" MaxLines="50" MaxLength="50"
-                    LostFocus="CorrectEmail"
                     materialDesign:HintAssist.Hint="Correo electrónico a buscar" />
                 <Button Grid.Column="1" Grid.Row="1" x:Name="btn_search"
                       VerticalAlignment="Top" Margin="-70,20,0,0" Background="#FF5C99D6"  BorderBrush="#FF5C99D6"
@@ -78,20 +73,10 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="4*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="1" Grid.Row="0" x:Name="btn_addPersonal"
-                      VerticalAlignment="Top" Margin="-150,40,0,0" Background="#FF5C99D6"  BorderBrush="#FF5C99D6"
-                      Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                      ToolTip="Agregar" Click="btn_addPersonal_Click" >
-                    <materialDesign:PackIcon
-                        Kind="Add"
-                        Height="34"
-                        Width="34" />
+                <Button x:Name="btn_addPersonal" Grid.Column="0" Background="{x:Null}" Padding="0" Foreground="Black" BorderBrush="#FF5C99D6" 
+                     VerticalAlignment="Top" Margin="-150,40,0,0" Width="40" Height="40" RenderTransformOrigin="0.375,0.55" Click="btn_addPersonal_Click">
+                    <materialDesign:PackIcon Kind="Add"  Width="40" Height="40" BorderBrush="#FF5C99D6" Foreground="#FF5C99D6" OpacityMask="#FF5C99D6"/>
                 </Button>
-                <TextBlock Grid.Row="0"
-                    FontWeight="Normal" Margin="60,30,0,0" FontSize="16"
-                    Text ="Registro de Personal" VerticalAlignment="Center" HorizontalAlignment ="Center">
-                    
-                </TextBlock>
             </Grid>
             
         </Grid>

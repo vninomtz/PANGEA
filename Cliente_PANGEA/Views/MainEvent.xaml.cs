@@ -85,12 +85,12 @@ namespace Cliente_PANGEA
         {
 
             bool result = true;
-            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 ]+$");
+            Regex regexName = new Regex(@"^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9-,-. ]+$");
             if (!regexName.IsMatch(TextBox_eventName.Text))
             {
                 result = false;
             }
-            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9 !@#\$%\&\*\?¿._~\/]+$");
+            Regex regexDescription = new Regex(@"^[\r\n a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ0-9-,-. !@#\$%\&\*\?¿._~\/]+$");
             if (!regexDescription.IsMatch(TextBox_place.Text))
             {
 
@@ -249,6 +249,10 @@ namespace Cliente_PANGEA
                 SingletonEvent.SetSingletonEvent(EventController.GetEventById(SingletonEvent.GetEvent().Id));
                 LoadEventInformation();
                 DisableFields();
+                Button_editOff.Visibility = Visibility.Hidden;
+
+
+
 
             }   
 

@@ -158,7 +158,7 @@ namespace Cliente_PANGEA.Views
             else if (!CorrectFields())
             {
                 MessageBox.Show("Los campos contienen caracteres invalidos");
-            }
+            } else 
             {
                 AddSchedule();
                 ClearFields();

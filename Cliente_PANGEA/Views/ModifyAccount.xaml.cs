@@ -102,11 +102,11 @@ namespace Cliente_PANGEA.Views
         {
             if(this.windowEvent != null)
             {
-                this.windowEvent.txt_UserName.Text = SingletonAccount.GetAccount().ToString();
+                this.windowEvent.txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
             }
             else
             {
-                this.windowMain.txt_UserName.Text = SingletonAccount.GetAccount().ToString();
+                this.windowMain.txt_UserName.Text = SingletonAccount.GetAccount().Nombre + " " + SingletonAccount.GetAccount().Apellido;
             }
             
         }

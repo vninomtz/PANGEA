@@ -120,7 +120,11 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Nombre}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Apellido}" />
+                                    </StackPanel>
                                     <TextBlock Text="{Binding Correo}" />
                                 </StackPanel>
                             </DataTemplate>
@@ -138,7 +142,11 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Nombre}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Apellido}" />
+                                    </StackPanel>
                                     <TextBlock Text="{Binding Correo}" />
                                 </StackPanel>
                             </DataTemplate>

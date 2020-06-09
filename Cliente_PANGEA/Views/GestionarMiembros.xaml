@@ -71,7 +71,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nombre}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding Apellido}" />
+                                </StackPanel>
                                 <TextBlock Text="{Binding Correo}" />
                             </StackPanel>
                         </DataTemplate>
@@ -89,7 +93,7 @@
                         <Button   Background="{x:Null}" Padding="0"
                             x:Name="btn_eliminarMiembro"
                             Foreground="#FF5C99D6" BorderBrush="#FF5C99D6"
-                            ToolTip="Regresar" Width="40" Height="40" Margin="0,0,20,0" Click="btn_eliminarMiembro_Click">
+                            ToolTip="Quitar miembro" Width="40" Height="40" Margin="0,0,20,0" Click="btn_eliminarMiembro_Click">
                             <materialDesign:PackIcon Kind="PersonMultipleRemove"  Width="40" Height="40"/>
 
                         </Button>
@@ -100,7 +104,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nombre}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding Apellido}" />
+                                </StackPanel>
                                 <TextBlock Text="{Binding Correo}" />
                             </StackPanel>
                         </DataTemplate>
@@ -137,7 +145,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nombre}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding Apellido}" />
+                                </StackPanel>
                                 <TextBlock Text="{Binding Correo}" />
                             </StackPanel>
                         </DataTemplate>

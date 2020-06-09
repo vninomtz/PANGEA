@@ -4,7 +4,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Controls.Primitives;
 
 namespace Cliente_PANGEA.Views
 {
@@ -25,18 +25,21 @@ namespace Cliente_PANGEA.Views
         }
 
         private void button_save_Click(object sender, RoutedEventArgs e)
+
         {
+            int trackResult = 0;
             if (AreThereEmptyFields())
             {
                 MessageBox.Show("Por favor ingresar información en todos los campos");
             }
-            else if (SaveTrack() == -1)
-            {
-                MessageBox.Show("Error en la conexión con la base de datos");
-            } else if (!CorrectFields())
+            else if (!CorrectFields())
             {
                 MessageBox.Show("Los campos contienen datos invalidos");
             }
+            else if ((trackResult = SaveTrack()) == -1)
+            {
+                MessageBox.Show("Error en la conexión con la base de datos");
+            } 
             else
             {
                 MessageBox.Show("Track guardado correctamente");
@@ -81,11 +84,14 @@ namespace Cliente_PANGEA.Views
 
         private int SaveTrack()
         {
+            Random random = new Random();
+            int code = random.Next(4000);
             Tracks newTrack = new Tracks
             {
                 Nombre = TextBox_nombreTrack.Text,
                 Descripcion = TextBox_descripcionTrack.Text,
-                IdEvento = SingletonEvent.GetEvent().Id
+                IdEvento = SingletonEvent.GetEvent().Id,
+                Codigo = code
             };
 
             return TrackController.AddTrack(newTrack);
@@ -98,13 +104,19 @@ namespace Cliente_PANGEA.Views
             
             if (ListView_tracks.SelectedItem != null)
             {
+                int trackResult = 0;
                 MessageBoxResult result = MessageBox.Show("Por favor confirme la operación", "Advertencia", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     var track = (Tracks)ListView_tracks.SelectedItem;
-                    if (TrackController.DeleteTrack(track.Id) == -1)
+                    if ((trackResult = TrackController.DeleteTrack(track.Id)) == -1)
                     {
                         MessageBox.Show("Error en la conexión con la base de datos");
+                    }
+                    else if (trackResult == 200)
+                    {
+                        MessageBox.Show("No se puede borrar el track. Existen articulos registrados en esta categoría");
+
                     }
                     else
                     {

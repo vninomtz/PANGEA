@@ -56,6 +56,7 @@ namespace Cliente_PANGEA.Controllers
             return result;
         }
 
+        const int IVALID_DELETE = 200;
         public static int DeleteTrack(int idTrack)
         {
             int result = -1;
@@ -64,9 +65,17 @@ namespace Cliente_PANGEA.Controllers
             {
                 try
                 {
-                    var track = dataBase.Tracks.Where(tracks => tracks.Id == idTrack).FirstOrDefault();
-                    dataBase.Tracks.Remove(track);
-                    result = dataBase.SaveChanges();
+                    if (dataBase.Articulos.Where(articulo => articulo.idTrack == idTrack).Count() > 0)
+                    {
+                        result = IVALID_DELETE;
+                    } else
+                    {
+                        var track = dataBase.Tracks.Where(tracks => tracks.Id == idTrack).FirstOrDefault();
+                        dataBase.Tracks.Remove(track);
+                        result = dataBase.SaveChanges();
+                       
+                    }
+                    
                 }
                 catch (Exception ex )
                 {

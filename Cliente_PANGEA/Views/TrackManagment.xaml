@@ -64,8 +64,8 @@
             <ListView Grid.Row="1" x:Name="ListView_tracks"  ItemsSource="{Binding Items1}" Margin="40" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Nombre}"  Header="Nombre track" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Descripcion}" Header="Descripción de track" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Nombre}"  Header="Nombre track" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Descripcion}" Header="Descripción de track" />
                     </GridView>
                 </ListView.View>
             </ListView>

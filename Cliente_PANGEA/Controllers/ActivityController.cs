@@ -178,7 +178,7 @@ namespace Cliente_PANGEA.Controllers
             {
                 try
                 {
-                    var activityList = database.Actividades.Include("Horarios").Where(a => a.IdEvento == idEvent && a.Cupo >0 || a.Cupo == null).ToList();
+                    var activityList = database.Actividades.Include("Horarios").Where(a => a.IdEvento == idEvent && a.Cupo >0 || a.IdEvento == idEvent && a.Cupo == null).ToList();
                     return activityList;
                 }
                 catch (Exception e)

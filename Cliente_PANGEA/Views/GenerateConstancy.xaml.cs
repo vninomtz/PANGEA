@@ -17,6 +17,7 @@ using Cliente_PANGEA.Controllers;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using Microsoft.Win32;
 
 namespace Cliente_PANGEA.Views
 {
@@ -90,78 +91,93 @@ namespace Cliente_PANGEA.Views
                 if (GetIncriptionActivitySelected()!=null)
                 {
                     IncripcionActividades incripcionActividades = GetIncriptionActivitySelected();
-                    Document document = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
-                    PdfWriter.GetInstance(document, new FileStream("ConstanciaActividad" + assistantEvent.Asistentes.Nombre + assistantEvent.Asistentes.Apellido +incripcionActividades.Actividades.Titulo+ ".pdf", FileMode.Create));
-                    document.Open();
 
-                    iTextSharp.text.Paragraph assistantName = GetAssistantName();
-                    iTextSharp.text.Paragraph titleUniversity = GetTititleUniversity();
-                    iTextSharp.text.Paragraph constancy = GetConstnacyName();
-                    iTextSharp.text.Image imageUv = GetImageLogUv();
-                    iTextSharp.text.Image imagefei = GetImageFei();
-                    iTextSharp.text.Paragraph description = GetAssistanceDescription();
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.ShowDialog();
+                    if (!String.IsNullOrEmpty(saveFileDialog.FileName))
+                    {
+                        FileStream fileStream = new FileStream(saveFileDialog.FileName + ".pdf",FileMode.Create);
+                        Document document = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+                        PdfWriter.GetInstance(document, fileStream);
+                        document.Open();
+
+                        iTextSharp.text.Paragraph assistantName = GetAssistantName();
+                        iTextSharp.text.Paragraph titleUniversity = GetTititleUniversity();
+                        iTextSharp.text.Paragraph constancy = GetConstnacyName();
+                        iTextSharp.text.Image imageUv = GetImageLogUv();
+                        iTextSharp.text.Image imagefei = GetImageFei();
+                        iTextSharp.text.Paragraph description = GetAssistanceDescription();
+
+
+                        iTextSharp.text.Paragraph activityName = new iTextSharp.text.Paragraph();
+                        activityName.Font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 28f, iTextSharp.text.Color.BLACK);
+                        activityName.Add("\n\n" + incripcionActividades.Actividades.Tipo + ": " + incripcionActividades.Actividades.Titulo);
+                        activityName.Alignment = 1;
+
+                        iTextSharp.text.Paragraph date = new iTextSharp.text.Paragraph();
+                        date.Font = FontFactory.GetFont(FontFactory.HELVETICA, 24f, iTextSharp.text.Color.BLACK);
+                        date.Add("\n" + incripcionActividades.Actividades.FechaCreacion.ToShortDateString());
+                        date.Alignment = 1;
+
+                        document.Add(imageUv);
+                        document.Add(imagefei);
+                        document.Add(titleUniversity);
+                        document.Add(constancy);
+                        document.Add(assistantName);
+                        document.Add(description);
+                        document.Add(activityName);
+                        document.Add(date);
+
+                        document.Close();
+                        System.Diagnostics.Process.Start(saveFileDialog.FileName+".pdf");
+                    }
                     
-
-                    iTextSharp.text.Paragraph activityName = new iTextSharp.text.Paragraph();
-                    activityName.Font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 28f, iTextSharp.text.Color.BLACK);
-                    activityName.Add("\n\n" + incripcionActividades.Actividades.Tipo + ": " + incripcionActividades.Actividades.Titulo);
-                    activityName.Alignment = 1;
-
-                    iTextSharp.text.Paragraph date = new iTextSharp.text.Paragraph();
-                    date.Font = FontFactory.GetFont(FontFactory.HELVETICA, 24f, iTextSharp.text.Color.BLACK);
-                    date.Add("\n"+incripcionActividades.Actividades.FechaCreacion.ToShortDateString());
-                    date.Alignment = 1;
-
-                    document.Add(imageUv);
-                    document.Add(imagefei);
-                    document.Add(titleUniversity);
-                    document.Add(constancy);
-                    document.Add(assistantName);
-                    document.Add(description);
-                    document.Add(activityName);
-                    document.Add(date);
-                    
-                    document.Close();
-
-                    System.Diagnostics.Process.Start("ConstanciaActividad" + assistantEvent.Asistentes.Nombre + assistantEvent.Asistentes.Apellido + incripcionActividades.Actividades.Titulo + ".pdf");
                 }
             }
         }
 
         private void btn_GenerateEventConstancy_Click(object sender, RoutedEventArgs e)
         {
-            Document document = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
-            PdfWriter.GetInstance(document, new FileStream("ConstanciaEvento" + assistantEvent.Asistentes.Nombre + assistantEvent.Asistentes.Apellido + ".pdf", FileMode.Create));
-            document.Open();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.ShowDialog();
+            if (!String.IsNullOrEmpty(saveFileDialog.FileName))
+            {
+                FileStream fileStream = new FileStream(saveFileDialog.FileName + ".pdf", FileMode.Create);
+                Document document = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+                PdfWriter.GetInstance(document, fileStream);
+                document.Open();
 
-            iTextSharp.text.Paragraph assistantName = GetAssistantName();
-            iTextSharp.text.Paragraph titleUniversity = GetTititleUniversity();
-            iTextSharp.text.Paragraph constancy = GetConstnacyName();
-            iTextSharp.text.Image imageUv = GetImageLogUv();
-            iTextSharp.text.Image imagefei = GetImageFei();
-            iTextSharp.text.Paragraph description = GetAssistanceDescription();
-            
+                iTextSharp.text.Paragraph assistantName = GetAssistantName();
+                iTextSharp.text.Paragraph titleUniversity = GetTititleUniversity();
+                iTextSharp.text.Paragraph constancy = GetConstnacyName();
+                iTextSharp.text.Image imageUv = GetImageLogUv();
+                iTextSharp.text.Image imagefei = GetImageFei();
+                iTextSharp.text.Paragraph description = GetAssistanceDescription();
 
-            iTextSharp.text.Paragraph nameEvent = new iTextSharp.text.Paragraph();
-            nameEvent.Font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 24f, iTextSharp.text.Color.BLACK);
-            nameEvent.Add("\n"+SingletonEvent.GetEvent().Nombre);
-            nameEvent.Alignment = 1;
 
-            iTextSharp.text.Paragraph date = new iTextSharp.text.Paragraph();
-            date.Font = FontFactory.GetFont(FontFactory.HELVETICA, 24f, iTextSharp.text.Color.BLACK);
-            date.Add("\nDel " + SingletonEvent.GetEvent().FechaFin.ToShortDateString()+" al "+ SingletonEvent.GetEvent().FechaFin.ToShortDateString());
-            date.Alignment = 1;
-            
-            document.Add(imageUv);
-            document.Add(imagefei);
-            document.Add(titleUniversity);
-            document.Add(constancy);
-            document.Add(assistantName);
-            document.Add(description);
-            document.Add(nameEvent);
-            document.Add(date);
-            document.Close();
-            System.Diagnostics.Process.Start("ConstanciaEvento" + assistantEvent.Asistentes.Nombre +assistantEvent.Asistentes.Apellido +".pdf");
+                iTextSharp.text.Paragraph nameEvent = new iTextSharp.text.Paragraph();
+                nameEvent.Font = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 24f, iTextSharp.text.Color.BLACK);
+                nameEvent.Add("\n" + SingletonEvent.GetEvent().Nombre);
+                nameEvent.Alignment = 1;
+
+                iTextSharp.text.Paragraph date = new iTextSharp.text.Paragraph();
+                date.Font = FontFactory.GetFont(FontFactory.HELVETICA, 24f, iTextSharp.text.Color.BLACK);
+                date.Add("\nDel " + SingletonEvent.GetEvent().FechaFin.ToShortDateString() + " al " + SingletonEvent.GetEvent().FechaFin.ToShortDateString());
+                date.Alignment = 1;
+
+                document.Add(imageUv);
+                document.Add(imagefei);
+                document.Add(titleUniversity);
+                document.Add(constancy);
+                document.Add(assistantName);
+                document.Add(description);
+                document.Add(nameEvent);
+                document.Add(date);
+                document.Close();
+                System.Diagnostics.Process.Start(saveFileDialog.FileName + ".pdf");
+            }
+           
+           
         }
 
         private iTextSharp.text.Paragraph GetAssistantName()

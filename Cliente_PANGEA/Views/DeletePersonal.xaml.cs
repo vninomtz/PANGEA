@@ -86,13 +86,13 @@ namespace Cliente_PANGEA.Views
             if (!EmptyFields())
             {
                 string lastName = txt_lastName.Text;
-                if (PersonalController.GetPersonalByLastName(lastName,idEvent) != null)
+                if (PersonalController.GetPersonalByLastName(lastName,idEvent).Count()>0)
                 {
                     listViewAccountsPersonal.ItemsSource = PersonalController.GetPersonalByLastName(lastName,idEvent);     
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrió un error en la base de datos");
+                    MessageBox.Show("No se encontraron registros con el apellido ingresado");
                 }
             }
             

@@ -75,6 +75,7 @@
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding Nombre}" />
+                                    <TextBlock Text=" " />
                                     <TextBlock Text="{Binding Apellido}" />
                                 </StackPanel>
                                 <TextBlock Text="{Binding Correo}" />
@@ -82,7 +83,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Grid.Row="2" x:Name="btn_RegisterActivityAssistant" Margin="123,27,101,27"
+                <Button Grid.Row="2" x:Name="btn_RegisterActivityAssistant" Margin="90,27,85,27"
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
                     ToolTip="Guardar asignación" Content="Guardar asignación"
                     Click="btn_RegsiterActivityAssistant_Click" Background="#FF5C99D6" BorderBrush="#FF5C99D6" />

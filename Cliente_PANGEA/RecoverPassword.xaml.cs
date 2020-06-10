@@ -101,11 +101,18 @@ namespace Cliente_PANGEA
         }
         private bool UpdatePassword(String email, String password)
         {
-            if (AccountController.UpdatePassword(email,password)>0)
+            if (AccountController.UpdatePassword(email, password) > 0)
             {
                 return true;
             }
+            else if (AccountController.UpdatePassword(email,password) == 0)
+            {
+                MessageBox.Show("Por seguridad ingresa una contraseña diferente.");
+                return false;
+            }
+            MessageBox.Show("Error en la conexión con la base de datos.");
             return false;
+   
         }
         private void Button_ValidateCode_Click(object sender, RoutedEventArgs e)
         {
@@ -189,7 +196,7 @@ namespace Cliente_PANGEA
             String email = txt_email.Text;
             if (EqualsPasswords(password, confirmPassword))
             {
-                if (UpdatePassword(email, confirmPassword))
+                if (UpdatePassword(email,Encrypter.EncodePassword(confirmPassword)))
                 {
                     MessageBox.Show("Contraseña actualizada correctamente");
                     Login login = new Login();
@@ -198,7 +205,7 @@ namespace Cliente_PANGEA
                 }
                 else
                 {
-                    MessageBox.Show("Error en la conexión con la base de datos.");
+                    
                 }
             }
         }

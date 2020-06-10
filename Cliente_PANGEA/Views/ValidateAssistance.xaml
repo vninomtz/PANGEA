@@ -88,7 +88,7 @@
                                         <TextBlock Text="{Binding Actividades.Titulo}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Costo:  " />
+                                        <TextBlock Text="Costo:  $" />
                                         <TextBlock Text="{Binding Actividades.Costo}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">

@@ -119,13 +119,13 @@ namespace Cliente_PANGEA.Views
             if (ValidateSelectedAssistant() && ValidateSelectedActivity())
             {
                 Asistentes assistant = (Asistentes)list_Asistente.SelectedItem;
-                Horarios activity = (Horarios)listView_Activities.SelectedItem;
+                Actividades activity = (Actividades)listView_Activities.SelectedItem;
                 MessageBoxResult messageBoxResult = MessageBox.Show("¿Está seguro de de registrar al asistente a la actividad?", "Confirmación de registro", MessageBoxButton.OKCancel);
                 if (messageBoxResult == MessageBoxResult.OK)
                 {
-                    if (!ValidateNOTRegisterAssistantInActivity(activity.Actividades.Id, assistant.Id))
+                    if (!ValidateNOTRegisterAssistantInActivity(activity.Id, assistant.Id))
                     {
-                        if (ActivityController.RegisterActivityAssistant(assistant.Id, activity.Actividades.Id) > 0)
+                        if (ActivityController.RegisterActivityAssistant(assistant.Id, activity.Id) > 0)
                         {
                             MessageBox.Show("Asistente registrado con éxito");
                             if (ContinueRegistering())

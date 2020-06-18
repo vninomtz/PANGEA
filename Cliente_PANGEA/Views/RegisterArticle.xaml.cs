@@ -148,6 +148,7 @@ namespace Cliente_PANGEA.Views
             if (ArticleController.SaveArticleInActivity(activity,idArticle)>0)
             {
                 MessageBox.Show("Artículo registrado con éxito");
+
             }
             else
             {
@@ -186,6 +187,7 @@ namespace Cliente_PANGEA.Views
                     int idArticle = GetLastIdArticle();
                     SaveArticleInActivity(activity,idArticle);
                     CleanFlieds();
+                    NavigationService.Navigate(new ShowArticle());
                 }
                
             }

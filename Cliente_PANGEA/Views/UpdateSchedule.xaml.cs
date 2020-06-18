@@ -149,14 +149,9 @@ namespace Cliente_PANGEA.Views
 
         private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Se guardaran los horarios de la tabla", "Confirmación", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
                 activityReceived.UltimaModificacion = DateTime.Now;
                 ActivityController.UpdateActivity(activityReceived);
                 NavigationService.Navigate(new UpdateActivity(activityReceived));
-            }
-
         }
 
     }

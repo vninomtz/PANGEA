@@ -41,7 +41,7 @@ namespace Cliente_PANGEA.Views
 
             if(openFileDialog.ShowDialog() == true)
             {
-                textblock_Archivo.Text = openFileDialog.FileName;
+                textblock_Archivo.Text = openFileDialog.SafeFileName;
             }
         }
 

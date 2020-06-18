@@ -56,10 +56,10 @@
             </Grid>
             <TextBox x:Name="TextBox_nombreTrack" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                 VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Nombre Track"
-                Margin="200,0,545,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
+                Margin="200,0,545,0" Width="250" HorizontalAlignment="Left" materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6"/>
             <TextBox x:Name="TextBox_descripcionTrack" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
-                VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Descripción Track"
-                Margin="545,0,200,0"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6" />
+                VerticalAlignment="Center" HorizontalAlignment="Right" AcceptsReturn="True" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Descripción Track"
+                Margin="0,0,200,0" Width="250"  materialDesign:HintAssist.Foreground="#FF5C99D6" materialDesign:TextFieldAssist.UnderlineBrush="#FF5C99D6" />
             
             <ListView Grid.Row="1" x:Name="ListView_tracks"  ItemsSource="{Binding Items1}" Margin="40" >
                 <ListView.View>

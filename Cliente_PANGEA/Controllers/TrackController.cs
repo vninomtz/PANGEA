@@ -35,7 +35,8 @@ namespace Cliente_PANGEA.Controllers
             {
                 Nombre = infoTrack.Nombre,
                 Descripcion = infoTrack.Descripcion,
-                IdEvento = infoTrack.IdEvento
+                IdEvento = infoTrack.IdEvento,
+                Codigo = infoTrack.Codigo
                 
             };
 

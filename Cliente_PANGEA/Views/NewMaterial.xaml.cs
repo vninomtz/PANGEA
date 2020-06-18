@@ -103,7 +103,7 @@ namespace Cliente_PANGEA.Views
             int quantity = int.Parse(txt_quantity.Text);
             Actividades act = (Actividades)cb_activities.SelectedItem;
             int result = MaterialsController.SaveMaterial(txt_name.Text, txt_description.Text, quantity, IDEVENT, act.Id);
-            if (result > 0)
+            if (result >= 0)
             {
                 MessageBox.Show("Se guardo con éxito el material");
                 this.NavigationService.Navigate(new ShowMaterials());
@@ -117,7 +117,7 @@ namespace Cliente_PANGEA.Views
         {
             int quantity = int.Parse(txt_quantity.Text);
             int result = MaterialsController.UpdateMaterial(txt_name.Text, txt_description.Text, quantity, materialUpdated.Id);
-            if (result > 0)
+            if (result >= 0)
             {
                 MessageBox.Show("Se actualizo con éxito el material");
                 this.NavigationService.Navigate(new ShowMaterials());
